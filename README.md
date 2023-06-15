@@ -1,4 +1,4 @@
-[<img width="250" height="119" src="./static/logo.svg"/>](https://www.thinkflo.com/)
+[<img width="450" src="./static/logo.svg"/>](https://www.thinkflo.com/)
 
 # Thinkflo SvelteKit Storyblok - Website Frontend
 
