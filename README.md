@@ -1,22 +1,20 @@
-# create-svelte
+# Thinkflo SvelteKit Storyblok - Website Frontend
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A [JAMStack](https://jamstack.org/) website, styled with the [TailwindCSS 3.3](https://tailwindcss.com/) design system, and based on [Sveltekit 1.5](https://kit.svelte.dev/docs/introduction) using the [Static Adapter](https://kit.svelte.dev/docs/adapters#supported-environments-static-sites) to generate all static endpoints connecting to a headless [Storyblok ](https://www.storyblok.com/docs/guide/introduction) backend.
 
-## Creating a project
+## Installation Instructions
 
-If you're seeing this, you've probably already done this step. Congrats!
+Clone this repo, change directory into the project folder, and Install all project dependancies with 
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+`npm install`
 
-# create a new project in my-app
-npm create svelte@latest my-app
+Configure the `.env` file in the root of the project with the following variables:
+
+```
+ACCESS_TOKEN=
 ```
 
 ## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
 npm run dev
@@ -34,5 +32,3 @@ npm run build
 ```
 
 You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
