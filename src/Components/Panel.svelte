@@ -7,8 +7,10 @@
 	import ConstrainedWidth from '$/Components/UI/Constrained_Width.svelte';
 
 	export let blok;
+	export let parent;
 
 	import { browser } from '$app/environment';
+	import { stringify } from 'postcss';
 	let loadedCarousel = -1;
 	let loaded = false;
 	let heroImage;
@@ -55,26 +57,37 @@
 	});
 </script>
 
-<div
-	class="carousel-cell relative overflow-hidden w-full max-h-[800px] h-[calc(100vh-5rem)] md:min-h-[56.25vh]"
->
-	<div class="w-full h-full relative flex justify-center flex-col text-white -z-10">
-		<picture>
-			<img
-				bind:this={heroImage}
-				srcset={buildSrcSet(blok.Image)}
-				sizes="100vw"
-				class="min-w-full transition-all duration-1000 ease-in-out -translate-y-1/2 top-1/2 -translate-x-1/2 left-1/2 min-h-full transform object-cover absolute -z-50"
-				src={blok.Image.filename}
-				alt="background"
-			/>
-		</picture>
+{#if blok.Image_Layout === 'Background' && parent === 'Hero'}
+	<div
+		class="carousel-cell relative overflow-hidden w-full max-h-[800px] h-[calc(100vh-5rem)] md:min-h-[56.25vh]"
+	>
+		<div class="w-full h-full relative flex justify-center flex-col text-white -z-10">
+			<picture>
+				<img
+					bind:this={heroImage}
+					srcset={buildSrcSet(blok.Image)}
+					sizes="100vw"
+					class="min-w-full transition-all duration-1000 ease-in-out -translate-y-1/2 top-1/2 -translate-x-1/2 left-1/2 min-h-full transform object-cover absolute -z-50"
+					src={blok.Image.filename}
+					alt="background"
+				/>
+			</picture>
 
-		<ConstrainedWidth className="space-y-4">
-			<h1 use:storyblokEditable={blok} class="text-5xl font-bold">
-				{blok.Heading}
-			</h1>
-			<div>{@html renderRichText(blok.Short_Blurb)}</div>
-		</ConstrainedWidth>
+			<ConstrainedWidth className="space-y-4">
+				<h1 use:storyblokEditable={blok} class="text-5xl font-bold">
+					{blok.Heading}
+				</h1>
+				<div>{@html renderRichText(blok.Short_Blurb)}</div>
+			</ConstrainedWidth>
+		</div>
 	</div>
-</div>
+{:else if blok.content && blok.content.component === 'Project'}
+	<a
+		href={`/${blok.full_slug}`}
+		use:storyblokEditable={blok.content}
+		class="w-full p-12 bg-[#f7f6fd] rounded-[5px] text-center h-full space-y-4"
+	>
+		<h2 class="text-2xl text-[#1d243d] font-bold">{blok.content.Heading}</h2>
+		<div class="prose line-clamp-6">{@html renderRichText(blok.content.Description)}</div>
+	</a>
+{/if}

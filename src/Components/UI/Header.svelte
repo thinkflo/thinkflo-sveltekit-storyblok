@@ -4,7 +4,9 @@
 
 <header class="w-full h-24 bg-[#f7f6fd]">
 	<Constrained_Width className="container h-full mx-auto flex items-center justify-between">
-		<h1 class="text-[#50b0ae] text-3xl font-bold">Storyblok SvelteKit</h1>
+		<h1 class="text-[#50b0ae] text-3xl font-bold">
+			<a href="/">Storyblok SvelteKit</a>
+		</h1>
 		<nav>
 			<ul class="flex space-x-8 text-lg font-bold">
 				<li class="hover:text-[#50b0ae]">
