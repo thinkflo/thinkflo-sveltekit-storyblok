@@ -8,6 +8,7 @@
 
 	export let blok;
 	export let parent;
+	export let showDivider;
 
 	import { browser } from '$app/environment';
 	import { stringify } from 'postcss';
@@ -102,5 +103,7 @@
 		</div>
 	</a>
 {:else}
-	<h3>{blok.Heading}</h3>
+	<div class="p-8 w-full h-full text-center" class:border={showDivider}>
+		<h3>{blok.Heading}</h3>
+	</div>
 {/if}
