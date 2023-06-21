@@ -90,4 +90,6 @@
 		<h2 class="text-2xl text-[#1d243d] font-bold">{blok.content.Heading}</h2>
 		<div class="prose line-clamp-6">{@html renderRichText(blok.content.Description)}</div>
 	</a>
+{:else}
+	<h3>{blok.Heading}</h3>
 {/if}
