@@ -8,7 +8,7 @@
 
 <section class="py-12" use:storyblokEditable={blok}>
 	<Constrained_Width>
-		<div>
+		<div class="space-y-4">
 			<h2 class="text-4xl font-semibold">{blok.Heading}</h2>
 			<div class="prose">{@html renderRichText(blok.Short_Blurb)}</div>
 		</div>
