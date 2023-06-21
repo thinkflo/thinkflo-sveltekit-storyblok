@@ -59,6 +59,7 @@
 
 {#if blok.Image_Layout === 'Background' && parent === 'Hero'}
 	<div
+		use:storyblokEditable={blok}
 		class="carousel-cell relative overflow-hidden w-full max-h-[800px] h-[calc(100vh-5rem)] md:min-h-[56.25vh]"
 	>
 		<div class="w-full h-full relative flex justify-center flex-col text-white -z-10">
@@ -74,7 +75,7 @@
 			</picture>
 
 			<ConstrainedWidth className="space-y-4">
-				<h1 use:storyblokEditable={blok} class="text-5xl font-bold">
+				<h1 class="text-5xl font-bold">
 					{blok.Heading}
 				</h1>
 				<div>{@html renderRichText(blok.Short_Blurb)}</div>
@@ -84,7 +85,6 @@
 {:else if blok.content && blok.content.component === 'Project'}
 	<a
 		href={`/${blok.full_slug}`}
-		use:storyblokEditable={blok.content}
 		class="w-full p-12 bg-[#f7f6fd] rounded-[5px] text-center h-full space-y-4"
 	>
 		<h2 class="text-2xl text-[#1d243d] font-bold">{blok.content.Heading}</h2>
