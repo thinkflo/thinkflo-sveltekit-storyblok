@@ -1,15 +1,15 @@
 import { useStoryblokApi, storyblokInit, apiPlugin } from "@storyblok/svelte";
 import "$/app.css"
-import Feature from "$/Components/Feature.svelte";
+import Project from "$/Components/Project.svelte";
 import Grid from "$/Components/Grid.svelte";
 import Page from "$/Components/Page.svelte";
-import Teaser from "$/Components/Teaser.svelte";
+import Panel from "$/Components/Panel.svelte";
 
 const components = {
-  feature: Feature,
-  grid: Grid,
+  Project,
+  Grid,
+  Panel,
   page: Page,
-  teaser: Teaser
 }
 
 export async function load() {
