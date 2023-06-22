@@ -6,6 +6,7 @@ import Page from "$/Components/Content_Types/Page.svelte";
 import Panel from "$/Components/Components/Panel.svelte";
 import Spotlight from "$/Components/Content_Blocks/Spotlight.svelte";
 import Spotlight_Card from "$/Components/Components/Spotlight_Card.svelte";
+import Stats_Panel from "$/Components/Content_Blocks/Stats_Panel.svelte";
 
 const components = {
   Project,
@@ -13,6 +14,7 @@ const components = {
   Panel,
   Spotlight,
   Spotlight_Card,
+  Stats_Panel,
   page: Page,
 }
 
