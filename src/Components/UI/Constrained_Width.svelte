@@ -1,5 +1,4 @@
 <script>
-	export let as = 'div';
 	export let mobile = true;
 	export let tablet = true;
 	export let desktop = true;

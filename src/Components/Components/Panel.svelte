@@ -86,7 +86,7 @@
 {:else if blok.content && blok.content.component === 'Project'}
 	<a
 		href={`/${blok.full_slug}`}
-		class="w-full bg-[#f7f6fd] rounded-[5px] text-center h-full space-y-4"
+		class="w-full rounded-[5px] text-center h-full space-y-4 border border-white"
 	>
 		<picture>
 			<img
@@ -98,7 +98,7 @@
 			/>
 		</picture>
 		<div class="px-4 py-2 space-y-6">
-			<h2 class="text-2xl text-[#1d243d] font-bold">{blok.content.Title}</h2>
+			<h2 class="text-2xl font-bold">{blok.content.Title}</h2>
 			<div class="prose line-clamp-6">{@html renderRichText(blok.content.Blurb)}</div>
 		</div>
 	</a>

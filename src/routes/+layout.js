@@ -1,14 +1,18 @@
 import { useStoryblokApi, storyblokInit, apiPlugin } from "@storyblok/svelte";
 import "$/app.css"
-import Project from "$/Components/Content_Type/Project.svelte";
-import Grid from "$/Components/Grid.svelte";
-import Page from "$/Components/Content_Type/Page.svelte";
-import Panel from "$/Components/Panel.svelte";
+import Project from "$/Components/Content_Types/Project.svelte";
+import Grid from "$/Components/Content_Blocks/Grid.svelte";
+import Page from "$/Components/Content_Types/Page.svelte";
+import Panel from "$/Components/Components/Panel.svelte";
+import Spotlight from "$/Components/Content_Blocks/Spotlight.svelte";
+import Spotlight_Card from "$/Components/Components/Spotlight_Card.svelte";
 
 const components = {
   Project,
   Grid,
   Panel,
+  Spotlight,
+  Spotlight_Card,
   page: Page,
 }
 
