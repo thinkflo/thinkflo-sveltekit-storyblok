@@ -2,7 +2,7 @@
 	import Constrained_Width from './Constrained_Width.svelte';
 </script>
 
-<header class="w-full h-24 bg-[#f7f6fd]">
+<header class="w-full h-24 bg-[#f7f6fd] text-black">
 	<Constrained_Width className="container h-full mx-auto flex items-center justify-between">
 		<h1 class="text-[#50b0ae] text-3xl font-bold">
 			<a href="/">Storyblok SvelteKit</a>

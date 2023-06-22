@@ -9,73 +9,25 @@
 	export let blok;
 	export let parent;
 	export let showDivider;
-
-	import { browser } from '$app/environment';
-	import { stringify } from 'postcss';
-	let loadedCarousel = -1;
-	let loaded = false;
-	let heroImage;
-	let resetZoom = true;
-	$: resetZoom = resetZoom;
-	let previousImage = '';
-	export /**
-	 * @type {any}
-	 */
-	let hero;
-
-	afterNavigate(() => {
-		resetZoom = true;
-		setTimeout(() => (resetZoom = false), 0);
-		if (hero && !hero.homeCarousel) {
-			loadedCarousel = 0;
-		}
-	});
-
-	onMount(async () => {
-		if (blok) {
-			await import('flickity/dist/flickity.min.css');
-			const { default: Flickity } = await import(/* webpackChunkName: "flickity" */ 'flickity');
-
-			new Flickity('#main-carousel', {
-				autoPlay: 10000,
-				prevNextButtons: false,
-				wrapAround: true,
-				selectedAttraction: 0.005,
-				friction: 0.15,
-				on: {
-					settle: (/** @type {Number} */ index) => (loadedCarousel = index),
-					ready: () => (loadedCarousel = 0)
-				}
-			});
-		} else {
-			resetZoom = false;
-			if (browser && heroImage) {
-				heroImage.onload = (event) => {
-					loaded = true;
-				};
-			}
-		}
-	});
 </script>
 
 {#if blok.Image_Layout === 'Background' && parent === 'Hero'}
 	<div
 		use:storyblokEditable={blok}
-		class="carousel-cell relative overflow-hidden w-full max-h-[800px] h-[calc(100vh-5rem)] md:min-h-[56.25vh]"
+		class="relative overflow-hidden min-w-full max-h-[800px] h-[calc(100vh-5rem)] md:min-h-[56.25vh] snap-center"
 	>
-		<div class="w-full h-full relative flex justify-center flex-col text-white -z-10">
+		<div class="w-full h-full relative flex justify-center flex-col text-white">
 			<picture>
 				<img
-					bind:this={heroImage}
-					srcset={buildSrcSet(blok.Image)}
+					srcset={buildSrcSet(blok.Image.filename)}
 					sizes="100vw"
-					class="min-w-full transition-all duration-1000 ease-in-out -translate-y-1/2 top-1/2 -translate-x-1/2 left-1/2 min-h-full transform object-cover absolute -z-50"
+					class="min-w-full transition-all duration-1000 ease-in-out -translate-y-1/2 top-1/2 -translate-x-1/2 left-1/2 min-h-full transform object-cover absolute"
 					src={blok.Image.filename}
 					alt="background"
 				/>
 			</picture>
 
-			<ConstrainedWidth className="space-y-4">
+			<ConstrainedWidth className="space-y-4 z-10">
 				<h1 class="text-5xl font-bold">
 					{blok.Heading}
 				</h1>

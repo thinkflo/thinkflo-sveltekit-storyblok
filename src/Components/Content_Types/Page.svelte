@@ -1,22 +1,49 @@
 <script>
+	import { onMount, onDestroy } from 'svelte';
 	import { storyblokEditable, StoryblokComponent } from '@storyblok/svelte';
 
 	export let blok;
+
+	let scrollInterval;
+	let scrollRef;
+
+	// Duplicate the first item and add it to the end of your carousel
+	let extendedHero = [...blok.Hero, blok.Hero[0]];
+
+	const startScrolling = () => {
+		scrollInterval = setInterval(() => {
+			// If we're at the end of the scroll container
+			if (scrollRef.scrollLeft >= scrollRef.scrollWidth - scrollRef.offsetWidth) {
+				// Reset scroll position to the left
+				scrollRef.scrollLeft = 0;
+			} else {
+				// Otherwise, scroll a little to the right
+				scrollRef.scrollBy({ left: 1, behavior: 'smooth' });
+			}
+		}, 5000); // Adjusting for smoother scrolling
+	};
+
+	onMount(() => {
+		startScrolling();
+	});
+
+	onDestroy(() => {
+		clearInterval(scrollInterval);
+	});
 </script>
 
 {#key blok}
 	<main use:storyblokEditable={blok}>
-		<!-- Rendering Hero -->
 		<section
 			id="main-carousel"
-			class="w-full max-h-[800px] h-[calc(100vh-5rem)] md:min-h-[56.25vh] overflow-hidden flickity-enabled is-draggable"
+			class="w-full h-[calc(100vh-5rem)] md:min-h-[56.25vh] overflow-x-hidden"
 		>
-			{#each blok.Hero as component, index}
-				<StoryblokComponent blok={component} {index} parent="Hero" />
-			{/each}
+			<div bind:this={scrollRef} class="flex items-center overflow-x-auto snap-x snap-mandatory">
+				{#each extendedHero as component, index}
+					<StoryblokComponent blok={component} {index} parent="Hero" />
+				{/each}
+			</div>
 		</section>
-
-		<!-- Rendering Content Blocks -->
 		{#each blok.Content_Blocks as component}
 			<StoryblokComponent blok={component} />
 		{/each}

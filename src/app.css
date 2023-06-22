@@ -5,3 +5,11 @@
 main {
   @apply bg-black text-white
 }
+
+#main-carousel > div {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+#main-carousel > div::-webkit-scrollbar {
+  display: none;
+}
