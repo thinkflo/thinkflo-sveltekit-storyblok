@@ -1,4 +1,8 @@
-<div class="fixed bottom-0 right-0 m-5 max-w-xl inline-block z-50">
+<script>
+	let isOpen = true;
+</script>
+
+<div class:hidden={!isOpen} class="fixed bottom-0 right-0 m-5 max-w-xl inline-block z-50">
 	<div class="flex flex-col">
 		<picture>
 			<source
@@ -24,7 +28,12 @@
 		</p>
 
 		<div class="flex items-center space-x-8">
-			<button type="button" class="flex items-center bg-[#2e3e87] py-3 px-5" id="accept-cookies">
+			<button
+				type="button"
+				on:click={() => (isOpen = false)}
+				class="flex items-center bg-[#2e3e87] py-3 px-5"
+				id="accept-cookies"
+			>
 				<svg
 					class="h-6 w-6 mr-4"
 					version="1.1"
@@ -98,7 +107,9 @@
 				>
 				Accept cookies
 			</button>
-			<a href="#" class="flex items-center bg-[#2e3e87] py-3 px-5">Set my preferences</a>
+			<a href="#" on:click={() => (isOpen = false)} class="flex items-center bg-[#2e3e87] py-3 px-5"
+				>Set my preferences</a
+			>
 		</div>
 	</div>
 </div>
