@@ -20,7 +20,11 @@
 				// Otherwise, scroll a little to the right
 				scrollRef.scrollBy({ left: 1, behavior: 'smooth' });
 			}
-		}, 5000); // Adjusting for smoother scrolling
+		}, 4000);
+	};
+
+	const pauseScrolling = () => {
+		clearInterval(scrollInterval);
 	};
 
 	onMount(() => {
@@ -38,7 +42,14 @@
 			id="main-carousel"
 			class="w-full h-[calc(100vh-5rem)] md:min-h-[56.25vh] overflow-x-hidden"
 		>
-			<div bind:this={scrollRef} class="flex items-center overflow-x-auto snap-x snap-mandatory">
+			<div
+				bind:this={scrollRef}
+				class="flex items-center overflow-x-auto snap-x snap-mandatory"
+				on:mouseover={pauseScrolling}
+				on:mouseout={startScrolling}
+				on:focus={pauseScrolling}
+				on:blur={startScrolling}
+			>
 				{#each extendedHero as component, index}
 					<StoryblokComponent blok={component} {index} parent="Hero" />
 				{/each}
