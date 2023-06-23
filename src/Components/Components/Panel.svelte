@@ -37,6 +37,16 @@
 			</ConstrainedWidth>
 		</div>
 	</div>
+{:else if blok.Image_Layout === 'Icon'}
+	<div
+		class="p-8 flex flex-col items-center space-y-4 w-full h-full text-center bg-white text-black"
+		class:border={showDivider}
+	>
+		{#if blok?.Image?.filename}
+			<img class="h-10 w-10 object-contain" src={blok?.Image?.filename} />
+		{/if}
+		<h3>{blok.Heading}</h3>
+	</div>
 {:else if blok.content && blok.content.component === 'Project'}
 	<a
 		href={`/${blok.full_slug}`}
