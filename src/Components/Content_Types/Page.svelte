@@ -8,7 +8,7 @@
 	let scrollRef;
 
 	// Duplicate the first item and add it to the end of your carousel
-	let extendedHero = [...blok.Hero, blok.Hero[0]];
+	let extendedHero = blok?.Hero?.length > 1 ? [...blok.Hero, blok.Hero[0]] : blok?.Hero;
 
 	const startScrolling = () => {
 		scrollInterval = setInterval(() => {
@@ -28,6 +28,7 @@
 	};
 
 	onMount(() => {
+		if (blok?.Hero?.length > 1) return;
 		startScrolling();
 	});
 

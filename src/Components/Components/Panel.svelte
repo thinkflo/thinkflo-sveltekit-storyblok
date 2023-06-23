@@ -17,15 +17,17 @@
 		class="relative overflow-hidden min-w-full max-h-[800px] h-[calc(100vh-5rem)] md:min-h-[56.25vh] snap-center"
 	>
 		<div class="w-full h-full relative flex justify-center flex-col text-white">
-			<picture>
-				<img
-					srcset={buildSrcSet(blok.Image.filename)}
-					sizes="100vw"
-					class="min-w-full transition-all duration-1000 ease-in-out -translate-y-1/2 top-1/2 -translate-x-1/2 left-1/2 min-h-full transform object-cover absolute"
-					src={blok.Image.filename}
-					alt="background"
-				/>
-			</picture>
+			{#if blok?.Image?.filename}
+				<picture>
+					<img
+						srcset={buildSrcSet(blok.Image.filename)}
+						sizes="100vw"
+						class="min-w-full transition-all duration-1000 ease-in-out -translate-y-1/2 top-1/2 -translate-x-1/2 left-1/2 min-h-full transform object-cover absolute"
+						src={blok.Image.filename}
+						alt="background"
+					/>
+				</picture>
+			{/if}
 
 			<ConstrainedWidth className="space-y-4 z-10">
 				<h1 class="text-5xl font-bold">
