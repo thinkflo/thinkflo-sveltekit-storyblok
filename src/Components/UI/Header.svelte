@@ -18,6 +18,9 @@
 				<li class="hover:text-[#50b0ae]">
 					<a href="/"> Home </a>
 				</li>
+				<li class="hover:text-[#50b0ae]">
+					<a href="/work"> Work </a>
+				</li>
 			</ul>
 		</nav>
 	</Constrained_Width>

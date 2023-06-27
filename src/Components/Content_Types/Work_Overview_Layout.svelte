@@ -78,7 +78,9 @@
 			<!-- Work Panels -->
 			<!-- Took reference from https://pixelpusher.ca/ -->
 			{#each articles as article}
-				<div
+				<a
+					data-sveltekit-reload
+					href={article?.full_slug}
 					class="group/work flex flex-col items-center justify-center text-center space-y-4 bg-gray-800 px-8 py-12 relative overflow-hidden cursor-pointer"
 				>
 					<picture>
@@ -102,7 +104,7 @@
 							{@html renderRichText(article.content.Description)}
 						</div>
 					</div>
-				</div>
+				</a>
 			{/each}
 		</section>
 
