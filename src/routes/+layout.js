@@ -7,11 +7,13 @@ import Panel from "$/Components/Components/Panel.svelte";
 import Spotlight from "$/Components/Content_Blocks/Spotlight.svelte";
 import Spotlight_Card from "$/Components/Components/Spotlight_Card.svelte";
 import Stats_Panel from "$/Components/Content_Blocks/Stats_Panel.svelte";
-import Work_Overview_Layout from "$/Components/Content_Types/Work_Overview_Layout.svelte"
+import Work_Overview_Layout from "$/Components/Content_Types/Work_Overview_Layout.svelte";
+import Carousel from "$/Components/Content_Blocks/Carousel.svelte";
 
 const components = {
   Project,
   Grid,
+  Carousel,
   Panel,
   Spotlight,
   Spotlight_Card,
