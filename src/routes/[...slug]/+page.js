@@ -5,7 +5,7 @@ export async function load({ params, parent }) {
   let path = 'cdn/stories/';
   let sbParams = {
     version: "draft",
-    resolve_relations: ['Grid.Stories']
+    resolve_relations: ['Grid.Stories', 'Carousel.Stories']
   };
 
   if (slug) {

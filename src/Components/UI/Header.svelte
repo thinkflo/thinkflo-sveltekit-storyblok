@@ -10,16 +10,19 @@
 		<nav>
 			<ul class="flex space-x-8 text-lg font-bold">
 				<li class="hover:text-[#50b0ae]">
-					<a href="/blog"> Blog </a>
+					<a data-sveltekit-reload href="/blog"> Blog </a>
 				</li>
 				<li class="hover:text-[#50b0ae]">
-					<a href="/about"> About </a>
+					<a data-sveltekit-reload href="/about"> About </a>
 				</li>
 				<li class="hover:text-[#50b0ae]">
-					<a href="/"> Home </a>
+					<a data-sveltekit-reload href="/"> Home </a>
 				</li>
 				<li class="hover:text-[#50b0ae]">
-					<a href="/work"> Work </a>
+					<a data-sveltekit-reload href="/work"> Work </a>
+				</li>
+				<li class="hover:text-[#50b0ae]">
+					<a data-sveltekit-reload href="/about-us"> About Us </a>
 				</li>
 			</ul>
 		</nav>
