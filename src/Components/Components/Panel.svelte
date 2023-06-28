@@ -12,9 +12,9 @@
 {#if blok.Image_Layout === 'Background' && parent === 'Hero'}
 	<div
 		use:storyblokEditable={blok}
-		class="relative overflow-hidden min-w-full max-h-[800px] h-[calc(100vh-5rem)] md:min-h-[56.25vh] snap-center"
+		class="relative overflow-hidden h-full min-w-full max-h-[800px] bg-white md:min-h-[56.25vh] snap-center"
 	>
-		<div class="w-full h-full relative flex justify-center flex-col text-white">
+		<div class="w-full h-full min-h-[inherit] relative flex justify-center items-center text-white">
 			{#if blok?.Image?.filename}
 				<picture>
 					<img

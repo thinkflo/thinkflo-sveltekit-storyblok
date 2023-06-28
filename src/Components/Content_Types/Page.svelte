@@ -41,7 +41,7 @@
 	<main use:storyblokEditable={blok}>
 		<section
 			id="main-carousel"
-			class="w-full h-[calc(100vh-5rem)] md:min-h-[56.25vh] overflow-x-hidden"
+			class="w-full md:min-h-[56.25vh] overflow-x-hidden"
 		>
 			<div
 				bind:this={scrollRef}
