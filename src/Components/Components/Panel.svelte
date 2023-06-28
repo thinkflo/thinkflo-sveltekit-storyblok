@@ -2,8 +2,6 @@
 	import { storyblokEditable } from '@storyblok/svelte';
 	import { renderRichText } from '@storyblok/svelte';
 	import { buildSrcSet } from '$/lib/image.js';
-	import { onMount } from 'svelte';
-	import { afterNavigate } from '$app/navigation';
 	import ConstrainedWidth from '$/Components/UI/Constrained_Width.svelte';
 
 	export let blok;
@@ -46,6 +44,24 @@
 			<img class="h-10 w-10 object-contain" src={blok?.Image?.filename} />
 		{/if}
 		<h3>{blok.Heading}</h3>
+	</div>
+{:else if blok.Image_Layout === 'Background' && parent === 'Carousel'}
+	<div
+		class="flex flex-col items-center space-y-4 h-full text-center bg-white text-black"
+		class:border={showDivider}
+	>
+		{#if blok?.Image?.filename}
+		<picture>
+			<img
+				srcset={buildSrcSet(blok?.Image?.filename)}
+				sizes="100vw"
+				class="min-w-full min-h-max h-64 object-cover"
+				src={blok?.Image?.filename}
+				alt="background"
+			/>
+		</picture>
+		{/if}
+		<h3 class="text-2xl font-bold">{blok.Heading}</h3>
 	</div>
 {:else if blok.content && blok.content.component === 'Project'}
 	<a

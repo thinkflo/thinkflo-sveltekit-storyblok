@@ -1,19 +1,17 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
 	import { storyblokEditable, StoryblokComponent, renderRichText } from '@storyblok/svelte';
 	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
+	import Panel from '$/Components/Components/Panel.svelte';
 	import '@splidejs/splide/dist/css/splide.min.css';
 
 
 	export let blok;
 	export let showDivider;
 	export let index;
-
-	let extendedItems = [...blok.Panels, ...blok.Stories];
-
 </script>
 
+<section use:storyblokEditable={blok} class="py-12 md:py-24">
 <Constrained_Width>
 	<div class="space-y-4">
 		<h2 class="text-4xl font-semibold">{blok.Heading}</h2>
@@ -24,11 +22,19 @@
 			type: 'slide',
 			perPage: 3,
 			autoHeight: true,
+			drag: 'free'
   	}}>
-		{#each extendedItems as component}
+		{#each blok.Panels as component}
 			<SplideSlide>
 				<StoryblokComponent blok={component} {showDivider} {index} parent="Carousel" />
 			</SplideSlide>
 		{/each}
+
+		{#each blok.Stories as component}
+			<SplideSlide>
+				<Panel blok={component} showDivider={blok?.Divider_Line} parent="Carousel" />
+			</SplideSlide>
+		{/each}
 	</Splide>
 </Constrained_Width>
+</section>
