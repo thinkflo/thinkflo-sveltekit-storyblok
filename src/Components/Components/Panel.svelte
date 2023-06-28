@@ -39,7 +39,7 @@
 	</div>
 {:else if blok.Image_Layout === 'Icon' && parent === 'Carousel'}
 	<div
-		class="p-8 min-w-[15rem] flex flex-col items-center space-y-4 h-full text-center bg-white text-black"
+		class="p-8 flex flex-col items-center space-y-4 h-full text-center bg-white text-black"
 		class:border={showDivider}
 	>
 		{#if blok?.Image?.filename}

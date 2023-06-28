@@ -2,46 +2,16 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { storyblokEditable, StoryblokComponent, renderRichText } from '@storyblok/svelte';
 	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
+	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
+	import '@splidejs/splide/dist/css/splide.min.css';
+
 
 	export let blok;
 	export let showDivider;
 	export let index;
 
-	let scrollInterval;
-	let scrollRef;
-	let scrollRight = true; // keep track of the scroll direction
+	let extendedItems = [...blok.Panels, ...blok.Stories];
 
-	let extendedItems =
-		blok.Panels?.length + blok?.Stories?.length > 4
-			? [...blok.Panels, ...blok.Stories, ...blok.Panels, ...blok.Stories]
-			: [...blok.Panels, ...blok.Stories];
-
-	const startScrolling = () => {
-		scrollInterval = setInterval(() => {
-			if (scrollRef.scrollLeft >= (scrollRef.scrollWidth - scrollRef.offsetWidth) / 2) {
-				scrollRight = false; // change direction to left
-			} else if (scrollRef.scrollLeft === 0) {
-				scrollRight = true; // change direction to right
-			}
-
-			// Scroll in the current direction
-			scrollRef.scrollBy({ left: scrollRight ? 2 : -2, behavior: 'smooth' });
-		}, 20);
-	};
-
-	const pauseScrolling = () => {
-		clearInterval(scrollInterval);
-	};
-
-	onMount(() => {
-		if (extendedItems.length > 4) {
-			startScrolling();
-		}
-	});
-
-	onDestroy(() => {
-		clearInterval(scrollInterval);
-	});
 </script>
 
 <Constrained_Width>
@@ -50,20 +20,15 @@
 		<div class="prose">{@html renderRichText(blok.Short_Blurb)}</div>
 	</div>
 
-	<div
-		use:storyblokEditable={blok}
-		bind:this={scrollRef}
-		id="carousel"
-		class="{extendedItems.length > 4
-			? 'flex overflow-x-auto w-full carousel'
-			: 'grid grid-cols-{extendedItems.length}'} container mx-auto place-items-center py-6"
-		on:mouseover={pauseScrolling}
-		on:mouseout={extendedItems.length > 4 ? startScrolling : null}
-		on:focus={pauseScrolling}
-		on:blur={extendedItems.length > 4 ? startScrolling : null}
-	>
+	<Splide on:arrowsMounted={e => {console.log( e.detail.prev )}} options={{
+			type: 'slide',
+			perPage: 3,
+			autoHeight: true,
+  	}}>
 		{#each extendedItems as component}
-			<StoryblokComponent blok={component} {showDivider} {index} parent="Carousel" />
+			<SplideSlide>
+				<StoryblokComponent blok={component} {showDivider} {index} parent="Carousel" />
+			</SplideSlide>
 		{/each}
-	</div>
+	</Splide>
 </Constrained_Width>
