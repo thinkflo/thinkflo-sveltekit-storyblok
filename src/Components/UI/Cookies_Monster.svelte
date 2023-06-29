@@ -52,10 +52,10 @@
 		<picture>
 			<source
 				type="image/webp"
-				srcset="https://www.esign.eu/build/images/cookie-monster.da3466cc.webp"
+				srcset="/cookie.webp"
 			/>
 			<img
-				src="https://www.esign.eu/build/images/cookie-monster.2012677d.gif"
+				src="/cookie.gif"
 				width="290"
 				height="145"
 				alt="Cookie monster"
