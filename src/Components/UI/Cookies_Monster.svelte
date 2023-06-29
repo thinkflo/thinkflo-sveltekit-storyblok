@@ -56,8 +56,8 @@
 			/>
 			<img
 				src="/cookie.gif"
-				width="290"
-				height="145"
+				width="140"
+				height="70"
 				alt="Cookie monster"
 			/>
 		</picture>
