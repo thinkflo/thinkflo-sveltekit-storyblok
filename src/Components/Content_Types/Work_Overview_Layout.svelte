@@ -11,10 +11,10 @@
 	export let blok;
 	let scrollInterval;
 	let scrollRef;
-	let allArticles = [];  // Store all articles here
-	let articles = [];  // Store filtered articles here
-	let selectedFilters = [] // Filters selected by user
-	let filters = [] // Available filters
+	let allArticles = []; // Store all articles here
+	let articles = []; // Store filtered articles here
+	let selectedFilters = []; // Filters selected by user
+	let filters = []; // Available filters
 
 	// Duplicate the first item and add it to the end of your carousel
 	let extendedHero = blok?.Hero?.length > 1 ? [...blok.Hero, blok.Hero[0]] : blok?.Hero;
@@ -56,50 +56,51 @@
 		allArticles = data.stories;
 		articles = [...allArticles];
 
-		const { data: { datasource_entries: filter_datasources }} = await storyblokApi.get('cdn/datasource_entries', {
-			version: 'draft',
-		})
+		const {
+			data: { datasource_entries: filter_datasources }
+		} = await storyblokApi.get('cdn/datasource_entries', {
+			version: 'draft'
+		});
 		filters = filter_datasources;
 	});
 
 	// Update articles based on selected filters
 	$: {
-    if(selectedFilters.length === 0) {
-			articles = [...allArticles]
-    } else {
-			articles = allArticles.filter(article => {
+		if (selectedFilters.length === 0) {
+			articles = [...allArticles];
+		} else {
+			articles = allArticles.filter((article) => {
 				let found = false;
-				if(article?.content?.Category?.length) {
-					found = article.content.Category.some(category => selectedFilters.includes(category.name))
+				if (article?.content?.Category?.length) {
+					found = article.content.Category.some((category) => selectedFilters.includes(category));
 				}
-				if(!found && article?.content?.Industry?.length) {
-					found = article.content.Industry.some(industry => selectedFilters.includes(industry.name))
+				if (!found && article?.content?.Industry?.length) {
+					found = article.content.Industry.some((industry) => selectedFilters.includes(industry));
 				}
 				return found;
-			})
-    }
+			});
+		}
 	}
 
 	// Handle Filter selection
 	const handleFilterSelection = (filter) => {
 		const index = selectedFilters.indexOf(filter.name);
-		if(index > -1) {
+		if (index > -1) {
 			// If filter is selected, deselect it
-			selectedFilters.splice(index, 1);
+			selectedFilters = selectedFilters.filter((f) => f !== filter.name);
 		} else {
 			// If filter is not selected, select it
-			selectedFilters.push(filter.name)
+			selectedFilters = [...selectedFilters, filter.name];
 		}
-	}
+	};
 </script>
 
 {#key blok}
 	<main use:storyblokEditable={blok}>
-		<section
-			id="main-carousel"
-			class="w-full md:min-h-[56.25vh] overflow-x-hidden"
-		>
+		<section id="main-carousel" class="w-full md:min-h-[56.25vh] overflow-x-hidden">
 			<div
+				role="slider"
+				tabindex="0"
 				bind:this={scrollRef}
 				class="flex items-center overflow-x-auto snap-x snap-mandatory"
 				on:mouseover={pauseScrolling}
@@ -119,7 +120,12 @@
 					<h2>Filters</h2>
 					<div class="space-x-2">
 						{#each filters as filter, index}
-							<span on:click={() => handleFilterSelection(filter)} class:bg-red-500={selectedFilters.includes(filter.name)} class="cursor-pointer px-4 py-2 bg-white text-green-800">{filter?.name}</span>
+							<button
+								on:click={() => handleFilterSelection(filter)}
+								class:bg-red-500={selectedFilters.includes(filter.name)}
+								class:bg-white={!selectedFilters.includes(filter.name)}
+								class="cursor-pointer px-4 py-2 text-green-800">{filter?.name}</button
+							>
 						{/each}
 					</div>
 				</div>
@@ -127,7 +133,7 @@
 
 			<!-- Work Panels -->
 			<!-- Took reference from https://pixelpusher.ca/ -->
-			<div class="py-12 grid md:grid-cols-4 w-full">
+			<div class="py-12 grid md:grid-cols-4 w-full min-h-[25rem]">
 				{#each articles as article}
 					<a
 						data-sveltekit-reload
