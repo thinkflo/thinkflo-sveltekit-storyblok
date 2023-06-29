@@ -2,7 +2,6 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { storyblokEditable, StoryblokComponent, renderRichText } from '@storyblok/svelte';
 	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
-	import Panel from '$/Components/Components/Panel.svelte';
 
 	export let blok;
 
@@ -71,12 +70,19 @@
 
 <section class="py-12" use:storyblokEditable={blok}>
 	<Constrained_Width>
+		<div class="space-y-4">
+			<h2 class="text-4xl font-semibold">{blok?.Heading}</h2>
+			{#if blok?.Short_Blurb}
+				<div class="prose">{@html renderRichText(blok?.Short_Blurb)}</div>
+			{/if}
+		</div>
+
 		<div
 			class="max-w-sm mx-auto grid gap-6 lg:grid-cols-3 items-start lg:max-w-none group"
 			bind:this={container}
 			data-spotlight
 		>
-			{#each blok.Cards as component}
+			{#each blok?.Cards as component}
 				<StoryblokComponent blok={component} />
 			{/each}
 		</div>

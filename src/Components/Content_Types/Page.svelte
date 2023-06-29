@@ -39,12 +39,11 @@
 
 {#key blok}
 	<main use:storyblokEditable={blok}>
-		<section
-			id="main-carousel"
-			class="w-full md:min-h-[56.25vh] overflow-x-hidden"
-		>
+		<section id="main-carousel" class="w-full md:min-h-[56.25vh] overflow-x-hidden">
 			<div
 				bind:this={scrollRef}
+				role="slider"
+				tabindex="0"
 				class="flex items-center overflow-x-auto snap-x snap-mandatory"
 				on:mouseover={pauseScrolling}
 				on:mouseout={startScrolling}
@@ -56,6 +55,7 @@
 				{/each}
 			</div>
 		</section>
+
 		{#each blok.Content_Blocks as component}
 			<StoryblokComponent blok={component} />
 		{/each}

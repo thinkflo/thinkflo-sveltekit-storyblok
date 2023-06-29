@@ -7,6 +7,12 @@
 
 <section class="py-12" use:storyblokEditable={blok}>
 	<Constrained_Width>
+		<div class="space-y-4">
+			<h2 class="text-4xl font-semibold">{blok?.Heading}</h2>
+			{#if blok?.Short_Blurb}
+				<div class="prose">{@html renderRichText(blok?.Short_Blurb)}</div>
+			{/if}
+		</div>
 		<div
 			class:md:grid-cols-1={blok.Number_of_Columns === '1'}
 			class:md:grid-cols-2={blok.Number_of_Columns === '2'}

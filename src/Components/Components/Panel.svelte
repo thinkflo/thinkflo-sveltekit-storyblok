@@ -9,6 +9,7 @@
 	export let showDivider;
 </script>
 
+<!-- Hero Panels -->
 {#if blok.Image_Layout === 'Background' && parent === 'Hero'}
 	<div
 		use:storyblokEditable={blok}
@@ -35,6 +36,26 @@
 			</ConstrainedWidth>
 		</div>
 	</div>
+	<!-- Carousel Panels with Larger Image -->
+{:else if blok.Image_Layout === 'Background' && parent === 'Carousel'}
+	<div
+		class="flex flex-col items-center space-y-4 h-full text-center bg-white text-black"
+		class:border={showDivider}
+	>
+		{#if blok?.Image?.filename}
+			<picture>
+				<img
+					srcset={buildSrcSet(blok?.Image?.filename)}
+					sizes="100vw"
+					class="min-w-full min-h-max h-64 object-cover"
+					src={blok?.Image?.filename}
+					alt="background"
+				/>
+			</picture>
+		{/if}
+		<h3 class="text-2xl font-bold">{blok.Heading}</h3>
+	</div>
+	<!-- Carousel Panels with Icon Image -->
 {:else if blok.Image_Layout === 'Icon' && parent === 'Carousel'}
 	<div
 		class="p-8 flex flex-col items-center space-y-4 h-full text-center bg-white text-black"
@@ -45,24 +66,7 @@
 		{/if}
 		<h3>{blok.Heading}</h3>
 	</div>
-{:else if blok.Image_Layout === 'Background' && parent === 'Carousel'}
-	<div
-		class="flex flex-col items-center space-y-4 h-full text-center bg-white text-black"
-		class:border={showDivider}
-	>
-		{#if blok?.Image?.filename}
-		<picture>
-			<img
-				srcset={buildSrcSet(blok?.Image?.filename)}
-				sizes="100vw"
-				class="min-w-full min-h-max h-64 object-cover"
-				src={blok?.Image?.filename}
-				alt="background"
-			/>
-		</picture>
-		{/if}
-		<h3 class="text-2xl font-bold">{blok.Heading}</h3>
-	</div>
+	<!-- Panels for Work sub pages aka. Stories -->
 {:else if blok.content && blok.content.component === 'Project'}
 	<a
 		href={`/${blok.full_slug}`}

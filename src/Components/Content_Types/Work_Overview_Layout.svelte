@@ -97,6 +97,7 @@
 
 {#key blok}
 	<main use:storyblokEditable={blok}>
+		<!-- Hero Component -->
 		<section id="main-carousel" class="w-full md:min-h-[56.25vh] overflow-x-hidden">
 			<div
 				role="slider"
