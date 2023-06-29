@@ -15,7 +15,9 @@
 		use:storyblokEditable={blok}
 		class="relative overflow-hidden h-full min-w-full max-h-[800px] bg-white md:min-h-[56.25vh] snap-center"
 	>
-		<div class="w-full h-full min-h-[inherit] relative flex justify-center items-center text-white">
+		<div
+			class="w-full h-full min-h-[inherit] relative flex justify-center items-center text-white bg-slate-900"
+		>
 			{#if blok?.Image?.filename}
 				<picture>
 					<img

@@ -13,7 +13,7 @@
 					<a data-sveltekit-reload href="/blog"> Blog </a>
 				</li>
 				<li class="hover:text-[#50b0ae]">
-					<a data-sveltekit-reload href="/about"> About </a>
+					<a data-sveltekit-reload href="/about-us"> About </a>
 				</li>
 				<li class="hover:text-[#50b0ae]">
 					<a data-sveltekit-reload href="/"> Home </a>
