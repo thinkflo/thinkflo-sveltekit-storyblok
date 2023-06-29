@@ -47,7 +47,10 @@
 	setContext(GTM_ENABLED, userAgreed);
 </script>
 
-<div class:hidden={!isOpen} class="fixed bottom-0 right-0 m-5 max-w-lg inline-block z-50">
+<div
+	class:hidden={!isOpen}
+	class="animate-fade-in fixed bottom-0 right-0 m-5 max-w-lg inline-block z-50"
+>
 	<div class="flex flex-col">
 		<picture>
 			<source type="image/webp" srcset="/cookie.webp" />
