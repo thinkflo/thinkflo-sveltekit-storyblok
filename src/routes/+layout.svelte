@@ -2,6 +2,7 @@
 	import '$/app.css';
 	import Header from '$/Components/UI/Header.svelte';
 	import { getContext } from 'svelte';
+	import Footer from '$/Components/UI/Footer.svelte';
 
 	const GTM_ENABLED = 'gtm_enabled';
 	let gtmEnabled = getContext(GTM_ENABLED);
@@ -16,4 +17,5 @@
 <main>
 	<Header />
 	<slot />
+	<Footer />
 </main>
