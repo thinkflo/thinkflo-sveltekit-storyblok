@@ -1,5 +1,50 @@
 <script>
-	let isOpen = true;
+	import { onMount } from 'svelte';
+	import { setContext } from 'svelte';
+	// import Cookies from 'js-cookie';
+
+	let isOpen = false; // change this line
+	let userAgreed = false;
+
+	const COOKIE_NAME = 'cookie_monster_agreed';
+	const GTM_ENABLED = 'gtm_enabled';
+
+	onMount(async () => {
+		if (localStorage.getItem('cookieAccepted') === 'true') {
+			isOpen = false;
+			userAgreed = true;
+		} else if (localStorage.getItem('cookieAccepted') === 'false') {
+			isOpen = false;
+			userAgreed = false;
+		} else {
+			isOpen = true;
+		}
+	});
+
+	onMount(() => {
+		const cookieValue = Cookies.get(COOKIE_NAME) || '';
+		if (cookieValue) {
+			isOpen = false;
+			userAgreed = cookieValue === 'true';
+		}
+	});
+
+	function onAgree() {
+		// Cookies.set(COOKIE_NAME, 'true');
+		localStorage.setItem('cookieAccepted', true);
+		isOpen = false;
+		userAgreed = true;
+	}
+
+	function onDisagree() {
+		// Cookies.set(COOKIE_NAME, 'false');
+		localStorage.setItem('cookieAccepted', false);
+		isOpen = false;
+		userAgreed = false;
+	}
+
+	// Share the state of user agreement across the app.
+	setContext(GTM_ENABLED, userAgreed);
 </script>
 
 <div class:hidden={!isOpen} class="fixed bottom-0 right-0 m-5 max-w-xl inline-block z-50">
@@ -30,7 +75,7 @@
 		<div class="flex items-center space-x-8">
 			<button
 				type="button"
-				on:click={() => (isOpen = false)}
+				on:click={onAgree}
 				class="flex items-center bg-[#2e3e87] py-3 px-5"
 				id="accept-cookies"
 			>
@@ -107,8 +152,11 @@
 				>
 				Accept cookies
 			</button>
-			<a href="#" on:click={() => (isOpen = false)} class="flex items-center bg-[#2e3e87] py-3 px-5"
-				>Set my preferences</a
+			<a
+				href="#"
+				on:click={onDisagree}
+				class="flex items-center bg-[#2e3e87] py-3 px-5"
+				id="decline-cookies">Decline Cookies</a
 			>
 		</div>
 	</div>

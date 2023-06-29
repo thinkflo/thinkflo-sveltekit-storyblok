@@ -18,5 +18,5 @@
 	{#if data.story}
 		<StoryblokComponent blok={data.story.content} />
 	{/if}
-	<!-- <Cookies_Monster /> -->
+	<Cookies_Monster />
 </div>
