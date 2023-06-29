@@ -47,23 +47,15 @@
 	setContext(GTM_ENABLED, userAgreed);
 </script>
 
-<div class:hidden={!isOpen} class="fixed bottom-0 right-0 m-5 max-w-xl inline-block z-50">
+<div class:hidden={!isOpen} class="fixed bottom-0 right-0 m-5 max-w-lg inline-block z-50">
 	<div class="flex flex-col">
 		<picture>
-			<source
-				type="image/webp"
-				srcset="/cookie.webp"
-			/>
-			<img
-				src="/cookie.gif"
-				width="140"
-				height="70"
-				alt="Cookie monster"
-			/>
+			<source type="image/webp" srcset="/cookie.webp" />
+			<img src="/cookie.gif" width="140" height="70" alt="Cookie monster" />
 		</picture>
 	</div>
 
-	<div class="p-10 bg-[#25326d] text-white rounded-md">
+	<div class="p-5 bg-[#25326d] text-white rounded-md text-sm">
 		<p class="mb-6">
 			Our website uses cookies to improve your experience. By continuing you accept our <a
 				href="#"
@@ -76,7 +68,7 @@
 			<button
 				type="button"
 				on:click={onAgree}
-				class="flex items-center bg-[#2e3e87] py-3 px-5"
+				class="text-sm flex items-center bg-[#2e3e87] py-3 px-5"
 				id="accept-cookies"
 			>
 				<svg
@@ -155,7 +147,7 @@
 			<a
 				href="#"
 				on:click={onDisagree}
-				class="flex items-center bg-[#2e3e87] py-3 px-5"
+				class="text-sm flex items-center bg-[#2e3e87] py-3 px-5"
 				id="decline-cookies">Decline Cookies</a
 			>
 		</div>
