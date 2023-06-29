@@ -75,7 +75,7 @@
 				<h2 class="text-4xl font-semibold">{blok?.Heading}</h2>
 			{/if}
 			{#if blok?.Short_Blurb}
-				<div class="prose">{@html renderRichText(blok?.Short_Blurb)}</div>
+				<div class="prose text-white">{@html renderRichText(blok?.Short_Blurb)}</div>
 			{/if}
 		</div>
 

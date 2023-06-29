@@ -34,7 +34,7 @@
 				<h1 class="text-5xl font-bold">
 					{blok.Heading}
 				</h1>
-				<div>{@html renderRichText(blok.Short_Blurb)}</div>
+				<div class="prose text-white">{@html renderRichText(blok.Short_Blurb)}</div>
 			</ConstrainedWidth>
 		</div>
 	</div>
