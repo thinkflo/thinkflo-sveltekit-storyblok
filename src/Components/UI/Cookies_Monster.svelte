@@ -49,7 +49,7 @@
 
 <div
 	class:hidden={!isOpen}
-	class="animate-fade-in fixed bottom-0 right-0 m-5 max-w-lg inline-block z-50"
+	class="animate-fade-in opacity-0 fixed bottom-0 right-0 m-5 max-w-lg inline-block z-50"
 >
 	<div class="flex flex-col">
 		<picture>

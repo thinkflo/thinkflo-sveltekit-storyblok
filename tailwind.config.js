@@ -54,7 +54,7 @@ export default {
         },
       },
       animation: {
-        'fade-in': 'fadeIn ease-in 5s forwards',
+        'fade-in': 'fadeIn 2s ease-in 4s forwards',
       },
       keyframes: {
         fadeIn: {
