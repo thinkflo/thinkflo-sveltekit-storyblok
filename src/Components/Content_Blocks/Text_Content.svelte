@@ -7,7 +7,7 @@
 
 <section use:storyblokEditable={blok} class="py-12 md:py-24 bg-slate-900">
 	<Constrained_Width>
-		<div class="prose text-white prose-headings:text-white min-w-full">
+		<div class="prose text-white prose-headings:text-white min-w-full prose-img:aspect-video">
 			{@html renderRichText(blok?.Text)}
 		</div>
 	</Constrained_Width>
