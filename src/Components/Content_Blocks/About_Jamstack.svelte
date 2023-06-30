@@ -21,7 +21,8 @@
         {
             state: 'autoplay',
             transition: 'onComplete',
-            path: 'eureka.json'
+            path: 'eureka.json',
+            frames: [0, 100]
         },
         {
             state: 'autoplay',
@@ -41,7 +42,8 @@
         {
             state: 'autoplay',
             transition: 'onComplete',
-            path: 'api.json'
+            path: 'api.json',
+            frames: [0, 50],            
         },
         {
             state: 'autoplay',
@@ -77,7 +79,8 @@
         {
             state: 'autoplay',
             transition: 'onComplete',
-            path: 'teamwork.json'
+            path: 'teamwork.json',
+            reset: true
         },
      ]
 })
