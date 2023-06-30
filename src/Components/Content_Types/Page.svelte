@@ -39,6 +39,7 @@
 
 {#key blok}
 	<main use:storyblokEditable={blok}>
+		{#if Boolean(extendedHero.length)}
 		<section id="main-carousel" class="w-full md:min-h-[56.25vh] overflow-x-hidden">
 			<div
 				bind:this={scrollRef}
@@ -55,6 +56,7 @@
 				{/each}
 			</div>
 		</section>
+		{/if}
 
 		{#each blok.Content_Blocks as component}
 			<StoryblokComponent blok={component} />

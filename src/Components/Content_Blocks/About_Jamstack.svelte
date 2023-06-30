@@ -89,7 +89,7 @@
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@1/dist/lottie-player.js"></script>
 </svelte:head>
 
-<section>
+<section class="bg-gray-200">
   <lottie-player
     id="lottie"
     src="development-landscape.json"
