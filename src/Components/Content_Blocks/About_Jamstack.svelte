@@ -1,10 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	import { useStoryblokBridge, StoryblokComponent } from '@storyblok/svelte';
-	import Cookies_Monster from '$/Components/UI/Cookies_Monster.svelte';
-	
+	import { create } from '@lottiefiles/lottie-interactivity';
 
-	export let data;
 	onMount(async () => {
 		create({
     player: '#lottie',
@@ -89,12 +86,14 @@
 </script>
 
 <svelte:head>
-	<title>{data.story.name}</title>
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@1/dist/lottie-player.js"></script>
 </svelte:head>
-<div class="bg-gray-200">
-	{#if data.story}
-		<StoryblokComponent blok={data.story.content} />
-	{/if}
-	<Cookies_Monster />
-</div>
+
+<section>
+  <lottie-player
+    id="lottie"
+    src="development-landscape.json"
+    class="mx-auto w-1/2 h-screen"
+  >
+  </lottie-player>
+</section>
