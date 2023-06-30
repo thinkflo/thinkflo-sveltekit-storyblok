@@ -9,6 +9,7 @@
     actions: [
         {
             state: 'autoplay',
+            visibility: [0, 1.0],
             transition: 'onComplete',
             path: 'development-landscape.json'
         },
@@ -65,7 +66,8 @@
         {
             state: 'autoplay',
             transition: 'onComplete',
-            path: 'speedometer.json'
+            path: 'speedometer.json',
+            frames: [0, 50],
         },
         {
             state: 'autoplay',
