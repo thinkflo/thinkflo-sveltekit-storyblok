@@ -9,11 +9,13 @@ import Spotlight_Card from "$/Components/Components/Spotlight_Card.svelte";
 import Stats_Panel from "$/Components/Content_Blocks/Stats_Panel.svelte";
 import Work_Overview_Layout from "$/Components/Content_Types/Work_Overview_Layout.svelte";
 import Carousel from "$/Components/Content_Blocks/Carousel.svelte";
+import Text_Content from "$/Components/Content_Blocks/Text_Content.svelte";
 
 const components = {
   Project,
   Grid,
   Carousel,
+  Text_Content,
   Panel,
   Spotlight,
   Spotlight_Card,
