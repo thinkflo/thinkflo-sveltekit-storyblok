@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 main {
-  @apply bg-black text-white
+  @apply dark:bg-black dark:text-white text-black bg-white;
 }
 
 #main-carousel > div, #carousel {

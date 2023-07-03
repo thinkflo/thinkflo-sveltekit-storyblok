@@ -10,7 +10,7 @@
 	<Constrained_Width>
 		<div class="space-y-4">
 			<h2 class="text-4xl font-semibold">{blok?.Heading}</h2>
-			<div class="prose text-white">{@html renderRichText(blok?.Short_Blurb)}</div>
+			<div class="prose dark:text-white text-black">{@html renderRichText(blok?.Short_Blurb)}</div>
 		</div>
 
 		<div

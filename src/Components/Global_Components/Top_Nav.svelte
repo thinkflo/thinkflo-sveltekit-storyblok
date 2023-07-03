@@ -49,16 +49,17 @@
 
 </script>
 
-<header class="fixed inset-0 z-50 w-full h-24 bg-[#f7f6fd] text-black transition-transform duration-500" class:navbar--hidden={!show}>
+<header class="fixed inset-0 z-50 w-full h-24 bg-[#f7f6fd] dark:bg-black text-black dark:text-white transition-transform duration-500" class:navbar--hidden={!show}>
 	<Constrained_Width className="container h-full mx-auto flex items-center justify-between">
-		<h1 class="text-[#50b0ae] text-3xl font-bold">
-			<a href="/"><img src="/logo.svg" class="h-10" /></a>
+		<h1 class="text-carnation-500 text-3xl font-bold">
+			<a href="/"><img src="/logo.svg" class="h-10 dark:hidden" /></a>
+			<a href="/"><img src="/logo-white.svg" class="h-10 hidden dark:block" /></a>
 		</h1>
 		<nav class="flex">
 			<!-- Desktop Menu Section -->
 			<ul class="hidden xl:flex space-x-8 text-lg font-bold">
 				{#each blok.Nav_Menu as Menu_Item}
-					<li class="hover:text-[#50b0ae]">
+					<li class="hover:text-carnation-500">
 						<a data-sveltekit-preload-data="hover" href={Menu_Item?.Link?.cached_url || '#'}> {Menu_Item.Name} </a>
 					</li>
 				{/each}

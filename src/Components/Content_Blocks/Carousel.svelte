@@ -12,10 +12,10 @@
 
 <section use:storyblokEditable={blok} class="py-12 md:py-24">
 	<Constrained_Width>
-		<div class="space-y-4">
-			<h2 class="text-4xl font-semibold">{blok.Heading}</h2>
+		<div class="space-y-4 dark:text-white text-black">
+			<h2 class="text-4xl font-semibold ">{blok.Heading}</h2>
 			{#if blok?.Short_Blurb}
-				<div class="prose text-white">{@html renderRichText(blok?.Short_Blurb)}</div>
+				<div class="prose dark:text-white text-black">{@html renderRichText(blok?.Short_Blurb)}</div>
 			{/if}
 		</div>
 
