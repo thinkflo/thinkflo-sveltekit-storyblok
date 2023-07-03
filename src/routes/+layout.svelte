@@ -6,6 +6,7 @@
 
 	const GTM_ENABLED = 'gtm_enabled';
 	let gtmEnabled = getContext(GTM_ENABLED);
+	export let data;
 </script>
 
 <svelte:head>
@@ -15,7 +16,7 @@
 </svelte:head>
 
 <main>
-	<Header />
+	<Header blok={data.header} />
 	<slot />
 	<Footer />
 </main>

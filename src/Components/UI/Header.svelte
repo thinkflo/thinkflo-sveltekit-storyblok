@@ -1,5 +1,7 @@
 <script>
 	import Constrained_Width from './Constrained_Width.svelte';
+
+	export let blok;
 </script>
 
 <header class="w-full h-24 bg-[#f7f6fd] text-black">
@@ -9,21 +11,11 @@
 		</h1>
 		<nav>
 			<ul class="flex space-x-8 text-lg font-bold">
-				<li class="hover:text-[#50b0ae]">
-					<a data-sveltekit-preload-data="hover" href="/blog"> Blog </a>
-				</li>
-				<li class="hover:text-[#50b0ae]">
-					<a data-sveltekit-preload-data="hover" href="/about-us"> About </a>
-				</li>
-				<li class="hover:text-[#50b0ae]">
-					<a data-sveltekit-preload-data="hover" href="/"> Home </a>
-				</li>
-				<li class="hover:text-[#50b0ae]">
-					<a data-sveltekit-preload-data="hover" href="/work"> Work </a>
-				</li>
-				<li class="hover:text-[#50b0ae]">
-					<a data-sveltekit-preload-data="hover" href="/about-us"> About Us </a>
-				</li>
+				{#each blok.Nav_Menu as Menu_Item}
+					<li class="hover:text-[#50b0ae]">
+						<a data-sveltekit-preload-data="hover" href={Menu_Item?.Link?.cached_url || '#'}> {Menu_Item.Name} </a>
+					</li>
+				{/each}
 			</ul>
 		</nav>
 	</Constrained_Width>

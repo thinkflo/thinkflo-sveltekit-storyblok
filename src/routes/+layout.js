@@ -35,8 +35,14 @@ export async function load() {
     },
     components
   });
+  
   let storyblokApi = await useStoryblokApi();
+  const dataConfig = await storyblokApi.get('cdn/stories/global-components/top-navigation', {
+    version: 'draft',
+  })
+
   return {
     storyblokApi: storyblokApi,
+    header: dataConfig.data.story.content
   };
 }
