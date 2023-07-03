@@ -35,18 +35,16 @@
     lastScrollPosition = currentScrollPosition;
   };
 
-	$: if(browser) document.body.classList.toggle('noscroll', isOpen);
-
-	function updateDarkMode() {
-		document.documentElement.classList.toggle("dark", isDark);
-	}
-
-	function toggleDarkMode() {
+	const toggleDarkMode = () => {
 		isDark = !isDark;
 		window.localStorage.setItem('dark', String(isDark));
 		updateDarkMode();
 	}
+	function updateDarkMode() {
+		document.documentElement.classList.toggle("dark", isDark);
+	}
 
+	$: if(browser) document.body.classList.toggle('noscroll', isOpen);
 </script>
 
 <header class="fixed inset-0 z-50 w-full h-24 bg-[#f7f6fd] dark:bg-black text-black dark:text-white transition-transform duration-500" class:navbar--hidden={!show}>
