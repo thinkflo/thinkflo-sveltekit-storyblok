@@ -1,5 +1,5 @@
 <script>
-	import Constrained_Width from './Constrained_Width.svelte';
+	import Constrained_Width from '../UI/Constrained_Width.svelte';
 </script>
 
 <footer class="w-full py-12 md:py-24 md:pb-5 bg-slate-900 text-white">

@@ -1,8 +1,8 @@
 <script>
 	import '$/app.css';
-	import Header from '$/Components/UI/Header.svelte';
+	import Header from '$/Components/Global_Components/Header.svelte';
 	import { getContext } from 'svelte';
-	import Footer from '$/Components/UI/Footer.svelte';
+	import Footer from '$/Components/Global_Components/Footer.svelte';
 
 	const GTM_ENABLED = 'gtm_enabled';
 	let gtmEnabled = getContext(GTM_ENABLED);
