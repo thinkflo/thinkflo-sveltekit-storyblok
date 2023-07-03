@@ -10,21 +10,21 @@
 <section class="py-12 h-full flex" use:storyblokEditable={blok}>
 	<!-- Card -->
 	<div
-		class="relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-80 before:h-80 before:-left-40 before:-top-40 before:bg-slate-400 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:group-hover:opacity-100 before:z-10 before:blur-[100px] after:absolute after:w-96 after:h-96 after:-left-48 after:-top-48 after:bg-indigo-500 after:rounded-full after:opacity-0 after:pointer-events-none after:transition-opacity after:duration-500 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:hover:opacity-10 after:z-30 after:blur-[100px] overflow-hidden"
+		class="relative h-full dark:bg-slate-800 bg-white rounded-3xl p-px before:absolute before:w-80 before:h-80 before:-left-40 before:-top-40 before:bg-slate-400 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:group-hover:opacity-100 before:z-10 before:blur-[100px] after:absolute after:w-96 after:h-96 after:-left-48 after:-top-48 after:bg-indigo-500 after:rounded-full after:opacity-0 after:pointer-events-none after:transition-opacity after:duration-500 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:hover:opacity-10 after:z-30 after:blur-[100px] overflow-hidden"
 	>
-		<div class="relative h-full bg-slate-900 p-6 pb-8 rounded-[inherit] z-20 overflow-hidden">
+		<div class="relative h-full dark:bg-slate-900 bg-gray-100 p-6 pb-8 rounded-[inherit] z-20 overflow-hidden">
 			<!-- Radial gradient -->
 			<div
 				class="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/2 aspect-square"
 				aria-hidden="true"
 			>
-				<div class="absolute inset-0 translate-z-0 bg-slate-800 rounded-full blur-[80px]" />
+				<div class="absolute inset-0 translate-z-0 bg-gray-200 dark:bg-slate-800 rounded-full blur-[80px]" />
 			</div>
 			<div class="flex flex-col h-full items-center text-center">
 				<!-- Image -->
 				<div class="relative inline-flex">
 					<div
-						class="w-[40%] h-[40%] absolute inset-0 m-auto -translate-y-[10%] blur-3xl -z-10 rounded-full bg-indigo-600"
+						class="w-[40%] h-[40%] absolute inset-0 m-auto -translate-y-[10%] blur-3xl -z-10 rounded-full bg-indigo-200 dark:bg-indigo-600"
 						aria-hidden="true"
 					/>
 					<picture class="h-48">
@@ -39,14 +39,14 @@
 				</div>
 				<!-- Text -->
 				<div class="grow mb-5">
-					<h2 class="text-xl text-slate-200 font-bold mb-1">{blok?.Heading}</h2>
-					<div class="text-sm text-slate-500 prose">
+					<h2 class="text-xl text-black dark:text-slate-200 font-bold mb-1">{blok?.Heading}</h2>
+					<div class="text-sm text-gray-800 dark:text-slate-500 prose">
 						{@html renderRichText(blok?.Short_Blurb)}
 					</div>
 				</div>
 				{#if blok.Link?.[0]?.Title}
 					<a
-						class="inline-flex justify-center items-center whitespace-nowrap rounded-lg bg-slate-800 hover:bg-slate-900 border border-slate-700 px-3 py-1.5 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
+						class="inline-flex justify-center items-center whitespace-nowrap rounded-lg bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-900 border border-slate-700 px-3 py-1.5 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
 						href={blok.Link?.[0]?.Link?.url || blok.Link?.[0]?.Link?.cached_url}
 					>
 						<svg
