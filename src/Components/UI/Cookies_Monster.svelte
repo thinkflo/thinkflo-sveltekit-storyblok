@@ -22,7 +22,8 @@
 	});
 
 	onMount(() => {
-		const cookieValue = Cookies.get(COOKIE_NAME) || '';
+		// const cookieValue = Cookies.get(COOKIE_NAME) || '';
+		const cookieValue = '';
 		if (cookieValue) {
 			isOpen = false;
 			userAgreed = cookieValue === 'true';
