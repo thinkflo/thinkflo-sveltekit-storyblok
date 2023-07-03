@@ -13,3 +13,13 @@ main {
 #main-carousel > div::-webkit-scrollbar, #carousel::-webkit-scrollbar {
   display: none;
 }
+
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+	@apply transition-all top-1/2 -rotate-45;
+}
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+	@apply transition-all opacity-0 hidden;
+}
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+	@apply transition-all top-1/2 rotate-45;
+}
