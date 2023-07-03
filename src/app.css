@@ -14,6 +14,10 @@ main {
   display: none;
 }
 
+body.noscroll {
+  @apply overflow-hidden xl:overflow-visible;
+}
+
 .hamburger[aria-expanded="true"] span:nth-child(1) {
 	@apply transition-all top-1/2 -rotate-45;
 }

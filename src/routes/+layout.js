@@ -43,6 +43,6 @@ export async function load() {
 
   return {
     storyblokApi: storyblokApi,
-    header: dataConfig.data.story.content
+    topNav: dataConfig.data.story.content
   };
 }

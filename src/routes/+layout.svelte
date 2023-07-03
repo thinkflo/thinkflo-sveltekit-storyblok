@@ -1,6 +1,6 @@
 <script>
 	import '$/app.css';
-	import Header from '$/Components/Global_Components/Header.svelte';
+	import Top_Nav from '$/Components/Global_Components/Top_Nav.svelte';
 	import { getContext } from 'svelte';
 	import Footer from '$/Components/Global_Components/Footer.svelte';
 
@@ -16,7 +16,7 @@
 </svelte:head>
 
 <main>
-	<Header blok={data.header} />
+	<Top_Nav blok={data.topNav} />
 	<slot />
 	<Footer />
 </main>
