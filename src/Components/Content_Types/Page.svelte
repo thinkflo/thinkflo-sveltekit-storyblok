@@ -39,25 +39,6 @@
 
 {#key blok}
 	<main use:storyblokEditable={blok}>
-		{#if Boolean(extendedHero.length)}
-		<section id="main-carousel" class="w-full md:min-h-[56.25vh] overflow-x-hidden">
-			<div
-				bind:this={scrollRef}
-				role="slider"
-				tabindex="0"
-				class="flex items-center overflow-x-auto snap-x snap-mandatory"
-				on:mouseover={pauseScrolling}
-				on:mouseout={startScrolling}
-				on:focus={pauseScrolling}
-				on:blur={startScrolling}
-			>
-				{#each extendedHero as component, index}
-					<StoryblokComponent blok={component} {index} parent="Hero" />
-				{/each}
-			</div>
-		</section>
-		{/if}
-
 		{#each blok.Content_Blocks as component}
 			<StoryblokComponent blok={component} />
 		{/each}
