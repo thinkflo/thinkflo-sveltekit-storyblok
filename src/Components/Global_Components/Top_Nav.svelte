@@ -2,6 +2,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import Constrained_Width from '../UI/Constrained_Width.svelte';
 	import { browser } from '$app/environment';
+	import { afterNavigate } from "$app/navigation";
 
 	export let blok;
 	let isOpen = false;
@@ -20,7 +21,7 @@
 		return () => window.removeEventListener("scroll", onScroll);
   });
 
-	onDestroy(() => {
+	afterNavigate(() => {
 		isOpen = false;
 	})
 
