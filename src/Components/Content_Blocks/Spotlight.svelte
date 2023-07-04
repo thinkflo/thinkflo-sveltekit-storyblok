@@ -2,8 +2,10 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { storyblokEditable, StoryblokComponent, renderRichText } from '@storyblok/svelte';
 	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
+	import Heading from '$/Components/UI/Heading.svelte';
 
 	export let blok;
+	export let isFirst;
 
 	let container;
 	let spotlight;
@@ -72,7 +74,7 @@
 	<Constrained_Width>
 		<div class="space-y-4">
 			{#if blok?.Heading}
-				<h2 class="text-4xl font-semibold">{blok?.Heading}</h2>
+				<Heading className="text-4xl font-semibold" {isFirst}>{blok?.Heading}</Heading>
 			{/if}
 			{#if blok?.Short_Blurb}
 				<div class="prose dark:text-white text-black">{@html renderRichText(blok?.Short_Blurb)}</div>

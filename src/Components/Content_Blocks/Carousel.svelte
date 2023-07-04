@@ -4,16 +4,18 @@
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import Panel from '$/Components/Components/Panel.svelte';
 	import '@splidejs/splide/dist/css/splide.min.css';
+	import Heading from '$/Components/UI/Heading.svelte';
 
 	export let blok;
 	export let showDivider;
 	export let index;
+	export let isFirst;
 </script>
 
 <section use:storyblokEditable={blok} class="py-12 md:py-24">
 	<Constrained_Width>
 		<div class="space-y-4 dark:text-white text-black">
-			<h2 class="text-4xl font-semibold ">{blok.Heading}</h2>
+			<Heading className="text-4xl font-semibold" {isFirst}>{blok.Heading}</Heading>
 			{#if blok?.Short_Blurb}
 				<div class="prose dark:text-white text-black">{@html renderRichText(blok?.Short_Blurb)}</div>
 			{/if}

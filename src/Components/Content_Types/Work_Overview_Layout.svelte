@@ -7,6 +7,7 @@
 		renderRichText
 	} from '@storyblok/svelte';
 	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
+	import Heading from '$/Components/UI/Heading.svelte';
 
 	export let blok;
 	let allArticles = []; // Store all articles here
@@ -69,7 +70,7 @@
 		<section class="py-12 md:py-24">
 			<Constrained_Width>
 				<div class="space-y-4">
-					<h2>Filters</h2>
+					<Heading className="text-6xl font-semibold" isFirst={true}>Filters</Heading>
 					<div class="space-x-2">
 						{#each filters as filter, index}
 							<button
