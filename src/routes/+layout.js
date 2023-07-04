@@ -1,6 +1,6 @@
 import { useStoryblokApi, storyblokInit, apiPlugin } from "@storyblok/svelte";
 import "$/app.css"
-import About_Jamstack from "../Components/Content_Blocks/About_Jamstack.svelte";
+import Lottie_Player from "../Components/Content_Blocks/Lottie_Player.svelte";
 import Project from "$/Components/Content_Types/Project.svelte";
 import Grid from "$/Components/Content_Blocks/Grid.svelte";
 import Page from "$/Components/Content_Types/Page.svelte";
@@ -13,7 +13,7 @@ import Carousel from "$/Components/Content_Blocks/Carousel.svelte";
 import Text_Content from "$/Components/Content_Blocks/Text_Content.svelte";
 
 const components = {
-  About_Jamstack,
+  Lottie_Player,
   Project,
   Grid,
   Carousel,
