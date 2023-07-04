@@ -2,8 +2,9 @@
 	import { onMount, afterUpdate } from 'svelte';
 	import { create } from '@lottiefiles/lottie-interactivity';
 
-  let lottiePlayer;
   export let blok;
+  let lottiePlayer;
+  let audioElement;
 
 	onMount(async () => {
     const fileChain = blok?.Lottie_Files?.map((file, index) => ({
@@ -18,7 +19,10 @@
         player: lottiePlayer,
         mode: 'chain',
         actions: fileChain
-      })
+      });
+
+      audioElement.currentTime = 0; // Confirm the timestamp is 0
+      audioElement.play(); // Start playing the audio file
     }, 50); 
 
     return () => clearInterval(createInterval);
@@ -32,11 +36,14 @@
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@1/dist/lottie-player.js"></script>
 </svelte:head> -->
 
-<section class="bg-gray-200">
+<section class="bg-gray-200 relative">
   <lottie-player
     bind:this={lottiePlayer}
     src="development-landscape.json"
     class="mx-auto w-1/2 h-screen"
   >
   </lottie-player>
+  {#if blok?.Audio_File}
+    <audio bind:this={audioElement} src="{blok?.Audio_File?.filename}" preload="auto"></audio>
+  {/if}
 </section>
