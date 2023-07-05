@@ -4,6 +4,7 @@
 
   export let blok;
   let lottiePlayer;
+  let animation;
   let audioElement;
 
 	onMount(async () => {
@@ -15,14 +16,11 @@
     }));
 
     const createInterval = setTimeout(() => {
-      create({
+      animation = create({
         player: lottiePlayer,
         mode: 'chain',
         actions: fileChain
       });
-
-      audioElement.currentTime = 0; // Confirm the timestamp is 0
-      audioElement.play(); // Start playing the audio file
     }, 50); 
 
     return () => clearInterval(createInterval);
@@ -30,6 +28,12 @@
 		// 	useStoryblokBridge(data.story.id, (newStory) => (data.story = newStory));
 		// }
 	});
+
+  function handlePlay () {
+    animation.jumpToInteraction(0); // restart animation
+    audioElement.currentTime = 0; // Confirm the timestamp is 0
+    audioElement.play(); // Start playing the audio file
+  }
 </script>
 
 <!-- <svelte:head>
@@ -43,6 +47,9 @@
     class="mx-auto w-1/2 h-screen"
   >
   </lottie-player>
+  <button on:click={handlePlay} class="h-20 w-20 bg-red-500 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    Play
+  </button>
   {#if blok?.Audio_File}
     <audio bind:this={audioElement} src="{blok?.Audio_File?.filename}" preload="auto"></audio>
   {/if}
