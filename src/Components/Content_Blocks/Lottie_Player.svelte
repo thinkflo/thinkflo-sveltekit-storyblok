@@ -6,6 +6,7 @@
   let lottiePlayer;
   let animation;
   let audioElement;
+  let showButton = true;
 
 	onMount(async () => {
     const fileChain = blok?.Lottie_Files?.map((file, index) => ({
@@ -21,6 +22,7 @@
         mode: 'chain',
         actions: fileChain
       });
+      showButton = true;
     }, 50); 
 
     return () => clearInterval(createInterval);
@@ -33,6 +35,7 @@
     animation.jumpToInteraction(0); // restart animation
     audioElement.currentTime = 0; // Confirm the timestamp is 0
     audioElement.play(); // Start playing the audio file
+    showButton = false;
   }
 </script>
 
@@ -47,7 +50,7 @@
     class="mx-auto w-1/2 h-screen"
   >
   </lottie-player>
-  <button on:click={handlePlay} class="h-20 w-20 bg-red-500 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+  <button on:click={handlePlay} class:hidden={!showButton} class="h-20 w-20 bg-red-500 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
     Play
   </button>
   {#if blok?.Audio_File}
