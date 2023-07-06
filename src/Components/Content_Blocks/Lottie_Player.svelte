@@ -31,11 +31,15 @@
       mode: blok?.Mode || 'chain',
       actions: fileChain
     });
+    audioElement.currentTime = 0; // Confirm the timestamp is 0
+    audioElement.play(); // Start playing the audio file
     showButton = true;
   }
 
   function handlePlay () {
     animation.jumpToInteraction(0); // restart animation
+
+    audioElement.muted = !audioElement.muted;
     audioElement.currentTime = 0; // Confirm the timestamp is 0
     audioElement.play(); // Start playing the audio file
     showButton = false;
@@ -55,7 +59,7 @@
       Play
     </button>
     {#if blok?.Audio_File}
-      <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2">
+      <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2" muted>
         <source src="{blok?.Audio_File?.filename}" type="video/mp4">
         <track src="./scene-1-the-animation-vtt-file.vtt" kind="subtitles" srclang="en" label="English" default>
       </video>
