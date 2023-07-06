@@ -39,7 +39,7 @@
   function handlePlay () {
     animation.jumpToInteraction(0); // restart animation
 
-    audioElement.muted = !audioElement.muted;
+    audioElement.muted = false;
     audioElement.currentTime = 0; // Confirm the timestamp is 0
     audioElement.play(); // Start playing the audio file
     showButton = false;
