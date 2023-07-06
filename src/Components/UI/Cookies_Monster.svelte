@@ -10,14 +10,19 @@
 	const GTM_ENABLED = 'gtm_enabled';
 
 	onMount(async () => {
-		if (localStorage.getItem('cookieAccepted') === 'true') {
-			isOpen = false;
-			userAgreed = true;
-		} else if (localStorage.getItem('cookieAccepted') === 'false') {
-			isOpen = false;
-			userAgreed = false;
-		} else {
-			isOpen = true;
+		const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+		// Check if user's timezone is in Europe
+		if (timeZone.startsWith("Europe/")) {
+			if (localStorage.getItem('cookieAccepted') === 'true') {
+				isOpen = false;
+				userAgreed = true;
+			} else if (localStorage.getItem('cookieAccepted') === 'false') {
+				isOpen = false;
+				userAgreed = false;
+			} else {
+				isOpen = true;
+			}
 		}
 	});
 
