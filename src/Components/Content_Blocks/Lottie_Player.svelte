@@ -55,7 +55,19 @@
       Play
     </button>
     {#if blok?.Audio_File}
-      <audio bind:this={audioElement} src="{blok?.Audio_File?.filename}" preload="auto"></audio>
+      <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2">
+        <source src="{blok?.Audio_File?.filename}" type="video/mp4">
+        <track src="./scene-1-the-animation-vtt-file.vtt" kind="subtitles" srclang="en" label="English" default>
+      </video>
     {/if}
   </Constrained_Width>
 </section>
+
+<style>
+  video {
+    object-fit: initial;
+  }
+  ::cue {
+    font-size: 24px;
+  } 
+</style>
