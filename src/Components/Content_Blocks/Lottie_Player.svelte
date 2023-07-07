@@ -3,10 +3,22 @@
 	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
 
   export let blok;
+  export let currentLanguage;
   let lottiePlayer;
   let animation;
   let audioElement;
   let showButton = true;
+
+  let trackLanguage = {
+    default: {
+      srclang: "en",
+      label: "English"
+    },
+    de: {
+      srclang: "de",
+      label: "German"
+    }
+  }
 
   onMount(async()=>{
     if(!customElements.get('lottie-player')) {
@@ -61,7 +73,9 @@
     {#if blok?.Audio_File}
       <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2" muted>
         <source src="{blok?.Audio_File?.filename}" type="video/mp4">
-        <track src="./scene-1-the-animation-vtt-file.vtt" kind="subtitles" srclang="en" label="English" default>
+        <!-- Track source needs to come from storyblok, but there were some CORS issues. 
+          That's why the src is static -->
+        <track src="./scene-1-the-animation-vtt-file.vtt" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
       </video>
     {/if}
   </Constrained_Width>
