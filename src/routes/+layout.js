@@ -26,7 +26,9 @@ const components = {
   Work_Overview_Layout
 }
 
-export async function load() {
+export async function load({ url }) {
+  const lang = url.searchParams.get('lang');
+
   storyblokInit({
     accessToken: process.env.ACCESS_TOKEN,
     use: [apiPlugin],
@@ -39,6 +41,7 @@ export async function load() {
   let storyblokApi = await useStoryblokApi();
   const dataConfig = await storyblokApi.get('cdn/stories/global-components/top-navigation', {
     version: 'draft',
+    language: lang
   })
 
   return {
