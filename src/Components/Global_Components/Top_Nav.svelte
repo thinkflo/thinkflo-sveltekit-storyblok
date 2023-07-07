@@ -2,7 +2,8 @@
 	import { onDestroy, onMount } from 'svelte';
 	import Constrained_Width from '../UI/Constrained_Width.svelte';
 	import { browser } from '$app/environment';
-	import { afterNavigate } from "$app/navigation";
+	import { afterNavigate, goto } from "$app/navigation";
+	import { languageStore } from '$lib/stores';
 
 	export let blok;
 	let isOpen = false;
@@ -42,6 +43,12 @@
 	}
 	function updateDarkMode() {
 		document.documentElement.classList.toggle("dark", isDark);
+	}
+
+	const toggleLang = () => {
+		$languageStore = $languageStore === 'en' ? 'de' : 'en';
+		// add language as a parameter to the URL
+		goto(window.location.pathname + `?lang=${$languageStore}`, { replaceState: true });
 	}
 
 	$: if(browser) document.body.classList.toggle('noscroll', isOpen);
@@ -195,6 +202,11 @@
 				</Constrained_Width>
 			</div>
 		</nav>
+
+		<div class="text-center">
+			<button class="border border-emerald-500 py-1 px-2 hover:bg-emerald-500 hover:text-white transition duration-150" on:click={toggleLang}>Switch language</button>
+			<p class="text-lg text-carnation-500 font-semibold">{$languageStore}</p>
+		</div>
 
 	</Constrained_Width>
 </header>

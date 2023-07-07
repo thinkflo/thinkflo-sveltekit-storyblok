@@ -1,10 +1,12 @@
 /** @type {import('./$types').PageLoad} */
-export async function load({ params, parent }) {
+export async function load({ params, parent, url }) {
   const { storyblokApi } = await parent();
-  let slug = params.slug;
+  const { slug } = params;
+  const lang = url.searchParams.get('lang');
   let path = 'cdn/stories/';
   let sbParams = {
     version: "draft",
+    language: lang,
     resolve_relations: ['Grid.Stories', 'Carousel.Stories']
   };
 
