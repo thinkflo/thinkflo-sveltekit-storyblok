@@ -11,7 +11,7 @@
   let lastScrollPosition = 0;
 
   onMount(() => {
-    window.addEventListener("scroll", onScroll);
+		window.addEventListener("scroll", onScroll);
 
 		// Get the dark mode preference from local storage or system preference
 		const darkPreference = window.localStorage.getItem('dark') || (!window.matchMedia('(prefers-color-scheme: dark)').matches ? 'false' : 'true');
@@ -54,24 +54,15 @@
 			<a href="/"><img src="/logo-white.svg" class="h-10 hidden dark:block" /></a>
 		</h1>
 		<nav class="flex">
-			<!-- Desktop Menu Section -->
-			<ul class="hidden xl:flex space-x-8 text-lg font-bold">
-				{#each blok.Nav_Menu as Menu_Item}
-					<li class="hover:text-carnation-500">
-						<a data-sveltekit-preload-data="hover" href={Menu_Item?.Link?.cached_url || '#'}> {Menu_Item.Name} </a>
-					</li>
-				{/each}
-			</ul>
-
-			<!-- Mobile Hamburger Icon -->
-			<button class="hamburger h-5 w-9 ml-6 flex cursor-pointer relative xl:hidden z-30" on:click={() => isOpen = !isOpen} aria-label="Toggle menu" aria-haspopup="true" aria-expanded={isOpen}>
+			<!-- Hamburger Icon -->
+			<button class="hamburger h-5 w-9 ml-6 flex cursor-pointer relative z-30" on:click={() => isOpen = !isOpen} aria-label="Toggle menu" aria-haspopup="true" aria-expanded={isOpen}>
 				<span class="h-1 top-0 w-full bg-jaffa-500 absolute transition-all duration-300 ease-in-out"></span> 
 				<span class="h-1 top-1/2 w-full bg-jaffa-500 absolute transition-all duration-300 ease-in-out"></span> 
 				<span class="h-1 top-full w-full bg-jaffa-500 absolute transition-all duration-300 ease-in-out"></span>
 			</button>
 
-			<!-- Mobile Menu Section -->
-			<div class="dark:bg-black bg-white flex flex-col h-full w-full fixed inset-0 z-20 xl:hidden" class:hidden={!isOpen}>
+			<!-- Menu Section -->
+			<div class="dark:bg-black bg-white flex flex-col h-full w-full fixed inset-0 z-20" class:hidden={!isOpen}>
 				<Constrained_Width className="h-full flex flex-col justify-between py-12">
 					<div class="h-10" />
 					<ul class="flex flex-col space-y-8 text-5xl text-center font-medium">

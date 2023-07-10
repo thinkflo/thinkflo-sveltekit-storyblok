@@ -15,7 +15,7 @@ main {
 }
 
 body.noscroll {
-  @apply overflow-hidden xl:overflow-visible;
+  @apply overflow-hidden;
 }
 
 .hamburger[aria-expanded="true"] span:nth-child(1) {
