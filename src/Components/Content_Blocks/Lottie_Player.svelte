@@ -28,6 +28,10 @@
     }
     const { create } = await import('@lottiefiles/lottie-interactivity')
     handleLoad(create);
+
+    const muteState = localStorage.getItem('muteState');
+    isMuted = muteState === 'muted' ? true : false;
+    audioElement.muted = isMuted;
   })
 
   const handleLoad = (method) => {
@@ -74,6 +78,7 @@
   const toggleMute = () => {
     audioElement.muted = !audioElement.muted;
     isMuted = !isMuted;
+    localStorage.setItem('muteState', isMuted ? 'muted' : 'unmuted');
   };
 </script>
 
@@ -118,9 +123,14 @@
     </div>
       
     {#if blok?.Audio_File}
-      <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2">
-        <source src="/jamstack.webm" type="video/webm">
-        <track src="/jamstack.vtt" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
+      <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2" muted>
+        {#if blok?.Audio_File?.filename.endsWith('.mp4')}
+          <source src="{blok?.Audio_File?.filename}" type="video/mp4">
+        {/if}
+        {#if blok?.Audio_File?.filename.endsWith('.webm')}
+          <source src="{blok?.Audio_File?.filename}" type="video/webm">
+        {/if}
+        <track src="{blok?.Audio_Subtitle?.filename ?? '/jamstack.vtt'}" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
       </video>
     {/if}
   </Constrained_Width>
