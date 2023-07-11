@@ -28,6 +28,10 @@
     }
     const { create } = await import('@lottiefiles/lottie-interactivity')
     handleLoad(create);
+
+    const muteState = localStorage.getItem('muteState');
+    isMuted = muteState === 'muted' ? true : false;
+    audioElement.muted = isMuted;
   })
 
   const handleLoad = (method) => {
@@ -37,7 +41,13 @@
       state: file?.State || 'autoplay',
       visibility: index === 0 ? [0, 1.0] : undefined,
       transition: file?.Transition || 'onComplete',
-      path: file.File.filename,
+      path: file?.File.filename,
+      frames: file?.Frames?.split(':')?.map(num => Number(num)),
+      delay: Number(file?.Delay),
+      forceFlag: file?.Force_Flag,
+      jumpTo: Number(file?.Jump_To),
+      reset: file?.Reset,
+      speed: Number(file?.Speed)
     }));
     
     animation = method({
@@ -45,6 +55,7 @@
       mode: blok?.Mode || 'chain',
       actions: fileChain
     });
+    audioElement.muted = true;
     audioElement.currentTime = 0;
     audioElement.play();
   }
@@ -67,6 +78,7 @@
   const toggleMute = () => {
     audioElement.muted = !audioElement.muted;
     isMuted = !isMuted;
+    localStorage.setItem('muteState', isMuted ? 'muted' : 'unmuted');
   };
 </script>
 
@@ -112,9 +124,13 @@
       
     {#if blok?.Audio_File}
       <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2" muted>
-        <source src="{blok?.Audio_File?.filename}" type="video/mp4">
-        <source src="{blok?.Audio_File?.filename}" type="video/webm">
-        <track src="{blok?.Audio_Subtitle?.filename}" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
+        {#if blok?.Audio_File?.filename.endsWith('.mp4')}
+          <source src="{blok?.Audio_File?.filename}" type="video/mp4">
+        {/if}
+        {#if blok?.Audio_File?.filename.endsWith('.webm')}
+          <source src="{blok?.Audio_File?.filename}" type="video/webm">
+        {/if}
+        <track src="{blok?.Audio_Subtitle?.filename ?? '/jamstack.vtt'}" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
       </video>
     {/if}
   </Constrained_Width>
