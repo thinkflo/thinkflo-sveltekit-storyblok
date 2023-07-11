@@ -117,10 +117,9 @@
     </div>
       
     {#if blok?.Audio_File}
-      <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2" muted>
-        <source src="{blok?.Audio_File?.filename}" type="video/mp4">
-        <source src="{blok?.Audio_File?.filename}" type="video/webm">
-        <track src="{blok?.Audio_Subtitle?.filename}" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
+      <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2">
+        <source src="/jamstack.webm" type="video/webm">
+        <track src="/jamstack.vtt" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
       </video>
     {/if}
   </Constrained_Width>
