@@ -28,6 +28,10 @@
     }
     const { create } = await import('@lottiefiles/lottie-interactivity')
     handleLoad(create);
+
+    const muteState = localStorage.getItem('muteState');
+    isMuted = muteState === 'muted' ? true : false;
+    audioElement.muted = isMuted;
   })
 
   const handleLoad = (method) => {
@@ -73,6 +77,7 @@
   const toggleMute = () => {
     audioElement.muted = !audioElement.muted;
     isMuted = !isMuted;
+    localStorage.setItem('muteState', isMuted ? 'muted' : 'unmuted');
   };
 </script>
 
