@@ -37,7 +37,13 @@
       state: file?.State || 'autoplay',
       visibility: index === 0 ? [0, 1.0] : undefined,
       transition: file?.Transition || 'onComplete',
-      path: file.File.filename,
+      path: file?.File.filename,
+      frames: file?.Frames?.split(':')?.map(num => Number(num)),
+      delay: Number(file?.Delay),
+      forceFlag: file?.Force_Flag,
+      jumpTo: Number(file?.Jump_To),
+      reset: file?.Reset,
+      speed: Number(file?.Speed)
     }));
     
     animation = method({
