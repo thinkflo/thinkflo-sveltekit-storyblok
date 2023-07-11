@@ -8,7 +8,7 @@
   let loading = true;
 
 	onMount(async () => {
-    const res = await fetch('https://cors-anywhere.herokuapp.com/https://hnrss.org/newest?q=jamstack', {
+    const res = await fetch('https://hnrss.org/newest?q=jamstack', {
       headers: {
         'Origin': 'x-requested-with'
       }
