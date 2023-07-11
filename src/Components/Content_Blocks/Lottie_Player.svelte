@@ -123,8 +123,12 @@
       
     {#if blok?.Audio_File}
       <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2" muted>
-        <source src="{blok?.Audio_File?.filename}" type="video/mp4">
-        <source src="{blok?.Audio_File?.filename}" type="video/webm">
+        {#if blok?.Audio_File?.filename.endsWith('.mp4')}
+          <source src="{blok?.Audio_File?.filename}" type="video/mp4">
+        {/if}
+        {#if blok?.Audio_File?.filename.endsWith('.webm')}
+          <source src="{blok?.Audio_File?.filename}" type="video/webm">
+        {/if}
         <track src="{blok?.Audio_Subtitle?.filename}" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
       </video>
     {/if}
