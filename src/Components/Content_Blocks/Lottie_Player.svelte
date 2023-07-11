@@ -51,6 +51,7 @@
       mode: blok?.Mode || 'chain',
       actions: fileChain
     });
+    audioElement.muted = true;
     audioElement.currentTime = 0;
     audioElement.play();
   }
