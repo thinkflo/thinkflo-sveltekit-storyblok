@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { XMLParser } from "fast-xml-parser";
-	import Constrained_Width from '$/components/UI/Constrained_Width.svelte';
+	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
   const parser = new XMLParser();
 
 	let items = [];
