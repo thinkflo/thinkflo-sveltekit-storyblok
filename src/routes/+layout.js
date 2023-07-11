@@ -11,6 +11,7 @@ import Stats_Panel from "$/Components/Content_Blocks/Stats_Panel.svelte";
 import Work_Overview_Layout from "$/Components/Content_Types/Work_Overview_Layout.svelte";
 import Carousel from "$/Components/Content_Blocks/Carousel.svelte";
 import Text_Content from "$/Components/Content_Blocks/Text_Content.svelte";
+import Trending_News from "$/Components/Content_Blocks/Trending_News.svelte";
 
 const components = {
   Lottie_Player,
@@ -18,6 +19,7 @@ const components = {
   Grid,
   Carousel,
   Text_Content,
+  Trending_News,
   Panel,
   Spotlight,
   Spotlight_Card,
