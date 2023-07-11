@@ -113,8 +113,8 @@
     {#if blok?.Audio_File}
       <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2" muted>
         <source src="{blok?.Audio_File?.filename}" type="video/mp4">
-        <!-- Track source needs to come from storyblok, but there were some CORS issues. That's why the src is static -->
-        <track src="./scene-1-the-animation-vtt-file.vtt" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
+        <source src="{blok?.Audio_File?.filename}" type="video/webm">
+        <track src="{blok?.Audio_Subtitle?.filename}" kind="subtitles" srclang={trackLanguage?.[currentLanguage]?.srclang || "en"} label={trackLanguage?.[currentLanguage]?.label || "English"} default>
       </video>
     {/if}
   </Constrained_Width>
