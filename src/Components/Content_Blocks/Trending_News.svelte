@@ -1,8 +1,7 @@
 <script>
   import { onMount } from 'svelte';
-  import { XMLParser } from "fast-xml-parser";
 	import Constrained_Width from '$/components/UI/Constrained_Width.svelte';
-  const parser = new XMLParser();
+  import { format } from 'date-fns';
 
 	let items = [];
   let loading = true;
@@ -43,7 +42,7 @@
         <li class="p-3 shadow-md shadow-neutral-500">
           <a href={url} target="_blank" rel="noreferrer noopener">
             <h2 class="text-2xl">{title}</h2>
-            <p>{postDate}</p>
+            <p>{format(new Date(postDate), 'PP')}</p>
           </a>
         </li>
       {/each}
