@@ -1,9 +1,11 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   darkMode: 'class',
   theme: {
-    extend: {
+    extend: {   
       colors: {
         "gray": {
           100: "#e6e6e7",
