@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
 
   export let children = [];
-  export let className;
+  export let className = "";
 
   let container;
   let spotlight;
