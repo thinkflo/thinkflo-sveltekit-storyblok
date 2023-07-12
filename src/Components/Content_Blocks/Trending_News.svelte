@@ -6,29 +6,20 @@
 
 	let items = [];
   let loading = true;
+  let error = null;
 
 	onMount(async () => {
-    const res = await fetch('https://hnrss.org/newest?q=jamstack', {
-      headers: {
-        'Origin': 'x-requested-with'
-      }
-    });
-    const text = await res.text();
-    
-    var jsonObj = parser.parse(text, {
-      ignoreAttributes: false,
-      attributeNamePrefix: '',
-    });
-
-    items = jsonObj.rss.channel.item
-      .filter(item => !item.title.startsWith('Ask HN') && !item.title.startsWith('Show HN')) 
-      .map(item => {
-        const title = item.title;
-        const url = item.link;
-
-        return { title, url };
-    });
-    loading = false;
+    try {
+      const res = await fetch('/api/getNews');
+      if (!res.ok) { throw new Error(`HTTP error! status: ${res.status}`); }
+      const data = await res.json();
+      items = data.newsArticles;
+    } catch (err) {
+      error = err;
+      console.error('Fetch Error: ', err);
+    } finally {
+      loading = false;
+    }
   });
 </script>
 
@@ -42,12 +33,17 @@
     </svg>
     <span class="sr-only">Loading...</span>
   </div>
+  {:else if error}
+    <div class="w-full flex justify-center py-6" role="alert">
+      <p>There was an error loading the news. Please try again later.</p>
+    </div>
   {:else}
     <ul class="grid grid-cols-3 divide-red-500 min-h-[33vh]">
-      {#each items as { title, url }}
+      {#each items as { title, url, postDate }}
         <li class="p-3 shadow-md shadow-neutral-500">
           <a href={url} target="_blank" rel="noreferrer noopener">
             <h2 class="text-2xl">{title}</h2>
+            <p>{postDate}</p>
           </a>
         </li>
       {/each}
