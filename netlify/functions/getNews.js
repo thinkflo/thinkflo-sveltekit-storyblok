@@ -1,7 +1,7 @@
 import { XMLParser } from "fast-xml-parser";
 import fetch from 'node-fetch';
 
-exports.handler = async function (event, context, callback) {
+export async function handler(event, context, callback) {
   const response = await fetch('https://hnrss.org/newest?q=jamstack').then(res => res.text()).catch((error) => {
     callback(error);
   })
