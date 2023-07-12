@@ -2,7 +2,7 @@ import { XMLParser } from "fast-xml-parser";
 import axios from 'axios';
 
 export async function handler(event, context, callback) {
-  const topics = ['jamstack', 'ssg', 'ssr', 'static site', 'serverless'];
+  const topics = ['jamstack', 'ssg', 'ssr', 'static site', 'serverless', 'isr'];
 
   const newsArticles = await Promise.allSettled(
     topics.map(
@@ -20,7 +20,7 @@ export async function handler(event, context, callback) {
     .map(item => { 
       return { title : item?.title, url : item?.link, postDate: item?.pubDate }
     })
-  ).flat().sort((a, b) => new Date(a.postDate) + new Date(b.postDate)))
+  ).flat().sort((a, b) => new Date(a.postDate) - new Date(b.postDate)).reverse())
       
   return {
     statusCode: newsArticles?.length ? 200 : 500,
