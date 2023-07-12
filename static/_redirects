@@ -1,2 +1,4 @@
 /en/*  /en/:splat  302  Language=en
 /de/*  /de/:splat  302  Language=de
+
+/api/* /.netlify/functions/:splat 200
