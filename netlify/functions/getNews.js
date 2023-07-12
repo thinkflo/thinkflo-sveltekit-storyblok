@@ -17,9 +17,7 @@ export async function handler(event, context, callback) {
       ignoreAttributes: false,
       attributeNamePrefix: '',
     }).rss?.channel?.item?.filter(item => !item?.title.startsWith('Ask HN') && !item?.title.startsWith('Show HN')) 
-    .map(item => { 
-      return { title : item?.title, url : item?.link, postDate: item?.pubDate }
-    })
+    .map(({ title, link: url, pubDate: postDate}) => {return {title, url, postDate}})
   ).flat().sort((a, b) => new Date(a.postDate) - new Date(b.postDate)).reverse())
       
   return {
