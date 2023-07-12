@@ -13,7 +13,7 @@ exports.handler = async function (event, context, callback) {
 
   const newsArticles = news?.rss?.channel?.item?.filter(item => !item?.title.startsWith('Ask HN') && !item?.title.startsWith('Show HN')) 
     .map(item => { 
-      return { title : item?.title, url : item?.link }
+      return { title : item?.title, url : item?.link, postDate: item?.pubDate }
     });
 
   return {
