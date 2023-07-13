@@ -20,13 +20,15 @@ export async function load({ params, parent, fetch }) {
 		
 		if (
 			dataStory.data?.story?.content?.Content_Blocks?.find(
-				(/** @type {{ component: string; }} */ block) => block.component === 'Trending_News'
+				block => block?.component === 'Trending_News'
 			)
 		) {
-			dataStory.data.story.content.Content_Blocks.find(
-				(block) => block.component === 'Trending_News'
-			)['data'] = await fetch('https://thinkflo.netlify.app/api/getNews').then((res) => res.json());
+			// dataStory.data.story.content.Content_Blocks.find(
+			// 	(block) => block?.component === 'Trending_News'
+			// )['data'] = await fetch('https://thinkflo.netlify.app/api/getNews').then((res) => res.json());
 		}
+
+		console.log(dataStory)
 	
 		return {
 			story: dataStory.data.story
