@@ -15,19 +15,23 @@ export async function load({ params, parent, fetch }) {
     path += 'home';
   }
 
-  const dataStory = await storyblokApi.get(path, sbParams);
-
-	if (
-		dataStory.data?.story?.content?.Content_Blocks?.find(
-			(/** @type {{ component: string; }} */ block) => block.component === 'Trending_News'
-		)
-	) {
-		dataStory.data.story.content.Content_Blocks.find(
-			(block) => block.component === 'Trending_News'
-		)['data'] = await fetch('https://thinkflo.netlify.app/api/getNews').then((res) => res.json());
+	try {
+		const dataStory = await storyblokApi.get(path, sbParams);
+		
+		if (
+			dataStory.data?.story?.content?.Content_Blocks?.find(
+				(/** @type {{ component: string; }} */ block) => block.component === 'Trending_News'
+			)
+		) {
+			dataStory.data.story.content.Content_Blocks.find(
+				(block) => block.component === 'Trending_News'
+			)['data'] = await fetch('https://thinkflo.netlify.app/api/getNews').then((res) => res.json());
+		}
+	
+		return {
+			story: dataStory.data.story
+		};
+	} catch (error) {
+		console.error("Error fetching story: ", error);
 	}
-
-	return {
-		story: dataStory.data.story
-	};
 }
