@@ -23,7 +23,12 @@ export async function load({ params, parent, fetch }) {
 				block => block?.component === 'Trending_News'
 			)
 		) {
-			console.log(dataStory.data.story.content.Content_Blocks.find((block) => block?.component === 'Trending_News')['data'] = await fetch('https://thinkflo.netlify.app/api/getNews').then(res => res.json()))
+			const trendingNewsBlock = dataStory.data.story.content.Content_Blocks.find(
+				(block) => block?.component === 'Trending_News'
+			);
+			const newsResponse = await fetch('https://thinkflo.netlify.app/api/getNews');
+			const newsData = await newsResponse.json();
+			trendingNewsBlock['data'] = newsData;
 		}
 
 		return {
