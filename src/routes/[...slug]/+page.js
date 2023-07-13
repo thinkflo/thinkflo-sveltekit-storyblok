@@ -1,5 +1,3 @@
-export const prerender = true;
-
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, parent, fetch }) {
 	const { storyblokApi } = await parent();
@@ -16,7 +14,7 @@ export async function load({ params, parent, fetch }) {
   } else {
     path += 'home';
   }
-
+	console.log(path)
 	try {
 		const dataStory = await storyblokApi.get(path, sbParams);
 		
