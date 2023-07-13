@@ -29,6 +29,7 @@ export async function handler(event, context, callback) {
 							})
 					)
 					.catch(() => {
+						console.error(`Error fetching topic '${topic}': `, error);
 						callback(null, {
 							statusCode: 500,
 							body: JSON.stringify({'Error':'Internal Server Error'}),
