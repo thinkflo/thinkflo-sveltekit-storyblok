@@ -31,7 +31,7 @@ export async function handler(event, context, callback) {
 					.catch(() => {
 						callback(null, {
 							statusCode: 500,
-							body: JSON.stringify({'Error':'Internal Server Error'}),
+							body: {'Error':'Internal Server Error'},
 							headers: {
 								...CORS_HEADERS,
 								'Content-Type': 'application/json',
