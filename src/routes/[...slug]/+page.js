@@ -1,5 +1,5 @@
 /** @type {import('./$types').PageLoad} */
-export async function load({ params, parent }) {
+export async function load({ params, parent, fetch }) {
 	const { storyblokApi } = await parent();
 	let slug = params.slug;
 
