@@ -6,24 +6,26 @@
 	let items = [];
   let loading = true;
   let error = null;
+  export let blok;
 
-	onMount(async () => {
-    try {
-      const res = await fetch('/api/getNews');
-      if (!res.ok) { throw new Error(`HTTP error! status: ${res.status}`); }
-      const data = await res.json();
-      items = data.newsArticles;
-    } catch (err) {
-      error = err;
-      console.error('Fetch Error: ', err);
-    } finally {
-      loading = false;
-    }
-  });
+	// onMount(async () => {
+  //   try {
+  //     const res = await fetch('/api/getNews');
+  //     if (!res.ok) { throw new Error(`HTTP error! status: ${res.status}`); }
+  //     const data = await res.json();
+  //     items = data.newsArticles;
+  //   } catch (err) {
+  //     error = err;
+  //     console.error('Fetch Error: ', err);
+  //   } finally {
+  //     loading = false;
+  //   }
+  // });
 </script>
 
 <Constrained_Width className="py-12 space-y-6">
   <h1 class="text-6xl font-semibold">Trending News</h1>
+  {JSON.stringify(blok)}
   {#if loading}
   <div class="w-full flex justify-center py-6" role="status">
     <svg aria-hidden="true" class="flex w-20 h-20 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-carnation-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

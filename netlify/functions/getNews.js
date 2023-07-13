@@ -2,7 +2,7 @@ import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 
 export async function handler(event, context, callback) {
-	const topics = ['jamstack', 'ssg', 'ssr', 'static site', 'serverless'];
+	const topics = ['jamstack', 'ssg', 'ssr', 'static site', 'serverless', 'next.js', 'nuxt.js', 'gridsome', 'gatsby', 'remix', 'hugo', 'Eleventy', 'storyblok', 'contentful', 'headless cms'];
 
 	const newsArticles = await Promise.allSettled(
 		topics.map(
@@ -40,6 +40,9 @@ export async function handler(event, context, callback) {
 
 	callback(null, {
 		statusCode: newsArticles?.length ? 200 : 500,
-		body: newsArticles?.length ? JSON.stringify({ newsArticles }) : 'Internal Server Error'
+		body: newsArticles?.length ? JSON.stringify({ newsArticles }) : 'Internal Server Error',
+    headers: {
+      "access-control-allow-origin": "*",
+    }    
 	});
 }
