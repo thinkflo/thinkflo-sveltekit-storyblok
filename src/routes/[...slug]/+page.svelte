@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { useStoryblokBridge, StoryblokComponent } from '@storyblok/svelte';
+	import { StoryblokComponent } from '@storyblok/svelte';
 	import Cookies_Monster from '$/Components/UI/Cookies_Monster.svelte';
 
 

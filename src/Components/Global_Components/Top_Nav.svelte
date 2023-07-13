@@ -50,8 +50,8 @@
 <header class="sticky inset-0 z-50 w-full h-24 bg-[#f7f6fd] dark:bg-black text-black dark:text-white transition-transform duration-500" class:navbar--hidden={!show}>
 	<Constrained_Width className="container h-full mx-auto flex items-center justify-between">
 		<h1 class="text-carnation-500 text-3xl font-bold">
-			<a href="/"><img src="/logo.svg" class="h-10 dark:hidden" /></a>
-			<a href="/"><img src="/logo-white.svg" class="h-10 hidden dark:block" /></a>
+			<a href="/"><img src="/logo.svg" alt="Thinkflo Logo" class="h-10 dark:hidden" /></a>
+			<a href="/"><img src="/logo-white.svg" alt="Thinkflo Logo White" class="h-10 hidden dark:block" /></a>
 		</h1>
 		<nav class="flex">
 			<!-- Hamburger Icon -->

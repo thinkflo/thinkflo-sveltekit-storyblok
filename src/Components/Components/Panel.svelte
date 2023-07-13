@@ -64,7 +64,7 @@
 		class:border={showDivider}
 	>
 		{#if blok?.Image?.filename}
-			<img class="h-10 w-10 object-contain" src={blok?.Image?.filename} />
+			<img class="h-10 w-10 object-contain" alt="{blok?.Image?.alt}" src={blok?.Image?.filename} />
 		{/if}
 		<h3>{blok.Heading}</h3>
 	</div>

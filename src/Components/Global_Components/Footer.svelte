@@ -6,7 +6,7 @@
 	<Constrained_Width
 		className="container h-full mx-auto flex flex-col space-y-10 items-center justify-between"
 	>
-		<a href="/"><img src="/logo-white.svg" class="h-10 mx-auto" /></a>
+		<a href="/"><img src="/logo-white.svg" alt="Thinkflo Logo White" class="h-10 mx-auto" /></a>
 		<div>
 			<div>
 				<nav class="flex justify-center space-x-12" aria-label="Footer">

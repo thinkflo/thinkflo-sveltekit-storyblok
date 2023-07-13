@@ -60,14 +60,14 @@
 	<div class="flex flex-col">
 		<picture>
 			<source type="image/webp" srcset="/cookie.webp" />
-			<img src="/cookie.gif" width="140" height="70" alt="Cookie monster" />
+			<img src="/cookie.gif" width="140" height="70" alt="Cookie Monster Gif" />
 		</picture>
 	</div>
 
 	<div class="p-5 bg-[#25326d] text-white rounded-md text-sm">
 		<p class="mb-6">
 			Our website uses cookies to improve your experience. By continuing you accept our <a
-				href="#"
+				href="/"
 				class=""
 				id="more-info-cookies">cookie policy</a
 			>.
@@ -154,7 +154,7 @@
 				Accept cookies
 			</button>
 			<a
-				href="#"
+				href="/"
 				on:click={onDisagree}
 				class="text-sm flex items-center bg-[#2e3e87] py-3 px-5"
 				id="decline-cookies">Decline Cookies</a
