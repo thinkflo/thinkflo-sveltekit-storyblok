@@ -2,6 +2,12 @@ import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 
 export async function handler(event, context, callback) {
+  const CORS_HEADERS = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers':
+      'Origin, X-Requested-With, Content-Type, Accept',
+  }
+
 	const topics = ['jamstack', 'ssg', 'ssr', 'static site', 'serverless', 'headless cms'];
 
 	const newsArticles = await Promise.allSettled(
@@ -25,7 +31,11 @@ export async function handler(event, context, callback) {
 					.catch(() => {
 						callback(null, {
 							statusCode: 500,
-							body: 'Internal Server Error'
+							body: {'Error':'Internal Server Error'},
+							headers: {
+								...CORS_HEADERS,
+								'Content-Type': 'application/json',
+							},  
 						});
 					})
 		)
@@ -38,15 +48,9 @@ export async function handler(event, context, callback) {
     )]
 	);
 
-  const CORS_HEADERS = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers':
-      'Origin, X-Requested-With, Content-Type, Accept',
-  }
-
 	callback(null, {
 		statusCode: newsArticles?.length ? 200 : 500,
-		body: newsArticles?.length ? JSON.stringify({ newsArticles }) : 'Internal Server Error',
+		body: JSON.stringify(newsArticles?.length ? newsArticles : {'Error':'Internal Server Error'}),
     headers: {
       ...CORS_HEADERS,
       'Content-Type': 'application/json',
