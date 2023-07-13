@@ -27,7 +27,10 @@ export async function load({ params, parent, fetch }) {
 			);
 			
 			let newsData = await fetch('https://thinkflo.netlify.app/api/getNews')
-				.then(res => res.json())
+				.then(res => {
+					console.log(res);
+					return res.json()
+				})
 				.catch(e => {
 					console.log(e)
 					return undefined}
