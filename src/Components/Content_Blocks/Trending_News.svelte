@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-	import Constrained_Width from '$/components/UI/Constrained_Width.svelte';
+	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
   import { format } from 'date-fns';
 
 	let items = [];
