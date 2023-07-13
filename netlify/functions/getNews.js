@@ -38,11 +38,18 @@ export async function handler(event, context, callback) {
     )]
 	);
 
+  const CORS_HEADERS = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers':
+      'Origin, X-Requested-With, Content-Type, Accept',
+  }
+
 	callback(null, {
 		statusCode: newsArticles?.length ? 200 : 500,
 		body: newsArticles?.length ? JSON.stringify({ newsArticles }) : 'Internal Server Error',
     headers: {
-      "Access-Control-Allow-Origin": "*",
-    }    
+      ...CORS_HEADERS,
+      'Content-Type': 'application/json',
+    },   
 	});
 }
