@@ -17,6 +17,7 @@ export async function load({ params, parent, fetch }) {
 
 	try {
 		const dataStory = await storyblokApi.get(path, sbParams);
+		let newsData = null;
 		
 		if (
 			dataStory.data?.story?.content?.Content_Blocks?.find(
@@ -26,13 +27,7 @@ export async function load({ params, parent, fetch }) {
 			const trendingNewsBlock = dataStory.data.story.content.Content_Blocks.find(
 				(block) => block?.component === 'Trending_News'
 			);
-			fetch('https://thinkflo.netlify.app/api/getNews')
-				.then((newsResponse) => newsResponse.json())
-				.then((newsData) => {
-					trendingNewsBlock['data'] = newsData;
-				});
-
-			console.log(trendingNewsBlock)
+			await updateDataWithFetch(fetch, trendingNewsBlock);
 		}
 
 		return {
@@ -41,4 +36,20 @@ export async function load({ params, parent, fetch }) {
 	} catch (error) {
 		console.error("Error fetching story: ", error);
 	}
+}
+
+// makes the fetch request and updates the data
+async function updateDataWithFetch(fetch, trendingNewsBlock) {
+	return new Promise((resolve, reject) => {
+		fetch('https://thinkflo.netlify.app/api/getNews')
+			.then((res) => res.json())
+			.then((data) => {
+				trendingNewsBlock['data'] = data;
+				resolve();
+			})
+			.catch((err) => {
+				console.error("Error in fetch: ", err);
+				reject(err);
+			});
+	});
 }
