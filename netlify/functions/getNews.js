@@ -2,7 +2,7 @@ import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 
 export async function handler(event, context, callback) {
-	const topics = ['jamstack', 'ssg', 'ssr', 'static site', 'serverless', 'next.js', 'nuxt.js', 'gridsome', 'gatsby', 'remix', 'hugo', 'Eleventy', 'storyblok', 'contentful', 'headless cms'];
+	const topics = ['jamstack', 'ssg', 'ssr', 'static site', 'serverless', 'headless cms'];
 
 	const newsArticles = await Promise.allSettled(
 		topics.map(
