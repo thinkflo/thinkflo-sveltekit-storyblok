@@ -1,3 +1,5 @@
+export const prerender = true;
+
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, parent, fetch }) {
 	const { storyblokApi } = await parent();
