@@ -27,10 +27,10 @@ export async function load({ params, parent, fetch }) {
 				(block) => block?.component === 'Trending_News'
 			);
 
-			const newsData = fetch('https://thinkflo.netlify.app/api/getNews')
+			const newsResponse = fetch('https://thinkflo.netlify.app/api/getNews')
 				.then((res) => res.json());
-		
-			trendingNewsBlock['data'] = await newsData;
+			const newsData = await newsResponse;
+			trendingNewsBlock['data'] = newsData;
 		}
 
 		return {
