@@ -17,7 +17,6 @@ export async function load({ params, parent, fetch }) {
 
 	try {
 		const dataStory = await storyblokApi.get(path, sbParams);
-		let newsData = null;
 		
 		if (
 			dataStory.data?.story?.content?.Content_Blocks?.find(
@@ -27,7 +26,9 @@ export async function load({ params, parent, fetch }) {
 			const trendingNewsBlock = dataStory.data.story.content.Content_Blocks.find(
 				(block) => block?.component === 'Trending_News'
 			);
-			await updateDataWithFetch(fetch, trendingNewsBlock);
+			if (trendingNewsBlock) {
+				await updateDataWithFetch(fetch, trendingNewsBlock);
+			}
 		}
 
 		return {
