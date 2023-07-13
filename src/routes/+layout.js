@@ -28,6 +28,8 @@ const components = {
   Work_Overview_Layout
 }
 
+export const prerender = true;
+
 export async function load() {
   storyblokInit({
     accessToken: process.env.ACCESS_TOKEN,
