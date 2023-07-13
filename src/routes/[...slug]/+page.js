@@ -32,8 +32,11 @@ export async function load({ params, parent, fetch }) {
 				.catch(e => {return undefined});
 			
 			trendingNewsBlock['data'] = newsData;
+			console.log(newsData)
 		}
-
+		console.log(dataStory.data.story.content.Content_Blocks.find(
+			(block) => block?.component === 'Trending_News'
+		))
 		return {
 			story: dataStory.data.story
 		};
