@@ -9,7 +9,11 @@ export async function load({ params, parent, fetch }) {
 		resolve_relations: ['Grid.Stories', 'Carousel.Stories']
 	};
 
-  path += slug?.length ? slug : 'home'
+  if (slug) {
+    path += slug;
+  } else {
+    path += 'home';
+  }
 
   const dataStory = await storyblokApi.get(path, sbParams);
 
