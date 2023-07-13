@@ -42,7 +42,7 @@ export async function handler(event, context, callback) {
 		statusCode: newsArticles?.length ? 200 : 500,
 		body: newsArticles?.length ? JSON.stringify({ newsArticles }) : 'Internal Server Error',
     headers: {
-      "access-control-allow-origin": "*",
+      "Access-Control-Allow-Origin": "*",
     }    
 	});
 }
