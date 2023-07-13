@@ -50,7 +50,7 @@ export async function handler(event, context, callback) {
 
 	callback(null, {
 		statusCode: newsArticles?.length ? 200 : 500,
-		body: JSON.stringify(newsArticles?.length ? newsArticles : {'Error':'Internal Server Error'}),
+		body: JSON.stringify(newsArticles?.length ? { newsArticles } : {'Error':'Internal Server Error'}),
     headers: {
       ...CORS_HEADERS,
       'Content-Type': 'application/json',
