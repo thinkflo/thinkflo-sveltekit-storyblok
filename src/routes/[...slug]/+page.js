@@ -14,7 +14,6 @@ export async function load({ params, parent, fetch }) {
   } else {
     path += 'home';
   }
-	console.log(path)
 	try {
 		const dataStory = await storyblokApi.get(path, sbParams);
 		
@@ -29,7 +28,10 @@ export async function load({ params, parent, fetch }) {
 			
 			let newsData = await fetch('https://thinkflo.netlify.app/api/getNews')
 				.then(res => res.json())
-				.catch(e => {return undefined});
+				.catch(e => {
+					console.log(e)
+					return undefined}
+				);
 			
 			trendingNewsBlock['data'] = newsData;
 			console.log(newsData)
