@@ -1,3 +1,5 @@
+export const prerender = true
+
 import { useStoryblokApi, storyblokInit, apiPlugin } from "@storyblok/svelte";
 import "$/app.css"
 import Lottie_Player from "../Components/Content_Blocks/Lottie_Player.svelte";
