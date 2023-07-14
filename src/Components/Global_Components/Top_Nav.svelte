@@ -6,24 +6,24 @@
 
 	export let blok;
 	let isOpen = false;
-	let isDark = true;
+	let isDark = false;
 	let show = true;
   let lastScrollPosition = 0;
 
   onMount(() => {
 		window.addEventListener("scroll", onScroll);
 
-		// Get the dark mode preference from local storage or system preference
-		const darkPreference = window.localStorage.getItem('dark') || (!window.matchMedia('(prefers-color-scheme: dark)').matches ? 'false' : 'true');
-		isDark = darkPreference === 'true';
+		if (
+			localStorage.theme === "dark" ||
+			(!("theme" in localStorage) &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches)
+		) {
+			isDark = true;
+		}
 		updateDarkMode();
 
 		return () => window.removeEventListener("scroll", onScroll);
-  });
-
-	afterNavigate(() => {
-		isOpen = false;
-	})
+	});
 
   const onScroll = () => {
     const currentScrollPosition =
@@ -36,10 +36,16 @@
   };
 
 	const toggleDarkMode = () => {
-		isDark = !isDark;
-		window.localStorage.setItem('dark', String(isDark));
-		updateDarkMode();
-	}
+		if (isDark) {
+			document.documentElement.classList.remove("dark");
+			localStorage.theme = "light";
+			isDark = false;
+		} else {
+			document.documentElement.classList.add("dark");
+			localStorage.theme = "dark";
+			isDark = true;
+		}
+	};
 	function updateDarkMode() {
 		document.documentElement.classList.toggle("dark", isDark);
 	}
