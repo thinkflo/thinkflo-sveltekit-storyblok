@@ -25,6 +25,10 @@
 		return () => window.removeEventListener("scroll", onScroll);
 	});
 
+	afterNavigate(() => {
+		isOpen = false;
+	})
+
   const onScroll = () => {
     const currentScrollPosition =
       window.pageYOffset || document.documentElement.scrollTop;
