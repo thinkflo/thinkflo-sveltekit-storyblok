@@ -18,7 +18,7 @@ export async function load({ params, parent, fetch }) {
 		const dataStory = await storyblokApi.get(path, sbParams);
 		
 		if (
-			dataStory.data?.story?.content?.Content_Blocks?.find(
+			dataStory?.data?.story?.content?.Content_Blocks?.find(
 				block => block?.component === 'Trending_News'
 			)
 		) {			
@@ -33,6 +33,7 @@ export async function load({ params, parent, fetch }) {
 					}
 				})
 				.catch(e => {
+					console.log(e)
 					return undefined}
 				);
 			
