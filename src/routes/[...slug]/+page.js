@@ -37,9 +37,6 @@ export async function load({ params, parent, fetch }) {
 				);
 			
 		}
-		console.log(dataStory.data.story.content.Content_Blocks.find(
-			(block) => block?.component === 'Trending_News'
-		))
 		return {
 			story: dataStory.data.story
 		};
