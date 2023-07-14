@@ -89,7 +89,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.story.name}</title>
+	<title>{data?.story?.name || 'Thinkflo'}</title>
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@1/dist/lottie-player.js"></script>
 </svelte:head>
 <div class="bg-gray-200">
