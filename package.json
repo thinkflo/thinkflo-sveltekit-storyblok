@@ -37,6 +37,7 @@
 		"@lottiefiles/lottie-player": "^2.0.2",
 		"@splidejs/svelte-splide": "^0.2.9",
 		"@storyblok/svelte": "^3.0.8",
+		"@sveltejs/adapter-static": "^2.0.2",
 		"@vitejs/plugin-basic-ssl": "^1.0.1",
 		"axios": "^1.4.0",
 		"date-fns": "^2.30.0",
