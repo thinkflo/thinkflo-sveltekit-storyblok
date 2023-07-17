@@ -15,8 +15,6 @@
 	{/if}
 </svelte:head>
 
-<main>
-	<Top_Nav blok={data.topNav.content} />
-	<slot />
-	<Footer blok={data.footer.content} />
-</main>
+<Top_Nav blok={data.topNav.content} />
+<slot />
+<Footer blok={data.footer.content} />

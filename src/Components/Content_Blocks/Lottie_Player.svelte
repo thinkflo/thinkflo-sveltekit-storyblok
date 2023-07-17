@@ -77,6 +77,10 @@
   };
 </script>
 
+<svelte:head>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@1/dist/lottie-player.js"></script>
+</svelte:head>
+
 <section class="bg-gray-200 relative">
   <Constrained_Width>
     <lottie-player

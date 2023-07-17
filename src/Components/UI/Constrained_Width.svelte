@@ -3,6 +3,7 @@
 	export let tablet = true;
 	export let desktop = true;
 	export let className = '';
+	export let as = "div";
 
 	let mobileStyle = mobile ? 'max-w-screen-xl px-6' : '';
 	let tabletStyle = tablet ? 'md:max-w-screen-xl md:px-6' : '';
@@ -21,6 +22,6 @@
 	let uniqueClassNames = Array.from(combinedClasses).join(' ');
 </script>
 
-<div class={uniqueClassNames.trim()}>
+<svelte:element this={as} class={uniqueClassNames.trim()}>
 	<slot />
-</div>
+</svelte:element>

@@ -5,7 +5,7 @@
   export let blok;
 </script>
 
-<Constrained_Width className="py-12 space-y-6">
+<Constrained_Width className="py-12 space-y-6" as="section">
   <h1 class="text-6xl font-semibold">Trending News</h1>
   <ul class="grid grid-cols-3 divide-red-500 min-h-[33vh] gap-4">
     {#if blok?.data?.newsArticles?.length}
