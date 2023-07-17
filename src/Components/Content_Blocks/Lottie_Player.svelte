@@ -93,7 +93,7 @@
 
     <!-- Player Controllers -->
     <div class="flex justify-center space-x-6">
-      <button class="w-10 h-10" on:click={toggleMute}>
+      <button class="w-10 h-10" on:click={toggleMute} aria-label="{isMuted ? 'Unmute' : 'Mute'}">
         {#if isMuted}
           <svg class="w-10 h-10 cursor-pointer" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.5 9C13.5 7.23 12.48 5.71 11 4.97V7.18L13.45 9.63C13.48 9.43 13.5 9.22 13.5 9ZM16 9C16 9.94 15.8 10.82 15.46 11.64L16.97 13.15C17.63 11.91 18 10.5 18 9C18 4.72 15.01 1.14 11 0.240001V2.29C13.89 3.15 16 5.83 16 9ZM1.27 0L0 1.26L4.72 5.99H0V11.99H4L9 16.99V10.26L13.25 14.51C12.58 15.03 11.83 15.44 11 15.69V17.75C12.38 17.44 13.63 16.8 14.69 15.94L16.73 17.99L18 16.72L9 7.72L1.28 0H1.27ZM8.99 0.990001L6.9 3.07L8.99 5.16V1V0.990001Z" fill="white"/>
@@ -105,7 +105,7 @@
         {/if}
       </button>
 
-      <button class="w-10 h-10" on:click={togglePlay}>
+      <button class="w-10 h-10" on:click={togglePlay} aria-label="{playing ? 'Pause' : 'Play'}">
         {#if playing}
         <svg class="w-10 h-10 cursor-pointer fill-white" version="1.1" viewBox="0 0 36 36" width="100%"><use class="ytp-svg-shadow" xlink:href="#ytp-id-63"></use><path class="ytp-svg-fill" d="M 12,26 16,26 16,10 12,10 z M 21,26 25,26 25,10 21,10 z" id="ytp-id-63"></path></svg>
         {:else}
@@ -113,7 +113,7 @@
         {/if}
       </button>
 
-      <button on:click={handleReset}>
+      <button on:click={handleReset} aria-label="Reset">
         <svg class="w-10 h-10"  viewBox="0 0 102 120" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M96.7412 46.905C86.5562 25.8075 63.7612 15.1375 41.9362 19.0175L47.7562 8.10497C49.2112 5.67997 48.2412 2.52748 45.8162 1.31497C43.3912 -0.140025 40.2387 0.829973 39.0262 3.25497L27.1437 25.3225C27.1437 25.3225 24.4762 29.6875 28.5987 31.6275L50.6662 43.51C51.3937 43.995 52.3637 44.2375 53.0912 44.2375C54.7887 44.2375 56.7287 43.2675 57.4562 41.57C58.9112 39.145 57.9412 35.9925 55.5162 34.78L44.1187 28.475C61.3362 25.565 79.2812 34.295 87.2837 50.785C96.9837 70.9125 88.4962 95.1625 68.3687 104.62C58.6687 109.227 47.7562 109.955 37.5712 106.317C27.3862 102.68 19.1412 95.405 14.5337 85.705C9.9262 76.005 9.1987 65.0925 12.8362 54.9075C13.8062 52.24 12.3512 49.33 9.6837 48.36C7.2587 47.875 4.3487 49.33 3.3787 51.9975C-0.986297 64.85 -0.258797 78.43 5.5612 90.555C11.3812 102.68 21.5662 111.895 34.4187 116.502C39.9962 118.442 45.5737 119.412 51.1512 119.412C58.6687 119.412 66.1862 117.715 72.9762 114.32C98.1962 102.195 108.866 71.8825 96.7412 46.905Z" fill="white"/>
         </svg>
@@ -122,7 +122,7 @@
     </div>
       
     {#if blok?.Audio_File}
-      <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2" muted>
+      <video bind:this={audioElement} class="absolute bottom-20 left-1/2 -translate-x-1/2 h-20 w-1/2" muted aria-label="Audio Track">
         {#if blok?.Audio_File?.filename.endsWith('.mp4')}
           <source src="{blok?.Audio_File?.filename}" type="video/mp4">
         {/if}
