@@ -14,7 +14,7 @@ export async function handler(event, context, callback) {
 		topics.map(
 			async (topic) =>
 				await axios
-					.get(`https://hnrss.org/newest?q=${topic}`)
+					.get(`https://hnrss.org/newest?count=10&q=${topic}`)
 					.then((news) =>
             news?.data && new XMLParser()
 							.parse(news?.data, {
