@@ -59,10 +59,10 @@
 
 <header class="sticky inset-0 z-50 w-full h-24 bg-[#f7f6fd] dark:bg-black text-black dark:text-white transition-transform duration-500" class:navbar--hidden={!show}>
 	<Constrained_Width className="container h-full mx-auto flex items-center justify-between">
-		<h1 class="text-carnation-500 text-3xl font-bold">
-			<a href="/"><img src="/logo.svg" alt="Thinkflo Logo" class="h-10 dark:hidden" /></a>
-			<a href="/"><img src="/logo-white.svg" alt="Thinkflo Logo White" class="h-10 hidden dark:block" /></a>
-		</h1>
+		<div>
+			<a tabindex="0" href="/"><img src="/logo.svg" alt="Thinkflo Logo" class="h-10 dark:hidden" /></a>
+			<a tabindex="0" href="/"><img src="/logo-white.svg" alt="Thinkflo Logo White" class="h-10 hidden dark:block" /></a>
+		</div>
 		<nav class="flex">
 			<!-- Hamburger Icon -->
 			<button class="hamburger h-5 w-9 ml-6 flex cursor-pointer relative z-30" on:click={() => isOpen = !isOpen} aria-label="Toggle menu" aria-haspopup="true" aria-expanded={isOpen}>
@@ -90,8 +90,10 @@
 						type="button"
 						class="lightmode relative inline-flex h-8 w-16 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-black transition-colors duration-200 ease-in-out dark:bg-gray-200"
 						role="switch"
-						aria-checked="false"
+						aria-checked="{isDark}"
+						aria-label="Toggle dark and light mode"
 						on:click={toggleDarkMode}
+						tabindex="0"
 					>
 						<span class="sr-only">Use setting</span>
 						{#if isDark}
@@ -101,6 +103,7 @@
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
 							>
+								<title id="svg-title-dark">Switch to Light Mode</title>
 								<path
 									fill-rule="evenodd"
 									clip-rule="evenodd"
@@ -117,6 +120,7 @@
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
 							>
+								<title id="svg-title-light">Switch to Dark Mode</title>
 								<circle
 									cx="7.99985"
 									cy="7.99991"
