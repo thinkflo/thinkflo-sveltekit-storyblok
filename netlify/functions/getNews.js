@@ -7,7 +7,7 @@ export async function handler(event, context, callback) {
     'Access-Control-Allow-Headers':
       'Origin, X-Requested-With, Content-Type, Accept',
   }
-
+	
 	const topics = ['jamstack', 'ssg', 'ssr', 'static site', 'serverless', 'headless cms'];
 
 	const newsArticles = await Promise.allSettled(
@@ -46,6 +46,7 @@ export async function handler(event, context, callback) {
 			.flat()
 			.sort((a, b) => new Date(a.postDate) - new Date(b.postDate))
 			.reverse()
+			.slice(0, 10)
     )]
 	);
 
