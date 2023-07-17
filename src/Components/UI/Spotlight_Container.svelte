@@ -1,7 +1,6 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
 
-  export let children = [];
   export let className = "";
 
   let container;
