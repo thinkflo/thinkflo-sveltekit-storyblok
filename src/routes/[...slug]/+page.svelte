@@ -94,7 +94,9 @@
 </svelte:head>
 <div class="bg-gray-200">
 	{#if data.story}
-		<StoryblokComponent blok={data.story.content} />
+        {#key data.story.content._uid}
+		    <StoryblokComponent blok={data.story.content} />
+        {/key}
 	{/if}
 	<Cookies_Monster />
 </div>

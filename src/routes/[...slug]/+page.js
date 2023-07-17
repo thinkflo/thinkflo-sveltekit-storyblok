@@ -38,6 +38,27 @@ export async function load({ params, parent, fetch }) {
 				);
 			
 		}
+		if (
+			dataStory.data.story.content.component === "Work_Overview_Layout"
+		) {	
+			const workOverviewBlock = dataStory.data.story.content;
+
+			const { data } = await storyblokApi.get('cdn/stories', {
+				version: 'draft',
+				starts_with: 'work',
+				is_startpage: false
+			});
+			
+			const {
+				data: { datasource_entries: filter_datasources }
+			} = await storyblokApi.get('cdn/datasource_entries', {
+				version: 'draft'
+			});
+
+			workOverviewBlock['allArticles'] = data?.stories;
+			workOverviewBlock['filters'] = filter_datasources;	
+		}
+
 		return {
 			story: dataStory.data.story
 		};
