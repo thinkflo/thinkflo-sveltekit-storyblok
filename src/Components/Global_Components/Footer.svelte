@@ -1,5 +1,9 @@
 <script>
 	import Constrained_Width from '../UI/Constrained_Width.svelte';
+
+	export let blok;
+
+	const currentYear = new Date().getFullYear();
 </script>
 
 <footer class="w-full py-12 md:py-24 md:pb-5 bg-slate-900 text-white">
@@ -50,7 +54,7 @@
 			</div>
 		</div>
 		<p class="text-center text-xs leading-5 text-white">
-			&copy; 2020 Your Company, Inc. All rights reserved.
+			&copy; {currentYear} Your Company, Inc. All rights reserved.
 		</p>
 	</Constrained_Width>
 </footer>
