@@ -29,7 +29,7 @@
 					/>
 					<picture class="h-48">
 						<img
-							srcset={buildSrcSet(blok?.Image)}
+							srcset={buildSrcSet(blok?.Image?.filename)}
 							sizes="100vw"
 							class="inline-flex h-full w-full"
 							src={blok?.Image?.filename}

@@ -76,7 +76,7 @@
 	>
 		<picture>
 			<img
-				srcset={buildSrcSet(blok?.content?.Panel_Image)}
+				srcset={buildSrcSet(blok?.content?.Panel_Image?.filename)}
 				sizes="100vw"
 				class="min-w-full min-h-max h-64 object-cover"
 				src={blok?.content?.Panel_Image?.filename}
