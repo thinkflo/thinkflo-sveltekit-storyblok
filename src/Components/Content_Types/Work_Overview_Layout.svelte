@@ -38,7 +38,7 @@
 	};
 </script>
 
-<article use:storyblokEditable={blok}>
+<article use:storyblokEditable={blok} class="bg-white dark:bg-black">
 	<section class="py-12 md:py-24">
 		<Constrained_Width>
 			<div class="space-y-4">
