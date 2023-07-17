@@ -54,7 +54,7 @@
 			</div>
 		</div>
 		<p class="text-center text-xs leading-5 text-white">
-			&copy; {currentYear} Your Company, Inc. All rights reserved.
+			&copy; {currentYear} Thinkflo All rights reserved.
 		</p>
 	</Constrained_Width>
 </footer>
