@@ -76,11 +76,13 @@
 				<Constrained_Width className="h-full flex flex-col justify-between py-12">
 					<div class="h-10" />
 					<ul class="flex flex-col space-y-8 text-5xl text-center font-medium">
-						{#each blok.Nav_Menu as Menu_Item}
-							<li class="hover:text-carnation-500 text-jaffa-500 transition duration-300">
-								<a data-sveltekit-preload-data="hover" href={`/${Menu_Item?.Link?.cached_url}` || '#'}> {Menu_Item.Name} </a>
-							</li>
-						{/each}
+						{#if blok?.Nav_Menu?.length}
+							{#each blok.Nav_Menu as Menu_Item}
+								<li class="hover:text-carnation-500 text-jaffa-500 transition duration-300">
+									<a data-sveltekit-preload-data="hover" href={`/${Menu_Item?.Link?.cached_url}` || '#'}> {Menu_Item.Name} </a>
+								</li>
+							{/each}
+						{/if}
 					</ul>
 
 					<!-- Dark / Light Mode Toggle -->

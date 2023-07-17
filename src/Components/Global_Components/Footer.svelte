@@ -2,7 +2,7 @@
 	import Constrained_Width from '../UI/Constrained_Width.svelte';
 
 	export let blok;
-
+	
 	const currentYear = new Date().getFullYear();
 </script>
 
@@ -11,48 +11,21 @@
 		className="container h-full mx-auto flex flex-col space-y-10 items-center justify-between"
 	>
 		<a href="/"><img src="/logo-white.svg" alt="Thinkflo Logo White" class="h-10 mx-auto" /></a>
-		<div>
-			<div>
-				<nav class="flex justify-center space-x-12" aria-label="Footer">
+		<nav class="flex justify-center space-x-12" aria-label="Footer">
+			{#if blok?.Nav_Menu?.length}
+				{#each blok.Nav_Menu as Menu_Item}
 					<div>
 						<a
-							href="/"
+							href={`/${Menu_Item?.Link?.cached_url}`}
 							data-sveltekit-preload-data="hover"
 							class="text-sm leading-6 text-white hover:text-gray-300"
 						>
-							Home
+							{Menu_Item?.Name}
 						</a>
 					</div>
-					<div>
-						<a
-							href="/about-us"
-							data-sveltekit-preload-data="hover"
-							class="text-sm leading-6 text-white hover:text-gray-300"
-						>
-							About Us
-						</a>
-					</div>
-					<div>
-						<a
-							href="/work"
-							data-sveltekit-preload-data="hover"
-							class="text-sm leading-6 text-white hover:text-gray-300"
-						>
-							Work
-						</a>
-					</div>
-					<div>
-						<a
-							href="/blog"
-							data-sveltekit-preload-data="hover"
-							class="text-sm leading-6 text-white hover:text-gray-300"
-						>
-							Blog
-						</a>
-					</div>
-				</nav>
-			</div>
-		</div>
+				{/each}
+			{/if}
+		</nav>
 		<p class="text-center text-xs leading-5 text-white">
 			&copy; {currentYear} Thinkflo All rights reserved.
 		</p>

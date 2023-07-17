@@ -41,12 +41,18 @@ export async function load() {
   });
   
   let storyblokApi = await useStoryblokApi();
-  const dataConfig = await storyblokApi.get('cdn/stories/global-components/top-navigation', {
+  const { data: { story: topNav } } = await storyblokApi.get('cdn/stories/global-components/top-navigation', {
     version: 'draft',
-  })
+  });
+  const {
+		data: { story: footer },
+	} = await storyblokApi.get('cdn/stories/global-components/footer', {
+    version: 'draft',
+  });
 
   return {
     storyblokApi: storyblokApi,
-    topNav: dataConfig.data.story.content
+    topNav,
+    footer
   };
 }

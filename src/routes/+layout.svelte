@@ -16,7 +16,7 @@
 </svelte:head>
 
 <main>
-	<Top_Nav blok={data.topNav} />
+	<Top_Nav blok={data.topNav.content} />
 	<slot />
-	<Footer />
+	<Footer blok={data.footer.content} />
 </main>
