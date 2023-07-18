@@ -11,9 +11,9 @@
 
 <main class="bg-gray-200">
 	{#if data.story}
-        {#key data.story.content._uid}
-		    <StoryblokComponent blok={data.story.content} />
-        {/key}
+		{#key data.story.content._uid}
+			<StoryblokComponent blok={data.story.content} />
+		{/key}
 	{/if}
 	<Cookies_Monster />
 </main>
