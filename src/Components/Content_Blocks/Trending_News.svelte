@@ -23,7 +23,8 @@
               class:row-span-2={index === 0 || index === 1}
               class:bg-red-500={index === 0 || index === 1}
               class:dark:bg-red-500={index === 0 || index === 1}
-              class:text-white={index === 0 || index === 1}
+              class:text-black={index === 0 || index === 1}
+              class:dark:text-white={index === 0 || index === 1}
             >
               <a class="flex flex-col justify-between h-full" href={url} rel="noreferrer noopener" target="_blank">
                 <div class="space-y-3">

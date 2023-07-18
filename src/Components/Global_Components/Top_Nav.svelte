@@ -1,5 +1,5 @@
 <script>
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
 	import { browser } from '$app/environment';
 	import { afterNavigate } from "$app/navigation";
@@ -9,17 +9,14 @@
 	let isDark = false;
 	let show = true;
   let lastScrollPosition = 0;
+	let themePreference = "";
 
   onMount(() => {
 		window.addEventListener("scroll", onScroll);
 
-		if (
-			localStorage.theme === "dark" ||
-			(!("theme" in localStorage) &&
-			window.matchMedia("(prefers-color-scheme: dark)").matches)
-		) {
-			isDark = true;
-		}
+		themePreference = localStorage.theme || "system";
+    setTheme(themePreference);
+
 		updateDarkMode();
 
 		return () => window.removeEventListener("scroll", onScroll);
@@ -32,26 +29,35 @@
   const onScroll = () => {
     const currentScrollPosition =
       window.pageYOffset || document.documentElement.scrollTop;
-    if (currentScrollPosition < 0) {
-      return;
-    }
     if (currentScrollPosition > 150) {
-      show = currentScrollPosition < (lastScrollPosition);
+      show = currentScrollPosition < lastScrollPosition;
     }
     lastScrollPosition = currentScrollPosition;
   };
 
-	const toggleDarkMode = () => {
-		if (isDark) {
-			document.documentElement.classList.remove("dark");
-			localStorage.theme = "light";
-			isDark = false;
-		} else {
-			document.documentElement.classList.add("dark");
-			localStorage.theme = "dark";
-			isDark = true;
-		}
-	};
+	const updateThemePreference = (theme, isDarkMode) => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
+    localStorage.theme = theme;
+    themePreference = theme;
+    isDark = isDarkMode;
+    updateDarkMode();
+  };
+
+	const setTheme = (theme) => {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    switch (theme) {
+      case "dark":
+      case "light":
+        updateThemePreference(theme, theme === "dark");
+        break;
+      case "system":
+        updateThemePreference(theme, prefersDark);
+        break;
+      default:
+        throw new Error(`Unknown theme: ${theme}`);
+    }
+  };
+
 	function updateDarkMode() {
 		document.documentElement.classList.toggle("dark", isDark);
 	}
@@ -90,120 +96,18 @@
 						{/if}
 					</ul>
 
-					<!-- Dark / Light Mode Toggle -->
-					<button
-						type="button"
-						class="lightmode relative inline-flex h-8 w-16 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-black transition-colors duration-200 ease-in-out dark:bg-gray-200"
-						role="switch"
-						aria-checked="{isDark}"
-						aria-label="Toggle dark and light mode"
-						on:click={toggleDarkMode}
-						tabindex="0"
-					>
-						<span class="sr-only">Use setting</span>
-						{#if isDark}
-							<svg
-								class="absolute top-1/2 left-0.5 h-6 -translate-y-1/2 p-1"
-								viewBox="0 0 16 16"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<title id="svg-title-dark">Switch to Light Mode</title>
-								<path
-									fill-rule="evenodd"
-									clip-rule="evenodd"
-									d="M15.8971 9.28712C14.7398 10.3507 13.1957 11 11.5 11C7.91015 11 5 8.08988 5 4.50003C5 2.80459 5.64912 1.26076 6.7124 0.103516C2.9063 0.719344 0 4.02049 0 8.00044C0 12.4187 3.58172 16.0004 8 16.0004C11.9803 16.0004 15.2816 13.0937 15.8971 9.28712Z"
-									fill="black"
-								/>
-							</svg>
-						{/if}
-
-						{#if !isDark}
-							<svg
-								class="absolute top-1/2 right-0 h-6 -translate-y-1/2 p-1 text-white dark:text-gray-dark"
-								viewBox="0 0 16 16"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<title id="svg-title-light">Switch to Dark Mode</title>
-								<circle
-									cx="7.99985"
-									cy="7.99991"
-									r="3.99991"
-									fill="currentColor"
-								/>
-								<rect
-									x="7.33325"
-									width="1.3333"
-									height="2.6666"
-									fill="currentColor"
-								/>
-								<rect
-									x="7.33325"
-									y="13.333"
-									width="1.3333"
-									height="2.6666"
-									fill="currentColor"
-								/>
-								<rect
-									x="15.9996"
-									y="7.33398"
-									width="1.3333"
-									height="2.6666"
-									transform="rotate(90 15.9996 7.33398)"
-									fill="currentColor"
-								/>
-								<rect
-									x="2.6665"
-									y="7.33398"
-									width="1.3333"
-									height="2.6666"
-									transform="rotate(90 2.6665 7.33398)"
-									fill="currentColor"
-								/>
-								<rect
-									x="1.87158"
-									y="2.81396"
-									width="1.3333"
-									height="2.6666"
-									transform="rotate(-45 1.87158 2.81396)"
-									fill="currentColor"
-								/>
-								<rect
-									x="11.2996"
-									y="12.2427"
-									width="1.3333"
-									height="2.6666"
-									transform="rotate(-45 11.2996 12.2427)"
-									fill="currentColor"
-								/>
-								<rect
-									x="13.1853"
-									y="1.87256"
-									width="1.3333"
-									height="2.6666"
-									transform="rotate(45 13.1853 1.87256)"
-									fill="currentColor"
-								/>
-								<rect
-									x="3.75726"
-									y="11.2988"
-									width="1.3333"
-									height="2.6666"
-									transform="rotate(45 3.75726 11.2988)"
-									fill="currentColor"
-								/>
-							</svg>
-						{/if}
-
-						<span
-							aria-hidden="true"
-							class={(isDark
-								? "translate-x-[2.125rem] bg-black"
-								: "translate-x-0.5") +
-								" pointer-events-none  inline-block h-6 w-6 translate-y-0.5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"}
-						/>
-					</button>
+					<!-- Dark / Light / System Mode Toggle -->
+					<div class="dark-toggle rounded-full w-fit flex items-center justify-center py-1 px-3">
+						<button class="w-8 h-8 flex items-center justify-center opacity-50" class:opacity-100={themePreference==="dark"} on:click={() => setTheme("dark")}>
+							<svg class="w-4 h-4" fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+						</button>
+						<button class="w-8 h-8 flex items-center justify-center opacity-50" class:opacity-100={themePreference==="light"} on:click={() => setTheme("light")}>
+							<svg class="w-4 h-4" fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2"></path><path d="M12 21v2"></path><path d="M4.22 4.22l1.42 1.42"></path><path d="M18.36 18.36l1.42 1.42"></path><path d="M1 12h2"></path><path d="M21 12h2"></path><path d="M4.22 19.78l1.42-1.42"></path><path d="M18.36 5.64l1.42-1.42"></path></svg>
+						</button>
+						<button class="w-8 h-8 flex items-center justify-center opacity-50" class:opacity-100={themePreference==="system"} on:click={() => setTheme("system")}>
+							<svg class="w-4 h-4" fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg>
+						</button>
+					</div>
 				</Constrained_Width>
 			</div>
 		</nav>
@@ -216,4 +120,7 @@
     box-shadow: none;
     transform: translate3d(0, -100%, 0);
   }
+	.dark-toggle {
+		box-shadow: 0 0 0 1px #ffffff24;
+	}
 </style>
