@@ -12,8 +12,14 @@
 	export let isFirst;
 </script>
 
-<section use:storyblokEditable={blok} class="py-12 md:py-24">
-	<Constrained_Width>
+<section 
+	class="py-12 md:py-24" 
+	class:relative={blok?.Show_Grid_Lines}
+  class:border-b={blok?.Show_Grid_Lines}
+  class:border-[#f5f5f533]={blok?.Show_Grid_Lines}
+	use:storyblokEditable={blok}
+>
+	<Constrained_Width showLines={blok?.Show_Grid_Lines}>
 		<div class="space-y-4 dark:text-white text-black">
 			<Heading className="text-4xl font-semibold" {isFirst}>{blok.Heading}</Heading>
 			{#if blok?.Short_Blurb}

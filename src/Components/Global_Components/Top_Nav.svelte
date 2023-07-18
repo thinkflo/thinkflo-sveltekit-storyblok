@@ -1,6 +1,6 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
-	import Constrained_Width from '../UI/Constrained_Width.svelte';
+	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
 	import { browser } from '$app/environment';
 	import { afterNavigate } from "$app/navigation";
 
