@@ -97,7 +97,7 @@
 					</ul>
 
 					<!-- Dark / Light / System Mode Toggle -->
-					<div class="dark-toggle rounded-full w-fit flex items-center justify-center py-1 px-3">
+					<div class="shadow-[0_0_0_1px_rgba(0,0,0,0.14)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.14)] rounded-full w-fit flex items-center justify-center py-1 px-3">
 						<button class="w-8 h-8 flex items-center justify-center opacity-50" class:opacity-100={themePreference==="dark"} on:click={() => setTheme("dark")}>
 							<svg class="w-4 h-4" fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
 						</button>
@@ -120,7 +120,4 @@
     box-shadow: none;
     transform: translate3d(0, -100%, 0);
   }
-	.dark-toggle {
-		box-shadow: 0 0 0 1px #ffffff24;
-	}
 </style>
