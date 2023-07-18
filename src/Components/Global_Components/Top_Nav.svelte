@@ -35,7 +35,9 @@
     if (currentScrollPosition < 0) {
       return;
     }
-    show = currentScrollPosition < (lastScrollPosition || 50);
+    if (currentScrollPosition > 150) {
+      show = currentScrollPosition < (lastScrollPosition);
+    }
     lastScrollPosition = currentScrollPosition;
   };
 
