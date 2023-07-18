@@ -8,7 +8,7 @@
 <section 
   class="py-12 md:py-24" 
   class:relative={blok?.Show_Grid_Lines}
-  class:border-b={blok?.Show_Grid_Lines}
+  class:border-y={blok?.Show_Grid_Lines}
   class:border-[#f5f5f533]={blok?.Show_Grid_Lines}
 >
   <Constrained_Width className="space-y-6" showLines={blok?.Show_Grid_Lines}>

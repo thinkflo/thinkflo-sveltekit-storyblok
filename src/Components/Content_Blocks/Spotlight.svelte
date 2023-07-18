@@ -11,7 +11,7 @@
 <section 
 	class="py-12" 
 	class:relative={blok?.Show_Grid_Lines} 
-	class:border-b={blok?.Show_Grid_Lines}
+	class:border-y={blok?.Show_Grid_Lines}
   class:border-[#f5f5f533]={blok?.Show_Grid_Lines}
 	use:storyblokEditable={blok}
 >

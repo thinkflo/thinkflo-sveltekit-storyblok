@@ -11,12 +11,12 @@
 <section 
 	class="py-12" 
 	class:relative={blok?.Show_Grid_Lines} 
-	class:border-b={blok?.Show_Grid_Lines}
+	class:border-y={blok?.Show_Grid_Lines}
   class:border-[#f5f5f533]={blok?.Show_Grid_Lines}
 	use:storyblokEditable={blok}
 >
 	<Constrained_Width showLines={blok?.Show_Grid_Lines}>
-		<div class="space-y-4">
+		<div class="space-y-4 z-10">
 			<Heading className="text-4xl font-semibold" {isFirst}>{blok.Heading}</Heading>
 			<div class="prose dark:text-white text-black">{@html renderRichText(blok?.Short_Blurb)}</div>
 		</div>
@@ -28,7 +28,7 @@
 			class:md:grid-cols-4={blok?.Number_of_Columns === '4'}
 			class:md:grid-cols-5={blok?.Number_of_Columns === '5'}
 			class:odd:border-l-2={blok?.Divider_Line}
-			class="container mx-auto grid md:grid-cols-3 place-items-center py-6"
+			class="container mx-auto grid md:grid-cols-3 place-items-center py-6 z-10 relative"
 		>
 			{#if blok.Panels}
 				{#each blok.Panels as component}

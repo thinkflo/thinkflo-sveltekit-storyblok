@@ -72,7 +72,7 @@
 {:else if blok.content && blok.content.component === 'Project'}
 	<a
 		href={`/${blok.full_slug}`}
-		class="flex flex-col w-full rounded-[5px] text-center h-full space-y-4 border border-white"
+		class="flex flex-col w-full rounded-[5px] text-center h-full space-y-4 border border-white bg-white dark:bg-black"
 	>
 		<picture>
 			<img
