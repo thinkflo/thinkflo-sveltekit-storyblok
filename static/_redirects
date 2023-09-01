@@ -2,3 +2,9 @@
 /de/*  /de/:splat  302  Language=de
 
 /api/* /.netlify/functions/:splat 200
+
+/ /ca 302 Country=ca
+/ /us 302 Country=us
+/ /uk 302 Country=gb
+/ /de 302 Country=de
+/ /ch 302 Country=ch
