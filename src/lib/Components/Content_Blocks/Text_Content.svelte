@@ -1,6 +1,6 @@
 <script>
 	import { storyblokEditable, StoryblokComponent, renderRichText } from '@storyblok/svelte';
-	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
+	import Constrained_Width from '$lib/Components/UI/Constrained_Width.svelte';
 
 	export let blok;
 </script>

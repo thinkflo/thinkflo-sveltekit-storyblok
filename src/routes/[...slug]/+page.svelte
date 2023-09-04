@@ -1,6 +1,6 @@
 <script>
 	import { StoryblokComponent } from '@storyblok/svelte';
-	import Cookies_Monster from '$/Components/UI/Cookies_Monster.svelte';
+	import Cookies_Monster from '$lib/Components/UI/Cookies_Monster.svelte';
 
 	export let data;
 </script>

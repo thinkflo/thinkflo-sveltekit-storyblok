@@ -1,5 +1,5 @@
 <script>
-	import Constrained_Width from '../UI/Constrained_Width.svelte';
+	import Constrained_Width from '$lib/Components/UI/Constrained_Width.svelte';
 
 	export let blok;
 	

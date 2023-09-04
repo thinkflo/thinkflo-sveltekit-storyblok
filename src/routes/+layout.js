@@ -1,19 +1,19 @@
 export const prerender = true
 
 import { useStoryblokApi, storyblokInit, apiPlugin } from "@storyblok/svelte";
-import "$/app.css"
-import Lottie_Player from "../Components/Content_Blocks/Lottie_Player.svelte";
-import Project from "$/Components/Content_Types/Project.svelte";
-import Grid from "$/Components/Content_Blocks/Grid.svelte";
-import Page from "$/Components/Content_Types/Page.svelte";
-import Panel from "$/Components/Components/Panel.svelte";
-import Spotlight from "$/Components/Content_Blocks/Spotlight.svelte";
-import Spotlight_Card from "$/Components/Components/Spotlight_Card.svelte";
-import Stats_Panel from "$/Components/Content_Blocks/Stats_Panel.svelte";
-import Work_Overview_Layout from "$/Components/Content_Types/Work_Overview_Layout.svelte";
-import Carousel from "$/Components/Content_Blocks/Carousel.svelte";
-import Text_Content from "$/Components/Content_Blocks/Text_Content.svelte";
-import Trending_News from "$/Components/Content_Blocks/Trending_News.svelte";
+import "../app.css"
+import Lottie_Player from "$lib/Components/Content_Blocks/Lottie_Player.svelte";
+import Project from "$lib/Components/Content_Types/Project.svelte";
+import Grid from "$lib/Components/Content_Blocks/Grid.svelte";
+import Page from "$lib/Components/Content_Types/Page.svelte";
+import Panel from "$lib/Components/Bloks/Panel.svelte";
+import Spotlight from "$lib/Components/Content_Blocks/Spotlight.svelte";
+import Spotlight_Card from "$lib/Components/Bloks/Spotlight_Card.svelte";
+import Stats_Panel from "$lib/Components/Content_Blocks/Stats_Panel.svelte";
+import Work_Overview_Layout from "$lib/Components/Content_Types/Work_Overview_Layout.svelte";
+import Carousel from "$lib/Components/Content_Blocks/Carousel.svelte";
+import Text_Content from "$lib/Components/Content_Blocks/Text_Content.svelte";
+import Trending_News from "$lib/Components/Content_Blocks/Trending_News.svelte";
 
 const components = {
   Lottie_Player,

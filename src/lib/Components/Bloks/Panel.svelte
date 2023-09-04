@@ -1,8 +1,8 @@
 <script>
 	import { storyblokEditable } from '@storyblok/svelte';
 	import { renderRichText } from '@storyblok/svelte';
-	import { buildSrcSet } from '$/lib/image.js';
-	import ConstrainedWidth from '$/Components/UI/Constrained_Width.svelte';
+	import { buildSrcSet } from '$lib/image.js';
+	import ConstrainedWidth from '$lib/Components/UI/Constrained_Width.svelte';
 
 	export let blok;
 	export let parent;

@@ -1,8 +1,8 @@
 <script>
 	import { storyblokEditable, StoryblokComponent, renderRichText } from '@storyblok/svelte';
-	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
-	import Panel from '$/Components/Components/Panel.svelte';
-	import Heading from '$/Components/UI/Heading.svelte';
+	import Constrained_Width from '$lib/Components/UI/Constrained_Width.svelte';
+	import Panel from '$lib/Components/Bloks/Panel.svelte';
+	import Heading from '$lib/Components/UI/Heading.svelte';
 
 	export let blok;
 	export let isFirst;

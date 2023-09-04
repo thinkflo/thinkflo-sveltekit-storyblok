@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import Constrained_Width from '$/Components/UI/Constrained_Width.svelte';
+	import Constrained_Width from '$lib/Components/UI/Constrained_Width.svelte';
 
   export let blok;
   export let currentLanguage;
@@ -37,7 +37,7 @@
       state: file?.State || 'autoplay',
       visibility: index === 0 ? [0, 1.0] : undefined,
       transition: file?.Transition || 'onComplete',
-      path: file?.File.filename,
+      path: file?.File?.filename,
       frames: file?.Frames?.split(':')?.map(num => Number(num)),
       delay: Number(file?.Delay),
       forceFlag: file?.Force_Flag,
