@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
-	import Top_Nav from '$lib/Components/Global_Components/Top_Nav.svelte';
 	import { getContext } from 'svelte';
+	import Top_Nav from '$lib/Components/Global_Components/Top_Nav.svelte';
 	import Footer from '$lib/Components/Global_Components/Footer.svelte';
 
 	const GTM_ENABLED = 'gtm_enabled';

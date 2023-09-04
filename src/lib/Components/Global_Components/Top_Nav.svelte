@@ -1,8 +1,8 @@
 <script>
-	import { onDestroy, onMount } from 'svelte';
-	import Constrained_Width from '$lib/Components/UI/Constrained_Width.svelte';
+	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { afterNavigate } from "$app/navigation";
+	import Constrained_Width from '$lib/Components/UI/Constrained_Width.svelte';
 
 	export let blok;
 	let isOpen = false;
