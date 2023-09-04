@@ -1,0 +1,111 @@
+<script>
+	import { onMount } from "svelte";
+  let scroll;
+
+</script>
+
+<svelte:window bind:scrollY={scroll} />
+
+<div class="w-full flex flex-col items-center justify-center py-56 relative h-screen">
+  <p class="fixed top-4 left-4 z-50 text-4xl">{scroll}</p>
+  <h1 class="text-7xl text-transparent bg-clip-text font-extrabold uppercase text-center max-w-xl bg-gradient-to-r from-jaffa-400 via-jaffa-500 to-jaffa-800">This is our bold journey</h1>
+
+  <div class="stars h-screen" style:transform={`translate3d(0, ${scroll * 0.02}px, 0)`} />
+  <div class="stars-reverse h-screen" style:transform={`translate3d(0, ${scroll * 0.02}px, 0)`} />
+
+  <svg 
+    style:transform={`translate3d(0, ${scroll * 0.07}px, 0)`}
+    class="h-96 w-min fixed z-50 top-10 right-40" 
+    viewBox="0 0 240 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 232H0V280H16V232Z" fill="#E3E6E9"/>
+      <path d="M240 232H224V280H240V232Z" fill="#E3E6E9"/>
+      <path d="M184 144H160V160C160 161.105 159.944 162.196 159.835 163.272C159.589 165.699 159.062 168.041 158.304 170.276C158.163 170.691 158.015 171.102 157.858 171.51C157.651 172.046 157.43 172.575 157.195 173.097C156.876 173.807 156.539 174.507 156.171 175.188C156.095 175.328 156.014 175.464 155.937 175.603C155.139 177.028 154.235 178.384 153.236 179.664C152.932 180.054 152.619 180.436 152.298 180.811C151.762 181.436 151.209 182.046 150.627 182.628C150.609 182.646 150.59 182.662 150.573 182.68C149.921 183.329 149.24 183.947 148.534 184.538C147.921 185.051 147.287 185.539 146.636 186.006C145.863 186.561 145.066 187.083 144.243 187.569C143.772 187.847 143.293 188.112 142.807 188.367C142.083 188.746 141.346 189.102 140.591 189.425C140.379 189.516 140.163 189.6 139.948 189.686C136.738 190.979 133.274 191.775 129.646 191.959C129.101 191.986 128.552 192 128 192H120H112C94.327 192 80 177.673 80 160V144H56C25.125 144 0 169.125 0 200V216H16C16 207.163 23.164 200 32 200H40V216V232V280H56C56 275.578 59.578 272 64 272C68.422 272 72 275.578 72 280H88C88 275.578 91.578 272 96 272C100.422 272 104 275.578 104 280H120H200V232V216V200H208C216.836 200 224 207.163 224 216H240V200C240 169.125 214.875 144 184 144ZM160 240H144C139.578 240 136 236.422 136 232C136 227.578 139.578 224 144 224H160C164.422 224 168 227.578 168 232C168 236.422 164.422 240 160 240ZM160 216H144C139.578 216 136 212.422 136 208C136 203.578 139.578 200 144 200H160C164.422 200 168 203.578 168 208C168 212.422 164.422 216 160 216Z" fill="#E3E6E9"/>
+      <path d="M224 331.542C217.377 337.512 209.165 341.706 200 343.255V336V312H120H104V320C104 324.422 100.422 328 96 328C91.578 328 88 324.422 88 320V312H72V320C72 324.422 68.422 328 64 328C59.578 328 56 324.422 56 320V312H40V336V343.255C30.835 341.706 22.623 337.511 16 331.542V296H0C0 320.047 17.773 340.016 40.875 343.469L55.065 457.014C57.939 456.358 60.927 456 64 456H104C108.418 456 112 459.582 112 464V368C112 363.586 115.586 360 120 360C124.414 360 128 363.586 128 368V464C128 459.582 131.582 456 136 456H176C179.073 456 182.06 456.358 184.935 457.014L199.125 343.469C222.226 340.015 240 320.047 240 296H224V331.542Z" fill="#E3E6E9"/>
+      <path d="M208 304C208 304.276 207.986 304.549 207.959 304.818C207.918 305.225 207.837 305.62 207.736 306.007C207.686 306.2 207.632 306.39 207.568 306.576C206.779 308.895 204.957 310.731 202.648 311.542C201.818 311.834 200.929 312 200 312V336V343.255C209.165 341.706 217.377 337.511 224 331.542V296H208V304Z" fill="#B6B8BE"/>
+      <path d="M208 200H200V216H224C224 207.163 216.836 200 208 200Z" fill="#B6B8BE"/>
+      <path d="M224 232H200V280H224V232Z" fill="#B6B8BE"/>
+      <path d="M32 304V296H16V331.542C22.623 337.512 30.835 341.706 40 343.255V336V312C35.582 312 32 308.418 32 304Z" fill="#B6B8BE"/>
+      <path d="M40 232H16V280H40V232Z" fill="#B6B8BE"/>
+      <path d="M40 200H32C23.164 200 16 207.163 16 216H40V200Z" fill="#B6B8BE"/>
+      <path d="M64 120H120V0C75.891 0 40 35.891 40 80C40 95.898 44.656 111.266 53.477 124.445C54.159 125.464 55.06 126.286 56.086 126.888C56.628 122.998 59.96 120 64 120Z" fill="#FF9300"/>
+      <path d="M176 120C180.042 120 183.374 123 183.915 126.893C184.941 126.292 185.842 125.472 186.524 124.453C195.336 111.281 200 95.906 200 80C200 35.891 164.109 0 120 0V120H176Z" fill="#FFCF00"/>
+      <path d="M88 136H104H120V128V120H64C59.96 120 56.628 122.998 56.086 126.889C56.035 127.253 56 127.622 56 128V144H80C80 139.582 83.582 136 88 136Z" fill="#888693"/>
+      <path d="M160 200H144C139.578 200 136 203.578 136 208C136 212.422 139.578 216 144 216H160C164.422 216 168 212.422 168 208C168 203.578 164.422 200 160 200Z" fill="#FF4F19"/>
+      <path d="M160 224H144C139.578 224 136 227.578 136 232C136 236.422 139.578 240 144 240H160C164.422 240 168 236.422 168 232C168 227.578 164.422 224 160 224Z" fill="#FF4F19"/>
+      <path d="M176 120H120V128V136H136H152C156.418 136 160 139.582 160 144H184V128C184 127.623 183.965 127.256 183.915 126.893C183.374 123 180.042 120 176 120Z" fill="#B6B8BE"/>
+      <path d="M104 152V136H88C83.582 136 80 139.582 80 144V160C80 177.673 94.327 192 112 192H120V168C111.163 168 104 160.836 104 152Z" fill="#5C546A"/>
+      <path d="M160 160C160 161.105 159.944 162.196 159.835 163.272C159.944 162.196 160 161.104 160 160Z" fill="#5C546A"/>
+      <path d="M140.592 189.424C140.38 189.515 140.164 189.599 139.949 189.685C140.163 189.599 140.379 189.515 140.592 189.424Z" fill="#5C546A"/>
+      <path d="M159.835 163.272C159.589 165.699 159.062 168.041 158.304 170.276C159.062 168.041 159.588 165.698 159.835 163.272Z" fill="#5C546A"/>
+      <path d="M156.171 175.188C156.095 175.328 156.014 175.464 155.937 175.603C156.014 175.464 156.096 175.327 156.171 175.188Z" fill="#5C546A"/>
+      <path d="M152 136H136V152C136 160.837 128.837 168 120 168V192H128C128.552 192 129.101 191.986 129.647 191.958C133.275 191.774 136.739 190.978 139.949 189.685C140.164 189.599 140.38 189.515 140.592 189.424C141.347 189.1 142.085 188.744 142.808 188.366C143.294 188.112 143.773 187.847 144.244 187.568C145.066 187.082 145.864 186.56 146.637 186.005C147.287 185.538 147.922 185.051 148.535 184.537C149.24 183.946 149.922 183.328 150.574 182.679C150.592 182.661 150.611 182.645 150.628 182.627C151.21 182.045 151.763 181.435 152.299 180.81C152.62 180.435 152.933 180.053 153.237 179.663C154.236 178.383 155.14 177.027 155.938 175.602C156.016 175.463 156.097 175.327 156.172 175.187C156.54 174.506 156.877 173.806 157.196 173.096C157.43 172.574 157.652 172.045 157.859 171.509C158.016 171.102 158.164 170.69 158.305 170.275C159.063 168.04 159.589 165.697 159.836 163.271C159.945 162.195 160.001 161.104 160.001 159.999V143.999C160 139.581 156.418 136 152 136Z" fill="#888693"/>
+      <path d="M120 168C128.837 168 136 160.837 136 152V136H120V144V168Z" fill="#FF4F19"/>
+      <path d="M104 152C104 160.837 111.163 168 120 168V144V136H104V152Z" fill="#E5001E"/>
+      <path d="M224 216H200V232H224V216Z" fill="#E5001E"/>
+      <path d="M40 216H16V232H40V216Z" fill="#E5001E"/>
+      <path d="M240 216H224V232H240V216Z" fill="#FF4F19"/>
+      <path d="M16 216H0V232H16V216Z" fill="#FF4F19"/>
+      <path d="M16 296H32V304C32 308.418 35.582 312 40 312H56V280H40H16V296Z" fill="#5C546A"/>
+      <path d="M16 280H0V296H16V280Z" fill="#888693"/>
+      <path d="M208 288V296H224V280H200C204.418 280 208 283.581 208 288Z" fill="#5C546A"/>
+      <path d="M240 280H224V296H240V280Z" fill="#888693"/>
+      <path d="M88 280H72V312H88V280Z" fill="#5C546A"/>
+      <path d="M120 280H104V312H120V280Z" fill="#5C546A"/>
+      <path d="M200 312C200.93 312 201.818 311.833 202.648 311.542C204.957 310.731 206.779 308.895 207.568 306.576C207.632 306.389 207.686 306.199 207.736 306.007C207.836 305.62 207.917 305.226 207.959 304.818C207.986 304.549 208 304.276 208 304V296V288C208 283.582 204.418 280 200 280H120V312H200Z" fill="#888693"/>
+      <path d="M56 320C56 324.422 59.578 328 64 328C68.422 328 72 324.422 72 320V312V280C72 275.578 68.422 272 64 272C59.578 272 56 275.578 56 280V312V320Z" fill="#FF9300"/>
+      <path d="M88 320C88 324.422 91.578 328 96 328C100.422 328 104 324.422 104 320V312V280C104 275.578 100.422 272 96 272C91.578 272 88 275.578 88 280V312V320Z" fill="#E5001E"/>
+      <path d="M111.959 504.818C111.918 505.225 111.837 505.62 111.736 506.007C111.836 505.619 111.917 505.225 111.959 504.818Z" fill="#888693"/>
+      <path d="M104 456H64C60.927 456 57.94 456.358 55.065 457.014C37.277 461.074 24 476.981 24 496C24 493.26 24.281 490.585 24.806 488H112V464C112 459.581 108.418 456 104 456Z" fill="#888693"/>
+      <path d="M215.958 504.818C215.917 505.225 215.836 505.62 215.735 506.007C215.836 505.619 215.917 505.225 215.958 504.818Z" fill="#888693"/>
+      <path d="M136 456C131.582 456 128 459.582 128 464V488H215.194C215.719 490.585 216 493.26 216 496C216 476.982 202.723 461.075 184.935 457.014C182.06 456.358 179.073 456 176 456H136Z" fill="#888693"/>
+      <path d="M24 496V504C24 504.276 24.014 504.549 24.041 504.818C24.082 505.225 24.163 505.62 24.264 506.007C24.314 506.2 24.368 506.39 24.432 506.576C25.221 508.895 27.043 510.731 29.352 511.542C30.182 511.834 31.071 512 32 512H104C104.93 512 105.818 511.833 106.648 511.542C108.957 510.731 110.779 508.895 111.568 506.576C111.632 506.389 111.686 506.199 111.736 506.007C111.836 505.62 111.917 505.226 111.959 504.818C111.986 504.549 112 504.276 112 504V488H24.806C24.281 490.585 24 493.26 24 496Z" fill="#B6B8BE"/>
+      <path d="M128 488V504C128 504.276 128.014 504.549 128.041 504.818C128.082 505.225 128.163 505.62 128.264 506.007C128.314 506.2 128.368 506.39 128.432 506.576C129.221 508.895 131.043 510.731 133.352 511.542C134.182 511.834 135.071 512 136 512H208C208.93 512 209.818 511.833 210.648 511.542C212.957 510.731 214.779 508.895 215.568 506.576C215.632 506.389 215.686 506.199 215.736 506.007C215.836 505.62 215.917 505.226 215.959 504.818C215.986 504.549 216 504.276 216 504V496C216 493.26 215.719 490.585 215.194 488H128Z" fill="#B6B8BE"/>
+  </svg>
+    
+</div>
+
+<style>
+  h1 {
+    text-shadow:
+      0 0 80px #8c2e14,
+      0 0 50px #ea7816,
+      0 0 0px #f2a341;
+  }
+
+  .stars {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 1px;
+    width: 1px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: -42vw -4vh 0px 0px #fff,25vw -41vh 0px 0px #fff,-20vw 49vh 0px 1px #fff,5vw 40vh 1px 1px #fff,29vw 19vh 1px 0px #fff,-44vw -13vh 0px 0px #fff,46vw 41vh 0px 1px #fff,-3vw -45vh 0px 1px #fff,47vw 35vh 1px 0px #fff,12vw -8vh 1px 0px #fff,-34vw 48vh 1px 1px #fff,32vw 26vh 1px 1px #fff,32vw -41vh 1px 1px #fff,0vw 37vh 1px 1px #fff,34vw -26vh 1px 0px #fff,-14vw -49vh 1px 0px #fff,-12vw 45vh 0px 1px #fff,-44vw -33vh 0px 1px #fff,-13vw 41vh 0px 0px #fff,-36vw -11vh 0px 1px #fff,-23vw -24vh 1px 0px #fff,-38vw -27vh 0px 1px #fff,16vw -19vh 0px 0px #fff,28vw 33vh 1px 0px #fff,-49vw -4vh 0px 0px #fff,16vw 32vh 0px 1px #fff,36vw -18vh 1px 0px #fff,-25vw -30vh 1px 0px #fff,-23vw 24vh 0px 1px #fff,-2vw -35vh 1px 1px #fff,-25vw 9vh 0px 0px #fff,-15vw -34vh 0px 0px #fff,-8vw -19vh 1px 0px #fff,-20vw -20vh 1px 1px #fff,42vw 50vh 0px 1px #fff,-32vw 10vh 1px 0px #fff,-23vw -17vh 0px 0px #fff,44vw 15vh 1px 0px #fff,-40vw 33vh 1px 1px #fff,-43vw 8vh 0px 0px #fff,-48vw -15vh 1px 1px #fff,-24vw 17vh 0px 0px #fff,-31vw 50vh 1px 0px #fff,36vw -38vh 0px 1px #fff,-7vw 48vh 0px 0px #fff,15vw -32vh 0px 0px #fff,29vw -41vh 0px 0px #fff,2vw 37vh 1px 0px #fff,7vw -40vh 1px 1px #fff,15vw 18vh 0px 0px #fff,25vw -13vh 1px 1px #fff,-46vw -12vh 1px 1px #fff,-18vw 22vh 0px 0px #fff,23vw -9vh 1px 0px #fff,50vw 12vh 0px 1px #fff,45vw 2vh 0px 0px #fff,14vw -48vh 1px 0px #fff,23vw 43vh 0px 1px #fff,-40vw 16vh 1px 1px #fff,20vw -31vh 0px 1px #fff,-17vw 44vh 1px 1px #fff,18vw -45vh 0px 0px #fff,33vw -6vh 0px 0px #fff,0vw 7vh 0px 1px #fff,-10vw -18vh 0px 1px #fff,-19vw 5vh 1px 0px #fff,1vw 42vh 0px 0px #fff,22vw 48vh 0px 1px #fff,39vw -8vh 1px 1px #fff,-6vw -42vh 1px 0px #fff,-47vw 34vh 0px 0px #fff,-46vw 19vh 0px 1px #fff,-12vw -32vh 0px 0px #fff,-45vw -38vh 0px 1px #fff,-28vw 18vh 1px 0px #fff,-38vw -46vh 1px 1px #fff,49vw -6vh 1px 1px #fff,-28vw 18vh 1px 1px #fff,10vw -24vh 0px 1px #fff,-5vw -11vh 1px 1px #fff,33vw -8vh 1px 0px #fff,-16vw 17vh 0px 0px #fff,18vw 27vh 0px 1px #fff,-8vw -10vh 1px 1px #fff;
+    box-shadow: 24vw 9vh 1px 0px #fff,12vw -24vh 0px 1px #fff,-45vw -22vh 0px 0px #fff,-37vw -40vh 0px 1px #fff,29vw 19vh 0px 1px #fff,4vw -8vh 0px 1px #fff,-5vw 21vh 1px 1px #fff,-27vw 26vh 1px 1px #fff,-47vw -3vh 1px 1px #fff,-28vw -30vh 0px 1px #fff,-43vw -27vh 0px 1px #fff,4vw 22vh 1px 1px #fff,36vw 23vh 0px 0px #fff,-21vw 24vh 1px 1px #fff,-16vw 2vh 1px 0px #fff,-16vw -6vh 0px 0px #fff,5vw 26vh 0px 0px #fff,-34vw 41vh 0px 0px #fff,1vw 42vh 1px 1px #fff,11vw -13vh 1px 1px #fff,48vw -8vh 1px 0px #fff,22vw -15vh 0px 0px #fff,45vw 49vh 0px 0px #fff,43vw -27vh 1px 1px #fff,20vw -2vh 0px 0px #fff,8vw 22vh 0px 1px #fff,39vw 48vh 1px 1px #fff,-21vw -11vh 0px 1px #fff,-40vw 45vh 0px 1px #fff,11vw -30vh 1px 0px #fff,26vw 30vh 1px 0px #fff,45vw -29vh 0px 1px #fff,-2vw 18vh 0px 0px #fff,-29vw -45vh 1px 0px #fff,-7vw -27vh 1px 1px #fff,42vw 24vh 0px 0px #fff,45vw -48vh 1px 0px #fff,-36vw -18vh 0px 0px #fff,-44vw 13vh 0px 1px #fff,36vw 16vh 0px 1px #fff,40vw 24vh 0px 0px #fff,18vw 11vh 0px 0px #fff,-15vw -23vh 1px 0px #fff,-24vw 48vh 0px 1px #fff,27vw -45vh 1px 0px #fff,-2vw -24vh 0px 1px #fff,-15vw -28vh 0px 0px #fff,-43vw 13vh 1px 0px #fff,7vw 27vh 1px 0px #fff,47vw 5vh 0px 0px #fff,-45vw 15vh 1px 1px #fff,-5vw -28vh 0px 1px #fff,38vw 25vh 1px 1px #fff,-39vw -1vh 1px 0px #fff,5vw 0vh 1px 0px #fff,49vw 13vh 0px 0px #fff,48vw 10vh 0px 1px #fff,19vw -28vh 0px 0px #fff,4vw 7vh 0px 0px #fff,21vw 21vh 1px 1px #fff,-15vw -15vh 0px 1px #fff,-6vw -42vh 1px 0px #fff,-15vw 48vh 1px 1px #fff,-23vw 25vh 1px 1px #fff,-48vw 25vh 0px 1px #fff,-31vw -19vh 0px 1px #fff,4vw 37vh 1px 1px #fff,-43vw 28vh 0px 0px #fff,3vw -25vh 0px 1px #fff,-39vw 14vh 0px 1px #fff,-40vw 31vh 0px 1px #fff,35vw -36vh 1px 1px #fff,16vw 49vh 0px 0px #fff,6vw 39vh 0px 0px #fff,3vw -35vh 0px 1px #fff,-44vw -2vh 1px 0px #fff,-6vw 21vh 1px 0px #fff,48vw 9vh 1px 1px #fff,-43vw 30vh 1px 1px #fff,29vw -12vh 1px 1px #fff,-48vw 13vh 1px 0px #fff,-42vw 32vh 1px 1px #fff,34vw 15vh 1px 1px #fff,29vw -37vh 1px 1px #fff,28vw 2vh 0px 0px #fff;
+    animation: floatBubble 20s infinite ease-in-out;
+  }
+  .stars-reverse {
+    position: fixed;
+    top: 50%;
+    left: 30%;
+    height: 1px;
+    width: 1px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: -42vw -4vh 0px 0px #fff,25vw -41vh 0px 0px #fff,-20vw 49vh 0px 1px #fff,5vw 40vh 1px 1px #fff,29vw 19vh 1px 0px #fff,-44vw -13vh 0px 0px #fff,46vw 41vh 0px 1px #fff,-3vw -45vh 0px 1px #fff,47vw 35vh 1px 0px #fff,12vw -8vh 1px 0px #fff,-34vw 48vh 1px 1px #fff,32vw 26vh 1px 1px #fff,32vw -41vh 1px 1px #fff,0vw 37vh 1px 1px #fff,34vw -26vh 1px 0px #fff,-14vw -49vh 1px 0px #fff,-12vw 45vh 0px 1px #fff,-44vw -33vh 0px 1px #fff,-13vw 41vh 0px 0px #fff,-36vw -11vh 0px 1px #fff,-23vw -24vh 1px 0px #fff,-38vw -27vh 0px 1px #fff,16vw -19vh 0px 0px #fff,28vw 33vh 1px 0px #fff,-49vw -4vh 0px 0px #fff,16vw 32vh 0px 1px #fff,36vw -18vh 1px 0px #fff,-25vw -30vh 1px 0px #fff,-23vw 24vh 0px 1px #fff,-2vw -35vh 1px 1px #fff,-25vw 9vh 0px 0px #fff,-15vw -34vh 0px 0px #fff,-8vw -19vh 1px 0px #fff,-20vw -20vh 1px 1px #fff,42vw 50vh 0px 1px #fff,-32vw 10vh 1px 0px #fff,-23vw -17vh 0px 0px #fff,44vw 15vh 1px 0px #fff,-40vw 33vh 1px 1px #fff,-43vw 8vh 0px 0px #fff,-48vw -15vh 1px 1px #fff,-24vw 17vh 0px 0px #fff,-31vw 50vh 1px 0px #fff,36vw -38vh 0px 1px #fff,-7vw 48vh 0px 0px #fff,15vw -32vh 0px 0px #fff,29vw -41vh 0px 0px #fff,2vw 37vh 1px 0px #fff,7vw -40vh 1px 1px #fff,15vw 18vh 0px 0px #fff,25vw -13vh 1px 1px #fff,-46vw -12vh 1px 1px #fff,-18vw 22vh 0px 0px #fff,23vw -9vh 1px 0px #fff,50vw 12vh 0px 1px #fff,45vw 2vh 0px 0px #fff,14vw -48vh 1px 0px #fff,23vw 43vh 0px 1px #fff,-40vw 16vh 1px 1px #fff,20vw -31vh 0px 1px #fff,-17vw 44vh 1px 1px #fff,18vw -45vh 0px 0px #fff,33vw -6vh 0px 0px #fff,0vw 7vh 0px 1px #fff,-10vw -18vh 0px 1px #fff,-19vw 5vh 1px 0px #fff,1vw 42vh 0px 0px #fff,22vw 48vh 0px 1px #fff,39vw -8vh 1px 1px #fff,-6vw -42vh 1px 0px #fff,-47vw 34vh 0px 0px #fff,-46vw 19vh 0px 1px #fff,-12vw -32vh 0px 0px #fff,-45vw -38vh 0px 1px #fff,-28vw 18vh 1px 0px #fff,-38vw -46vh 1px 1px #fff,49vw -6vh 1px 1px #fff,-28vw 18vh 1px 1px #fff,10vw -24vh 0px 1px #fff,-5vw -11vh 1px 1px #fff,33vw -8vh 1px 0px #fff,-16vw 17vh 0px 0px #fff,18vw 27vh 0px 1px #fff,-8vw -10vh 1px 1px #fff;
+    box-shadow: 24vw 9vh 1px 0px #fff,12vw -24vh 0px 1px #fff,-45vw -22vh 0px 0px #fff,-37vw -40vh 0px 1px #fff,29vw 19vh 0px 1px #fff,4vw -8vh 0px 1px #fff,-5vw 21vh 1px 1px #fff,-27vw 26vh 1px 1px #fff,-47vw -3vh 1px 1px #fff,-28vw -30vh 0px 1px #fff,-43vw -27vh 0px 1px #fff,4vw 22vh 1px 1px #fff,36vw 23vh 0px 0px #fff,-21vw 24vh 1px 1px #fff,-16vw 2vh 1px 0px #fff,-16vw -6vh 0px 0px #fff,5vw 26vh 0px 0px #fff,-34vw 41vh 0px 0px #fff,1vw 42vh 1px 1px #fff,11vw -13vh 1px 1px #fff,48vw -8vh 1px 0px #fff,22vw -15vh 0px 0px #fff,45vw 49vh 0px 0px #fff,43vw -27vh 1px 1px #fff,20vw -2vh 0px 0px #fff,8vw 22vh 0px 1px #fff,39vw 48vh 1px 1px #fff,-21vw -11vh 0px 1px #fff,-40vw 45vh 0px 1px #fff,11vw -30vh 1px 0px #fff,26vw 30vh 1px 0px #fff,45vw -29vh 0px 1px #fff,-2vw 18vh 0px 0px #fff,-29vw -45vh 1px 0px #fff,-7vw -27vh 1px 1px #fff,42vw 24vh 0px 0px #fff,45vw -48vh 1px 0px #fff,-36vw -18vh 0px 0px #fff,-44vw 13vh 0px 1px #fff,36vw 16vh 0px 1px #fff,40vw 24vh 0px 0px #fff,18vw 11vh 0px 0px #fff,-15vw -23vh 1px 0px #fff,-24vw 48vh 0px 1px #fff,27vw -45vh 1px 0px #fff,-2vw -24vh 0px 1px #fff,-15vw -28vh 0px 0px #fff,-43vw 13vh 1px 0px #fff,7vw 27vh 1px 0px #fff,47vw 5vh 0px 0px #fff,-45vw 15vh 1px 1px #fff,-5vw -28vh 0px 1px #fff,38vw 25vh 1px 1px #fff,-39vw -1vh 1px 0px #fff,5vw 0vh 1px 0px #fff,49vw 13vh 0px 0px #fff,48vw 10vh 0px 1px #fff,19vw -28vh 0px 0px #fff,4vw 7vh 0px 0px #fff,21vw 21vh 1px 1px #fff,-15vw -15vh 0px 1px #fff,-6vw -42vh 1px 0px #fff,-15vw 48vh 1px 1px #fff,-23vw 25vh 1px 1px #fff,-48vw 25vh 0px 1px #fff,-31vw -19vh 0px 1px #fff,4vw 37vh 1px 1px #fff,-43vw 28vh 0px 0px #fff,3vw -25vh 0px 1px #fff,-39vw 14vh 0px 1px #fff,-40vw 31vh 0px 1px #fff,35vw -36vh 1px 1px #fff,16vw 49vh 0px 0px #fff,6vw 39vh 0px 0px #fff,3vw -35vh 0px 1px #fff,-44vw -2vh 1px 0px #fff,-6vw 21vh 1px 0px #fff,48vw 9vh 1px 1px #fff,-43vw 30vh 1px 1px #fff,29vw -12vh 1px 1px #fff,-48vw 13vh 1px 0px #fff,-42vw 32vh 1px 1px #fff,34vw 15vh 1px 1px #fff,29vw -37vh 1px 1px #fff,28vw 2vh 0px 0px #fff;
+    animation: floatBubble 50s reverse infinite ease-in-out;
+  }
+
+  @keyframes floatBubble {
+    0% {
+      transform: translate(0,  -0px); 
+    }
+    50% {
+      transform: translate(0,  50px); 
+    }
+    100% {
+      transform: translate(0,  0px); 
+    }
+  }
+</style>
