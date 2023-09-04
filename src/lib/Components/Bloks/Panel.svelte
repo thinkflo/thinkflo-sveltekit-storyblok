@@ -6,7 +6,6 @@
 
 	export let blok;
 	export let parent;
-	export let showDivider;
 </script>
 
 <!-- Hero Panels -->
@@ -42,7 +41,6 @@
 {:else if blok.Image_Layout === 'Background' && parent === 'Carousel'}
 	<div
 		class="flex flex-col items-center space-y-4 h-full text-center bg-white text-black"
-		class:border={showDivider}
 	>
 		{#if blok?.Image?.filename}
 			<picture>
@@ -61,7 +59,6 @@
 {:else if blok.Image_Layout === 'Icon' && parent === 'Carousel'}
 	<div
 		class="p-8 flex flex-col items-center space-y-4 h-full text-center bg-white text-black"
-		class:border={showDivider}
 	>
 		{#if blok?.Image?.filename}
 			<img class="h-10 w-10 object-contain" alt="{blok?.Image?.alt}" src={blok?.Image?.filename} />
@@ -89,7 +86,7 @@
 		</div>
 	</a>
 {:else}
-	<div class="p-8 w-full h-full text-center" class:border={showDivider}>
+	<div class="p-8 w-full h-full text-center">
 		<h3>{blok.Heading}</h3>
 	</div>
 {/if}

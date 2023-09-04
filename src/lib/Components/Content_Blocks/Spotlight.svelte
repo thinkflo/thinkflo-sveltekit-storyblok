@@ -8,21 +8,23 @@
 	export let isFirst;
 </script>
 
-<section class="py-12" use:storyblokEditable={blok}>
+<section class="py-12 " use:storyblokEditable={blok}>
 	<Constrained_Width>
-		<div class="space-y-4">
-			{#if blok?.Heading}
-				<Heading className="text-4xl font-semibold" {isFirst}>{blok?.Heading}</Heading>
-			{/if}
-			{#if blok?.Short_Blurb}
-				<div class="prose dark:text-white text-black">{@html renderRichText(blok?.Short_Blurb)}</div>
-			{/if}
-		</div>
+		<div class="bg-slate-400 bg-opacity-70 p-6 rounded-3xl">
+			<div class="space-y-4 flex flex-col items-center text-center max-w-4xl mx-auto">
+				{#if blok?.Heading}
+					<Heading className="text-4xl font-semibold uppercase" {isFirst}>{blok?.Heading}</Heading>
+				{/if}
+				{#if blok?.Short_Blurb}
+					<div class="prose dark:text-white text-black min-w-full">{@html renderRichText(blok?.Short_Blurb)}</div>
+				{/if}
+			</div>
 
-		<Spotlight_Container className="max-w-sm mx-auto grid gap-6 lg:grid-cols-3 items-start lg:max-w-none group">
-			{#each blok?.Cards as component}
-				<StoryblokComponent blok={component} />
-			{/each}
-		</Spotlight_Container>
+			<Spotlight_Container className="max-w-sm mx-auto grid gap-6 lg:grid-cols-3 items-start lg:max-w-none group">
+				{#each blok?.Cards as component}
+					<StoryblokComponent blok={component} />
+				{/each}
+			</Spotlight_Container>
+		</div>
 	</Constrained_Width>
 </section>

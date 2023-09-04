@@ -8,7 +8,6 @@
 	import Heading from '$lib/Components/UI/Heading.svelte';
 
 	export let blok;
-	export let showDivider;
 	export let index;
 	export let isFirst;
 </script>
@@ -35,13 +34,13 @@
 		>
 			{#each blok.Panels as component}
 				<SplideSlide>
-					<StoryblokComponent blok={component} {showDivider} {index} parent={blok?.component} />
+					<StoryblokComponent blok={component} {index} parent={blok?.component} />
 				</SplideSlide>
 			{/each}
 
 			{#each blok.Stories as component}
 				<SplideSlide>
-					<Panel blok={component} showDivider={blok?.Divider_Line} parent={blok?.component} />
+					<Panel blok={component} parent={blok?.component} />
 				</SplideSlide>
 			{/each}
 		</Splide>
