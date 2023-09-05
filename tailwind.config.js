@@ -63,6 +63,11 @@ export default {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        floatBubble: {
+          '0%': { transform: 'translate(0,  -0px)' },
+          '50%': { transform: 'translate(0,  50px)' },
+          '100%': { transform: 'translate(0,  0px)' }
         }
       }
     }
