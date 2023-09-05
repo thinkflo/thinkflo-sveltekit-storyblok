@@ -65,7 +65,7 @@ export default {
           '100%': { opacity: '1' },
         },
         floatBubble: {
-          '0%': { transform: 'translate(0,  -0px)' },
+          '0%': { transform: 'translate(0,  -50px)' },
           '50%': { transform: 'translate(0,  50px)' },
           '100%': { transform: 'translate(0,  0px)' }
         }

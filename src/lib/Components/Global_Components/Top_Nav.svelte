@@ -57,7 +57,7 @@
 	$: if(browser) document.body.classList.toggle('noscroll', isOpen);
 </script>
 
-<header class="sticky inset-0 z-50 w-full h-24 bg-[#f7f6fd] dark:bg-black text-black dark:text-white transition-transform duration-500" class:navbar--hidden={!show}>
+<header class="sticky inset-0 z-50 w-full h-24 bg-transparent text-black dark:text-white transition-transform duration-500" class:navbar--hidden={!show}>
 	<Constrained_Width className="container h-full mx-auto flex items-center justify-between">
 		<div>
 			<a tabindex="0" href="/"><img src="/logo.svg" alt="Thinkflo Logo" class="h-10 dark:hidden" /></a>

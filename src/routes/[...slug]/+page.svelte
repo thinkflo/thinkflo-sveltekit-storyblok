@@ -18,7 +18,7 @@
 	<title>{data?.story?.name || 'Thinkflo'}</title>
 </svelte:head>
 
-<main class="bg-gray-200">
+<main>
 	<Hero />
 	{#if data.story}
 		{#key data.story.content._uid}

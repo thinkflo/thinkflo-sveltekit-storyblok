@@ -24,7 +24,7 @@
     font-family: Poppins, system-ui, sans-serif;
   }
 }
-main {
+body {
   @apply dark:bg-black dark:text-white text-black bg-white;
 }
 
