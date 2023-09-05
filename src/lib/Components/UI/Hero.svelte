@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from "svelte";
   let scroll;
 
 </script>
@@ -10,8 +9,8 @@
   <p class="fixed top-4 left-4 z-50 text-4xl">{scroll}</p>
   <h1 class="text-7xl text-transparent bg-clip-text font-extrabold uppercase text-center max-w-xl bg-gradient-to-r from-jaffa-400 via-jaffa-500 to-jaffa-800">This is our bold journey</h1>
 
-  <div class="stars fixed top-1/2 left-1/2 h-px w-px bg-white rounded-full animate-[floatBubble_20s_ease-in-out_infinite]" style:transform={`translate3d(0, ${scroll * 0.02}px, 0)`} />
-  <div class="stars fixed top-1/2 left-1/3 h-px w-px bg-white rounded-full animate-[floatBubble_50s_ease-in-out_alternate-reverse_infinite]" style:transform={`translate3d(0, ${scroll * 0.01}px, 0)`} />
+  <div class="stars fixed top-1/2 left-1/2 h-px w-px bg-white rounded-full animate-[floatBubble_45s_ease-in-out_alternate_infinite]" />
+  <div class="stars fixed top-1/2 left-1/3 h-px w-px bg-white rounded-full animate-[floatBubble_60s_ease-in-out_alternate-reverse_infinite]" />
 
   <svg 
     style:transform={`translate3d(0, ${scroll * 0.07}px, 0)`}
