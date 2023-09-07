@@ -8,6 +8,7 @@ import Spotlight_Card from "$lib/Components/Bloks/Spotlight_Card.svelte";
 
 import Lottie_Player from "$lib/Components/Content_Blocks/Lottie_Player.svelte";
 import Grid from "$lib/Components/Content_Blocks/Grid.svelte";
+import Hero from "$lib/Components/Content_Blocks/Hero.svelte";
 import Spotlight from "$lib/Components/Content_Blocks/Spotlight.svelte";
 import Stats_Panel from "$lib/Components/Content_Blocks/Stats_Panel.svelte";
 import Carousel from "$lib/Components/Content_Blocks/Carousel.svelte";
@@ -21,6 +22,7 @@ import Work_Overview_Layout from "$lib/Components/Content_Types/Work_Overview_La
 const components = {
   Lottie_Player,
   Grid,
+  Hero,
   Spotlight,
   Stats_Panel,
   Carousel,

@@ -6,8 +6,11 @@
 
 {#key blok}
 	<article use:storyblokEditable={blok}>
-		{#each blok.Content_Blocks as component, index}
-			<StoryblokComponent blok={component} isFirst={index === 0} />
+		{#each [
+			...(blok.Content_Blocks.filter(item => item.component === "Hero") ?? []), 
+			...(blok.Content_Blocks.filter(item => item.component !== "Hero") ?? [])
+		] as nestedBlok, index}
+			<StoryblokComponent blok={nestedBlok} isFirst={index === 0} />
 		{/each}
 	</article>
 {/key}

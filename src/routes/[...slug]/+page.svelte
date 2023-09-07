@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { useStoryblokBridge, StoryblokComponent } from '@storyblok/svelte';
 	import Cookies_Monster from '$lib/Components/UI/Cookies_Monster.svelte';
-	import Hero from '$lib/Components/UI/Hero.svelte';
 
 	export let data;
 
@@ -19,7 +18,6 @@
 </svelte:head>
 
 <main>
-	<Hero />
 	{#if data.story}
 		{#key data.story.content._uid}
 			<StoryblokComponent blok={data.story.content} />

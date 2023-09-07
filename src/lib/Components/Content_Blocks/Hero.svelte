@@ -8,7 +8,6 @@
 <!-- style:transform={`translate3d(0, ${scroll * 0.08}px, 0)`} -->
 
 <div class="w-full flex flex-col items-center justify-center py-56 relative h-screen overflow-hidden">
-  <p class="fixed top-4 left-4 z-50 text-4xl">{scroll}</p>
   <h1 class="text-7xl text-transparent bg-clip-text font-extrabold uppercase text-center max-w-xl bg-gradient-to-r from-jaffa-400 via-jaffa-500 to-jaffa-800 animate-fade-in">This is our bold journey</h1>
 
   <div class="stars absolute top-1/2 left-1/2 h-px w-px bg-white rounded-full animate-[floatBubble_25s_ease-in-out_alternate_infinite]" />
@@ -56,7 +55,6 @@
     </svg>
   </div>
     
-
   <div class="absolute h-auto w-96 top-20 right-40 z-50">
     <!-- Source of the astronaut SVG: https://codepen.io/killerlapin/pen/MedjgM -->
     <svg 
