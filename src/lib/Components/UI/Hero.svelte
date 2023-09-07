@@ -1,18 +1,4 @@
-<svelte:head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
-</svelte:head>
-
 <script>
-	import { onMount } from "svelte";
-  import { gsap }  from "gsap/dist/gsap";        
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
-  import { MotionPathPlugin } from "gsap/dist/MotionPathPlugin";
-
-  onMount(() => {
-    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
-  })
   
   let scroll;
 </script>
