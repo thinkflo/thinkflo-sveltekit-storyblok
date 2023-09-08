@@ -1,62 +1,25 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, parent, fetch }) {
 	const { storyblokApi } = await parent();
-	let slug = params.slug;
+	const slug = params.slug || 'home';
+	const path = `cdn/stories/${slug}`;
 
-	let path = 'cdn/stories/';
-	let sbParams = {
+	const sbParams = {
 		version: 'draft',
 		resolve_relations: ['Grid.Stories', 'Carousel.Stories']
 	};
 
-  if (slug) {
-    path += slug;
-  } else {
-    path += 'home';
-  }
 	try {
 		const dataStory = await storyblokApi.get(path, sbParams);
-		
-		if (
-			dataStory?.data?.story?.content?.Content_Blocks?.find(
-				block => block?.component === 'Trending_News'
-			)
-		) {			
-			dataStory.data.story.content.Content_Blocks.find(
-				(block) => block?.component === 'Trending_News'
-			)['data'] = await fetch('https://thinkflo.netlify.app/api/getNews')
-				.then(res => {
-					if (res.ok) {
-						return res.json();
-					} else {
-						throw new Error(JSON.stringify(res))
-					}
-				})
-				.catch(e => {
-					console.log(e)
-					return undefined}
-				);
-			
+		const contentBlocks = dataStory?.data?.story?.content?.Content_Blocks;
+
+		if (contentBlocks) {
+			await updateTrendingNews(contentBlocks, fetch);
+			await updateTimeline(contentBlocks, storyblokApi);
 		}
-		if (
-			dataStory.data.story.content.component === "Work_Overview_Layout"
-		) {	
-			const workOverviewBlock = dataStory.data.story.content;
 
-			const { data } = await storyblokApi.get('cdn/stories', {
-				version: 'draft',
-				starts_with: 'work',
-				is_startpage: false
-			});
-			
-			const {
-				data: { datasource_entries: filter_datasources }
-			} = await storyblokApi.get('cdn/datasource_entries', {
-				version: 'draft'
-			});
-
-			workOverviewBlock['allArticles'] = data?.stories;
-			workOverviewBlock['filters'] = filter_datasources;	
+		if (dataStory.data.story.content.component === "Work_Overview_Layout") {
+			await updateWorkOverview(dataStory.data.story.content, storyblokApi);
 		}
 
 		return {
@@ -65,4 +28,57 @@ export async function load({ params, parent, fetch }) {
 	} catch (error) {
 		console.error("Error fetching story: ", error);
 	}
+}
+
+async function updateBlockData(blocks, componentName, fetchDataFn) {
+	const block = blocks.find(block => block?.component === componentName);
+	if (block) {
+		try {
+			block['data'] = await fetchDataFn();
+		} catch (e) {
+			console.log(e);
+			block['data'] = undefined;
+		}
+	}
+}
+
+async function updateTrendingNews(blocks, fetch) {
+	await updateBlockData(blocks, 'Trending_News', async () => {
+		const res = await fetch('https://thinkflo.netlify.app/api/getNews');
+		if (res.ok) {
+			return res.json();
+		} else {
+			throw new Error(JSON.stringify(res));
+		}
+	});
+}
+
+async function updateTimeline(blocks, storyblokApi) {
+	await updateBlockData(blocks, 'Timeline', async () => {
+		const { data } = await storyblokApi.get('cdn/stories', {
+			version: 'draft',
+			starts_with: 'work',
+			is_startpage: false
+		});
+		const tlContentBlok = blocks.find(block => block.component === "Timeline");
+		
+		tlContentBlok['events'] = data.stories;
+	});
+}
+
+async function updateWorkOverview(block, storyblokApi) {
+	const { data } = await storyblokApi.get('cdn/stories', {
+		version: 'draft',
+		starts_with: 'work',
+		is_startpage: false
+	});
+
+	const {
+		data: { datasource_entries: filter_datasources }
+	} = await storyblokApi.get('cdn/datasource_entries', {
+		version: 'draft'
+	});
+
+	block['allArticles'] = data?.stories;
+	block['filters'] = filter_datasources;
 }
