@@ -18,7 +18,7 @@
 
   <div 
     style:transform={`translate3d(${scroll * 4}px, ${scroll * 1}px, ${scroll * 2}px) scale(${scroll * 0.005 + 1})`}
-    class="absolute h-auto w-96 top-20 left-40 z-50" 
+    class="absolute h-auto w-96 top-20 left-40 z-10" 
   >
     <svg class="satellite w-64" viewBox="0 0 4657 3190" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M1834.98 2033.22C1834.98 2033.22 6.23806 1347.93 7.01196 1333.61L50.3507 31.5147C51.1246 14.1019 68.5375 2.49326 84.7896 8.68451L1878.32 671.148C1893.02 676.566 1902.31 690.883 1901.92 706.361L1858.2 2018.13C1857.81 2029.74 1846.2 2037.48 1834.98 2033.22Z" fill="#2F7889"/>
@@ -58,7 +58,7 @@
     </svg>
   </div>
     
-  <div class="absolute h-auto w-96 top-20 right-40 z-50">
+  <div class="absolute h-auto w-96 top-20 right-40 z-10">
     <!-- Source of the astronaut SVG: https://codepen.io/killerlapin/pen/MedjgM -->
     <svg 
       class="astronaut h-full w-full overflow-visible" 
