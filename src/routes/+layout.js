@@ -14,6 +14,7 @@ import Stats_Panel from "$lib/Components/Content_Blocks/Stats_Panel.svelte";
 import Carousel from "$lib/Components/Content_Blocks/Carousel.svelte";
 import Text_Content from "$lib/Components/Content_Blocks/Text_Content.svelte";
 import Trending_News from "$lib/Components/Content_Blocks/Trending_News.svelte";
+import Timeline from "$lib/Components/Content_Blocks/Timeline.svelte";
 
 import Page from "$lib/Components/Content_Types/Page.svelte";
 import Work_Detail_Layout from "$lib/Components/Content_Types/Work_Detail_Layout.svelte";
@@ -28,6 +29,7 @@ const components = {
   Carousel,
   Text_Content,
   Trending_News,
+  Timeline,
 
   page: Page,
   Work_Detail_Layout,
