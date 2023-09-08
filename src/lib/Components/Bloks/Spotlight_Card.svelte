@@ -1,6 +1,6 @@
 <script>
 	import { storyblokEditable, renderRichText } from '@storyblok/svelte';
-	import { buildSrcSet } from '$lib/image.js';
+	import { buildSrcSet } from '$lib/utils/image.js';
 
 	export let blok;
 </script>
