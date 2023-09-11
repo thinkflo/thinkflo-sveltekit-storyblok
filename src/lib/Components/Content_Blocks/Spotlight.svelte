@@ -10,7 +10,7 @@
 
 <section class="py-12 " use:storyblokEditable={blok}>
 	<Constrained_Width>
-		<div class="bg-gray-800 bg-opacity-25 p-6 rounded-3xl">
+		<div class="bg-[#0d032740] backdrop-blur-xl p-6 rounded-3xl">
 			<div class="space-y-4 flex flex-col items-center text-center max-w-4xl mx-auto">
 				{#if blok?.Heading}
 					<Heading className="text-4xl font-semibold uppercase" {isFirst}>{blok?.Heading}</Heading>

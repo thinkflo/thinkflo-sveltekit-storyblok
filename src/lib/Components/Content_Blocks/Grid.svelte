@@ -35,7 +35,7 @@
 				class:w-[90%]={blok?.Layout}
 				class:right-0={blok?.Layout === "panelsRight"}
 				class:left-0={blok?.Layout === "panelsLeft"}
-				class="bg-gray-800 bg-opacity-25 rounded-3xl absolute top-0 h-full " 
+				class="bg-[#0d032740] backdrop-blur-xl rounded-3xl absolute top-0 h-full " 
 			></div>
 			<div 
 				class:pl-12={blok?.Layout === "panelsLeft"}
