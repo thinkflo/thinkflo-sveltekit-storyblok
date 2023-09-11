@@ -60,9 +60,11 @@ async function updateTimeline(blocks, storyblokApi) {
 			starts_with: 'work',
 			is_startpage: false
 		});
+
+		const filteredStories = data.stories.filter(story => story.content.Launch_Date);
 		const tlContentBlok = blocks.find(block => block.component === "Timeline");
 		
-		tlContentBlok['events'] = data.stories;
+		tlContentBlok['events'] = filteredStories;
 	});
 }
 
