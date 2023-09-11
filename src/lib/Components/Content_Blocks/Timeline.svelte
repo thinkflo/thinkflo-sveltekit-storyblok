@@ -4,8 +4,17 @@
   import { onMount } from 'svelte';
 	import Constrained_Width from '../UI/Constrained_Width.svelte';
   
-  let timeline;
   export let blok;
+  let timeline;
+
+  const getDateParts = (dateString) => {
+		const date = new Date(dateString);
+		return {
+			year: date.getFullYear(),
+			month: date.getMonth(),
+			day: date.getDay()
+		};
+	};
 
   let data = {
     "title": {
@@ -23,17 +32,10 @@
     "eras": [],
   }
 
-  data.events = blok.events.map((event) => { 
-    const launchYear = new Date(event.content.Launch_Date).getFullYear();
-    const launchMonth = new Date(event.content.Launch_Date).getMonth();
-    const launchDay = new Date(event.content.Launch_Date).getDay();
-    
+  data.events = blok.events.map((event) => {     
     return ({
-      "start_date": {
-        "year": launchYear,
-        "month": launchMonth,
-        "day": launchDay
-      },
+      "start_date": getDateParts(event.content.Launch_Date),
+      "end_date": getDateParts(event.content.End_Date),
       "text": {
         "headline": event.content.Title || event.content.Heading || event.name,
         "text": hasRichText(event?.content?.Blurb) ? renderRichText(event.content.Blurb) : renderRichText(event.content.Description)
@@ -44,7 +46,7 @@
         "credit": ""
       },
       "group": "",
-      "display_date": launchYear,
+      "display_date": getDateParts(event.content.Launch_Date).year,
       "background": {
         "color": "#ea7816"
       },
@@ -68,10 +70,7 @@
   
   onMount(async () => {
     const { Timeline } = await import('@knight-lab/timelinejs');
-    const options = {
-      initial_zoom: 10
-    }
-    timeline = new Timeline('timeline-embed', data, options);
+    timeline = new Timeline('timeline-embed', data);
   });
 </script>
 
@@ -84,4 +83,4 @@
 </Constrained_Width>
 
 
-<div id='timeline-embed' style="width: 100%; height: 600px" />
+<div id='timeline-embed' style="width: 100%; height: 80vh" />
