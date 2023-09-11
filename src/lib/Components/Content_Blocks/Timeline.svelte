@@ -2,6 +2,7 @@
 	import { hasRichText } from '$lib/utils/blokData';
 	import { renderRichText } from '@storyblok/svelte';
   import { onMount } from 'svelte';
+	import Constrained_Width from '../UI/Constrained_Width.svelte';
   
   let timeline;
   export let blok;
@@ -19,7 +20,7 @@
       }
     },
     "events": [],
-    "eras": []
+    "eras": [],
   }
 
   data.events = blok.events.map((event) => { 
@@ -67,7 +68,10 @@
   
   onMount(async () => {
     const { Timeline } = await import('@knight-lab/timelinejs');
-    timeline = new Timeline('timeline-embed', data);
+    const options = {
+      initial_zoom: 10
+    }
+    timeline = new Timeline('timeline-embed', data, options);
   });
 </script>
 
@@ -75,6 +79,9 @@
   <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
 </svelte:head>
 
-<h1 class="text-6xl py-12">Timeline</h1>
+<Constrained_Width>
+  <h1 class="text-6xl py-12">Timeline</h1>
+</Constrained_Width>
 
-<div id='timeline-embed' style="width: 100%; height: 600px"></div>
+
+<div id='timeline-embed' style="width: 100%; height: 600px" />
