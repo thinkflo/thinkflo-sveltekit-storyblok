@@ -17,13 +17,11 @@
   <div class="stars absolute top-1/2 left-1/2 h-px w-px bg-white rounded-full animate-[floatBubble_25s_ease-in-out_alternate_infinite]" />
   <div class="stars absolute top-1/2 left-1/3 h-px w-px bg-white rounded-full animate-[floatBubble_30s_ease-in-out_alternate-reverse_infinite]" />
 
-  <!-- style:transform={`translate3d(${scroll * 8}px, ${scroll * 1}px, ${scroll * 0.1}px) scale(${scroll * 0.010 + 1})`} -->
-  <!-- class:hidden={scroll > 500} -->
   <div 
-    class="absolute h-auto w-96 top-20 left-40 z-10" 
+    class="absolute h-auto w-48 top-80 left-96 z-10" 
   >
   <Saos animation={"from-left 2s cubic-bezier(0.5, 0, 0.35, 1) both"}>
-    <svg class="satellite w-64" viewBox="0 0 181 191" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="satellite w-full h-full" viewBox="0 0 181 191" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g style="mix-blend-mode:luminosity" opacity="0.72">
       <path d="M170.387 22.3078C168.585 20.3359 168.731 17.2549 170.712 15.4611C172.692 13.6673 175.787 13.8123 177.589 15.7843C179.39 17.7562 179.245 20.8372 177.264 22.631C175.283 24.4248 172.189 24.2798 170.387 22.3078Z" fill="#FFCA28"/>
       <g opacity="0.55">
@@ -679,7 +677,7 @@
     
   <div class="absolute h-auto w-96 top-20 right-40 z-10">
     <!-- Source of the astronaut SVG: https://codepen.io/killerlapin/pen/MedjgM -->
-    <Saos animation={"slide-in-top 3s cubic-bezier(0.5, 0, 0.35, 1) both"}>
+    <Saos animation={"slide-in-top 2.25s cubic-bezier(0.5, 0, 0.35, 1) both"}>
       <svg 
         class="astronaut h-full w-full" 
         viewBox="0 0 1167 807" 
@@ -806,10 +804,8 @@
     background: radial-gradient(100% 100.9% at 0% 0%, #F90 0%, rgba(255, 153, 0, 0.49) 28.65%, rgba(255, 153, 0, 0.00) 100%);
   }
   h1 {
-    text-shadow:
-      0 0 80px #8c2e14,
-      0 0 50px #ea7816,
-      0 0 0px #f2a341;
+    background: linear-gradient(80deg, #F90 10%, #FF3116 90%);
+    background-clip: text;
   }
   .astronaut, .satellite{
     animation: Levitation 5s 1s infinite ease-in-out;
