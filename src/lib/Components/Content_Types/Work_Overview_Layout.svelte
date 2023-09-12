@@ -4,22 +4,26 @@
 		StoryblokComponent,
 		renderRichText
 	} from '@storyblok/svelte';
+	import { hasRichText } from "$lib/utils/blokData";
+	import { fade } from "svelte/transition";
+	import { quintOut } from "svelte/easing";
 	import Constrained_Width from '$lib/Components/UI/Constrained_Width.svelte';
 	import Heading from '$lib/Components/UI/Heading.svelte';
-	import { hasRichText } from "$lib/utils/blokData";
 
 	export let blok;
-	export let selection = "";
+	export let selection = "all";
 	let articles = [...blok?.allArticles];
 
 	$: {
-		if(selection) {
+		if(selection && selection !== "all") {
 			articles = [...blok?.allArticles.filter((article) => article.content.Category.includes(selection))]
+		} else {
+			articles = [...blok?.allArticles];
 		}
 	}
 
 	const handleSelection = (event) => {
-	  selection = event.target.dataset.value;
+		selection = event.target.dataset.value;
 	};
 </script>
 
@@ -32,8 +36,17 @@
 				<ul
 				class="categories relative mb-7 flex overflow-x-auto font-thin uppercase scrollbar-hide lg:m-0 lg:w-fit lg:flex-col lg:space-y-3 lg:px-3 md:justify-center lg:justify-start"
 				>
+					<li
+						class:text-jaffa-400={"all" === selection}
+						class="mr-4 min-h-[3rem] list-none text-center lg:min-h-0 lg:text-left"
+					>
+						<button on:click={handleSelection} data-value="all">
+							All
+						</button>
+					</li>
 					{#each blok.filters as category}
 						<li
+							class:text-jaffa-400={category.name === selection}
 							class="mr-4 min-h-[3rem] list-none text-center lg:min-h-0 lg:text-left"
 						>
 							<button on:click={handleSelection} data-value={category.name}>
@@ -48,6 +61,8 @@
 			<div class="md:pl-4 grid md:grid-cols-2 w-full gap-4">
 				{#each articles as article}
 					<a
+						in:fade={{ delay: 50, duration: 1000, easing: quintOut }}
+						out:fade={{ delay: 0, duration: 42, easing: quintOut }}
 						data-sveltekit-reload
 						href={article?.full_slug}
 						class="group/work flex flex-col justify-center space-y-4 bg-gray-800 px-8 py-12 relative overflow-hidden cursor-pointer aspect-video"
