@@ -1,8 +1,4 @@
 <script>
-	import { onMount } from "svelte";
-	import { spring } from "svelte/motion";
-	import { fade } from "svelte/transition";
-	import { quintOut } from "svelte/easing";
 	import {
 		storyblokEditable,
 		StoryblokComponent,
@@ -13,46 +9,14 @@
 	import { hasRichText } from "$lib/utils/blokData";
 
 	export let blok;
-	let selectedFilters = [];
-	let articles = [];
-
 	export let selection = "";
+	let articles = [...blok?.allArticles];
 
 	$: {
-		if (selectedFilters.length === 0) {
-			articles = [...blok?.allArticles];
-		} else {
-			articles = blok?.allArticles.filter((article) => {
-				let found = false;
-				if (article?.content?.Category?.length) {
-					found = article.content.Category.some((category) => selectedFilters.includes(category));
-				}
-				if (!found && article?.content?.Industry?.length) {
-					found = article.content.Industry.some((industry) => selectedFilters.includes(industry));
-				}
-				return found;
-			});
+		if(selection) {
+			articles = [...blok?.allArticles.filter((article) => article.content.Category.includes(selection))]
 		}
 	}
-
-	console.log(blok)
-
-	onMount(() => {
-	  window.onhashchange = () => {
-		selection =
-		  window &&
-		  window.location.hash &&
-		  decodeURI(window.location.hash.slice(1));
-	  };
-
-	  setTimeout(() => {
-		selection =
-		  (window &&
-			window.location.hash &&
-			decodeURI(window.location.hash.slice(1))) ||
-		  blok.filters[0].name;
-	  }, 0);
-	});
 
 	const handleSelection = (event) => {
 	  selection = event.target.dataset.value;
@@ -70,22 +34,11 @@
 				>
 					{#each blok.filters as category}
 						<li
-						class="mr-4 min-h-[3rem] list-none text-center lg:min-h-0 lg:text-left"
-						class:text-blue-400={selection &&
-							Boolean(selection.length) &&
-							category.name.toLowerCase() === selection.toLowerCase()}
-						class:dark:text-orange-400={selection &&
-							Boolean(selection.length) &&
-							category.name.toLowerCase() === selection.toLowerCase()}
+							class="mr-4 min-h-[3rem] list-none text-center lg:min-h-0 lg:text-left"
 						>
-						<a
-							class="block"
-							on:click={handleSelection}
-							data-value={category.name}
-							href={`#${category.name?.toLowerCase()}`}
-						>
-							{category.name}
-						</a>
+							<button on:click={handleSelection} data-value={category.name}>
+								{category.name}
+							</button>
 						</li>
 					{/each}
 				</ul>
