@@ -8,7 +8,7 @@
 <section class="py-12 h-full flex" use:storyblokEditable={blok}>
 	<!-- Card -->
 	<div
-		class="relative h-full dark:bg-slate-800 bg-white rounded-3xl p-px before:absolute before:w-80 before:h-80 before:-left-40 before:-top-40 before:bg-slate-400 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:group-hover:opacity-100 before:z-10 before:blur-[100px] after:absolute after:w-96 after:h-96 after:-left-48 after:-top-48 after:bg-indigo-500 after:rounded-full after:opacity-0 after:pointer-events-none after:transition-opacity after:duration-500 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:hover:opacity-10 after:z-30 after:blur-[100px] overflow-hidden"
+		class="relative h-full dark:bg-slate-800 rounded-3xl p-px before:absolute before:w-80 before:h-80 before:-left-40 before:-top-40 before:bg-slate-400 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:group-hover:opacity-100 before:z-10 before:blur-[100px] after:absolute after:w-96 after:h-96 after:-left-48 after:-top-48 after:bg-indigo-500 after:rounded-full after:opacity-0 after:pointer-events-none after:transition-opacity after:duration-500 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:hover:opacity-10 after:z-30 after:blur-[100px] overflow-hidden"
 	>
 		<div class="relative h-full dark:bg-slate-900 bg-gray-100 p-6 pb-8 rounded-[inherit] z-20 overflow-hidden">
 			<!-- Radial gradient -->
@@ -37,7 +37,7 @@
 				</div>
 				<!-- Text -->
 				<div class="grow mb-5">
-					<h2 class="text-xl text-black dark:text-slate-200 font-bold mb-1">{blok?.Heading}</h2>
+					<h2 class="text-xl text-black dark:text-slate-200 font-bold mb-1">{@html renderRichText(blok.Heading)}</h2>
 					<div class="text-sm text-gray-800 dark:text-slate-500 prose">
 						{@html renderRichText(blok?.Short_Blurb)}
 					</div>

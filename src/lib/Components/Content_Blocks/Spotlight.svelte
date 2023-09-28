@@ -13,10 +13,10 @@
 		<div class="bg-[#0d032740] backdrop-blur-xl p-6 rounded-3xl">
 			<div class="space-y-4 flex flex-col items-center text-center max-w-4xl mx-auto">
 				{#if blok?.Heading}
-					<Heading className="text-4xl font-semibold uppercase" {isFirst}>{blok?.Heading}</Heading>
+					<Heading className="text-4xl font-semibold uppercase text-white" {isFirst}>{blok?.Heading}</Heading>
 				{/if}
 				{#if blok?.Short_Blurb}
-					<div class="prose dark:text-white text-black min-w-full">{@html renderRichText(blok?.Short_Blurb)}</div>
+					<div class="prose dark:text-white text-white min-w-full">{@html renderRichText(blok?.Short_Blurb)}</div>
 				{/if}
 			</div>
 

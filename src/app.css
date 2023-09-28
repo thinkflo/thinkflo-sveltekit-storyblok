@@ -23,10 +23,16 @@
   html {
     font-family: Poppins, system-ui, sans-serif;
   }
-}
-body {
-  @apply dark:bg-black dark:text-white text-black;
-  background: linear-gradient(180deg, #000 0%, #161E28 13.48%, #187EC7 51.04%, #A5D0F5 74.48%, #F7FCFF 99.48%);
+  
+  body {
+    
+    @apply dark:bg-black dark:text-white text-black bg-[url('/earth.png')] bg-no-repeat bg-[center_bottom_-40rem];
+  }
+
+  body > div {
+    background: linear-gradient(165deg, #000 0%, #161E28 13.48%, #187EC7 51.04%, #A5D0F5 74.48%, #F7FCFF 88%, transparent 90%); 
+  }
+
 }
 
 #main-carousel > div, #carousel {

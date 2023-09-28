@@ -43,8 +43,8 @@
 				class:text-center={!blok?.Layout}
 				class="flex flex-col items-center space-y-4 z-10 relative" 
 			>
-				<Heading className="text-4xl font-semibold uppercase" {isFirst}>{blok.Heading}</Heading>
-				<div class="prose dark:text-white text-black">{@html renderRichText(blok?.Short_Blurb)}</div>
+				<Heading className="text-4xl font-semibold uppercase text-white" {isFirst}>{blok.Heading}</Heading>
+				<div class="prose dark:text-white text-white">{@html renderRichText(blok?.Short_Blurb)}</div>
 			</div>
 
 			<div
@@ -60,6 +60,7 @@
 					{#each blok.Panels as component}
 						<StoryblokComponent
 							blok={component}
+							colour={blok?.Text_Colour}
 							parent={blok?.component}
 						/>
 					{/each}

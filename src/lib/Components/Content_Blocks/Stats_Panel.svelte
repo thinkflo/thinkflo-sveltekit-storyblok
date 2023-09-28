@@ -25,7 +25,7 @@
 		>
 			{#if blok.Panels}
 				{#each blok.Panels as component}
-					<StoryblokComponent blok={component} />
+					<StoryblokComponent blok={component} colour={blok?.Text_Colour}/>
 				{/each}
 			{/if}
 		</div>
