@@ -11,15 +11,11 @@
 	import Heading from '$lib/Components/UI/Heading.svelte';
 
 	export let blok;
-	export let selection = "all";
+	export let selection = "Featured";
 	let articles = [...blok?.allArticles];
 
 	$: {
-		if(selection && selection !== "all") {
-			articles = [...blok?.allArticles.filter((article) => article.content.Category.includes(selection))]
-		} else {
-			articles = [...blok?.allArticles];
-		}
+		articles = [...blok?.allArticles.filter((article) => article?.content?.Category?.includes(selection && selection !== "Featured" ? selection : "Featured"))]
 	}
 
 	const handleSelection = (event) => {
@@ -36,14 +32,6 @@
 				<ul
 				class="categories relative mb-7 flex overflow-x-auto font-thin uppercase scrollbar-hide lg:m-0 lg:w-fit lg:flex-col lg:space-y-3 lg:px-3 lg:justify-start"
 				>
-					<li
-						class:text-jaffa-400={"all" === selection}
-						class="mr-4 min-h-[3rem] list-none text-center lg:min-h-0 lg:text-left"
-					>
-						<button on:click={handleSelection} data-value="all">
-							All
-						</button>
-					</li>
 					{#each blok.filters as category}
 						<li
 							class:text-jaffa-400={category.name === selection}

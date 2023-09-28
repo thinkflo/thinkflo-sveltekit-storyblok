@@ -44,7 +44,7 @@ async function updateBlockData(blocks, componentName, fetchDataFn) {
 
 async function updateTrendingNews(blocks, fetch) {
 	await updateBlockData(blocks, 'Trending_News', async () => {
-		const res = await fetch('https://thinkflo.netlify.app/api/getNews');
+		const res = await fetch('https://www.thinkflo.com/api/getNews');
 		if (res.ok) {
 			return res.json();
 		} else {
@@ -69,10 +69,8 @@ async function updateTimeline(blocks, storyblokApi) {
 }
 
 async function updateWorkOverview(block, storyblokApi) {
-	const { data } = await storyblokApi.get('cdn/stories', {
-		version: 'draft',
-		starts_with: 'work',
-		is_startpage: false
+	const { data : { stories } } = await storyblokApi.get('cdn/stories?content_type=Work_Detail_Layout&per_page=100', {
+		version: 'published'
 	});
 
 	const {
@@ -81,6 +79,6 @@ async function updateWorkOverview(block, storyblokApi) {
 		version: 'draft'
 	});
 
-	block['allArticles'] = data?.stories;
+	block['allArticles'] = stories;
 	block['filters'] = filter_datasources;
 }
