@@ -1,6 +1,7 @@
 <script>
 	import '../app.css';
 	import { getContext } from 'svelte';
+	import { page } from '$app/stores';
 	import Top_Nav from '$lib/Components/Global_Components/Top_Nav.svelte';
 	import Footer from '$lib/Components/Global_Components/Footer.svelte';
 
@@ -17,4 +18,4 @@
 
 <Top_Nav blok={data.topNav.content} />
 <slot />
-<Footer blok={data.footer.content} />
+<Footer blok={data.footer.content} type={!($page?.params?.slug)? "home" : "default"} />
