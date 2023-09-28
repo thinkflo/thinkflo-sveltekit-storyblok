@@ -31,7 +31,7 @@
 
 <div class="hero w-full flex flex-col items-center justify-center py-56 relative h-screen overflow-hidden -top-24">
   {#if blok?.Heading}
-    <h1 class="text-7xl text-transparent bg-clip-text font-extrabold uppercase text-center max-w-xl bg-gradient-to-r from-jaffa-400 via-jaffa-500 to-jaffa-800 animate-fade-in z-20">{blok.Heading}</h1>
+    <h1 class="text-5xl md:text-7xl text-transparent bg-clip-text font-extrabold uppercase text-center max-w-xl bg-gradient-to-r from-jaffa-400 via-jaffa-500 to-jaffa-800 animate-fade-in z-20">{blok.Heading}</h1>
   {/if}
 
   <Saos 
@@ -44,7 +44,7 @@
   </Saos>
 
   <div 
-    class="absolute h-auto w-48 top-80 left-96 z-10" 
+    class="absolute h-auto w-32 md:w-40 xl:w-48 top-1 md:top-80 left-1 md:left-32 xl:left-96 z-10" 
   >
   <Saos animation={"from-left 2s cubic-bezier(0.5, 0, 0.35, 1) both"}>
     <svg class="satellite w-full h-full" viewBox="0 0 181 191" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -701,7 +701,7 @@
   </Saos>
   </div>
     
-  <div class="absolute h-auto w-96 top-20 right-40 z-10">
+  <div class="absolute h-auto xl:w-96 top-72 md:top-80 xl:top-20 md:right-20 xl:right-40 z-10">
     <!-- Source of the astronaut SVG: https://codepen.io/killerlapin/pen/MedjgM -->
     <Saos animation={"slide-in-top 2.25s cubic-bezier(0.5, 0, 0.35, 1) both"}>
       <svg 
