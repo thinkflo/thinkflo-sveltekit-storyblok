@@ -35,12 +35,12 @@
 	<div
 	class:text-black={colour === 'black'} 
 	class:text-white={colour === 'white'}
-		class="p-8  flex flex-col items-center space-y-4 h-full text-center"
+		class="p-8 flex flex-col items-center space-y-4 h-full text-center"
 	>
 		{#if blok?.Image?.filename}
-			<img class="h-32 w-32 object-contain" alt="{blok?.Image?.alt}" src={blok?.Image?.filename} />
+			<img class="h-16 w-16 object-contain" alt="{blok?.Image?.alt}" src={blok?.Image?.filename} />
 		{/if}
-		<div class="text-xl text-white">{blok.Heading}</div>
+		<div class="text-md md:text-xl text-white">{blok.Heading}</div>
 	</div>
 	<!-- Panels for Work sub pages aka. Stories -->
 {:else if blok.content && blok.content.component === 'Project'}
