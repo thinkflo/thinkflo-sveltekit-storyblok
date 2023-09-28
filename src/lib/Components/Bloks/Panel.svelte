@@ -70,7 +70,7 @@
 	class:text-black={colour === 'black'} 
 	class:text-white={colour === 'white'}
 	class="p-8 w-full h-full text-center">
-		<div class="prose text-4xl">{@html renderRichText(blok.Heading)}</div>
+		<div class="prose text-3xl md:text-4xl">{@html renderRichText(blok.Heading)}</div>
 		<div class="prose text-xs">{@html renderRichText(blok.Short_Blurb)}</div>
 	</div>
 {/if}
