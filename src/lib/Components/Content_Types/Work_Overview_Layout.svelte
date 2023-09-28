@@ -29,12 +29,12 @@
 
 <article use:storyblokEditable={blok} class="bg-white dark:bg-black">
 	<section class="py-12 md:py-24">
-		<Constrained_Width className="flex">
-			<div class="space-y-4 md:w-3/12">
+		<Constrained_Width className="flex flex-col lg:flex-row">
+			<div class="space-y-4 lg:w-3/12">
 				<Heading className="text-3xl font-extralight uppercase" isFirst={true}>Filters</Heading>
 
 				<ul
-				class="categories relative mb-7 flex overflow-x-auto font-thin uppercase scrollbar-hide lg:m-0 lg:w-fit lg:flex-col lg:space-y-3 lg:px-3 md:justify-center lg:justify-start"
+				class="categories relative mb-7 flex overflow-x-auto font-thin uppercase scrollbar-hide lg:m-0 lg:w-fit lg:flex-col lg:space-y-3 lg:px-3 lg:justify-start"
 				>
 					<li
 						class:text-jaffa-400={"all" === selection}
@@ -49,7 +49,7 @@
 							class:text-jaffa-400={category.name === selection}
 							class="mr-4 min-h-[3rem] list-none text-center lg:min-h-0 lg:text-left"
 						>
-							<button on:click={handleSelection} data-value={category.name}>
+							<button class="whitespace-nowrap" on:click={handleSelection} data-value={category.name}>
 								{category.name}
 							</button>
 						</li>
@@ -58,7 +58,7 @@
 			</div>
 
 			<!-- Work Panels -->
-			<div class="md:pl-4 grid md:grid-cols-2 w-full gap-4">
+			<div class="pt-4 lg:pt-0 lg:pl-4 grid md:grid-cols-2 w-full gap-4">
 				{#each articles as article}
 					<a
 						in:fade={{ delay: 50, duration: 1000, easing: quintOut }}

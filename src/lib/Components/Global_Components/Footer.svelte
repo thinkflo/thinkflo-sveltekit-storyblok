@@ -6,7 +6,7 @@
 	const currentYear = new Date().getFullYear();
 </script>
 
-<footer class="w-full py-12 md:py-24 md:pb-5 text-black">
+<footer class="w-full py-12 md:py-24 md:pb-5 dark:text-white text-black">
 	<Constrained_Width
 		className="container h-full mx-auto flex flex-col space-y-10 items-center justify-between"
 	>
