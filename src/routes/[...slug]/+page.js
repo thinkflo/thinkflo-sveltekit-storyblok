@@ -75,8 +75,8 @@ async function updateWorkOverview(block, storyblokApi) {
 
 	const {
 		data: { datasource_entries: filter_datasources }
-	} = await storyblokApi.get('cdn/datasource_entries', {
-		version: 'draft'
+	} = await storyblokApi.get('cdn/datasource_entries?datasource=categories&per_page=100', {
+		version: 'published'
 	});
 
 	block['allArticles'] = stories;

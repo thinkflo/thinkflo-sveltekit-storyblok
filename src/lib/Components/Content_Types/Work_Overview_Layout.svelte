@@ -15,7 +15,7 @@
 	let articles = [...blok?.allArticles];
 
 	$: {
-		articles = [...blok?.allArticles.filter((article) => article?.content?.Category?.includes(selection && selection !== "Featured" ? selection : "Featured"))]
+		articles = [...blok?.allArticles.filter((article) => article?.content?.Category?.includes(selection ? selection : ""))]
 	}
 
 	const handleSelection = (event) => {
@@ -70,8 +70,11 @@
 							class="z-10 opacity-1000 group-hover/work:opacity-0 transition-opacity duration-300 ease-in-out"
 						>
 							<h3 class="text-3xl text-white font-semibold">
-								{article.content.Title || article.content.Heading || article.name}
+								{article.name}
 							</h3>
+							<h4 class="text-xl text-white font-semibold">
+							{ article.content.Heading }
+							</h4>
 							<div class="prose line-clamp-2 text-white">
 								{@html hasRichText(article.content.Blurb) ? renderRichText(article.content.Blurb) : renderRichText(article.content.Description)}
 							</div>
