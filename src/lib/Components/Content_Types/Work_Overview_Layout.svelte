@@ -32,7 +32,7 @@
 				<ul
 				class="categories relative mb-7 flex overflow-x-auto font-thin uppercase scrollbar-hide lg:m-0 lg:w-fit lg:flex-col lg:space-y-3 lg:px-3 lg:justify-start"
 				>
-					{#each blok.filters as category}
+					{#each [...blok.filters].sort((a, b) => a.name === 'Featured' ? -1 : b.name === 'Featured' ? 1 : 0) as category}
 						<li
 							class:text-jaffa-400={category.name === selection}
 							class="mr-4 min-h-[3rem] list-none text-center lg:min-h-0 lg:text-left"
