@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { gsap } from 'gsap';
   import { browser } from '$app/environment';
 	import { useStoryblokBridge, StoryblokComponent } from '@storyblok/svelte';
 	import Cookies_Monster from '$lib/Components/UI/Cookies_Monster.svelte';
@@ -11,18 +12,122 @@
 			data.story.id,
 			(newStory) => (data.story = newStory)
 		);
+		const getFontSize = () => {
+  const REM = 16
+  const VW = window.innerWidth / 100
+  const PX = gsap.utils.clamp(2 * REM, 12 * REM, 6 * VW + REM)
+  return Math.round(PX)
+}
+
+// Grab the canvas from the DOM we're going to clip
+const CANVAS = document.querySelector('canvas')
+const CONTEXT = CANVAS.getContext('2d')
+// Create a static canvas we can reuse for the text
+const TEXT_CANVAS = document.createElement('canvas')
+const TEXT_CONTEXT = TEXT_CANVAS.getContext('2d')
+// Create a rings canvas that you can composite on at the end
+const RING_CANVAS = document.createElement('canvas')
+const RING_CONTEXT = RING_CANVAS.getContext('2d')
+
+const DPI = window.devicePixelRatio || 1
+
+// Set the heights
+RING_CANVAS.height = TEXT_CANVAS.height = CANVAS.height = CANVAS.offsetHeight * DPI
+RING_CANVAS.width = TEXT_CANVAS.width = CANVAS.width = CANVAS.offsetWidth * DPI
+
+
+
+const TEXT = 'modern web.'
+// Draw the text onto the text canvas
+TEXT_CONTEXT.fillStyle = 'white'
+TEXT_CONTEXT.textAlign = 'center'
+TEXT_CONTEXT.textBaseline = 'middle'
+TEXT_CONTEXT.font = `150 ${getFontSize() * DPI}px Geist Sans`
+TEXT_CONTEXT.fillText(TEXT, TEXT_CANVAS.width / 2, TEXT_CANVAS.height / 2)
+
+const RINGS = []
+
+for (let i = 0; i < 150; i++) {
+  RINGS.push({
+    id: i,
+    hue: gsap.utils.random(0, 359, 1),
+    spread: gsap.utils.random(75, 359, 1),
+    angle: 0,
+  })
+}
+const ORIGIN = {
+  x: 350 * DPI,
+  y: -100 * DPI,
+}
+
+CONTEXT.globalCompositeOperation = 'normal'
+CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height)
+CONTEXT.drawImage(TEXT_CANVAS, 0, 0)
+// Clip to the text
+CONTEXT.globalCompositeOperation = 'source-in'
+
+const DRAW = (skip) => {
+  RING_CONTEXT.clearRect(0, 0, RING_CANVAS.width, RING_CANVAS.height)
+  RING_CONTEXT.fillStyle = 'hsl(210, 30%, 16%)'
+  RING_CONTEXT.fillRect(0, 0, CANVAS.width, CANVAS.height)
+  RING_CONTEXT.lineWidth = 1 * DPI
+  RING_CONTEXT.lineCap = 'round'
+  // Draw the rings
+  for (const ring of RINGS) {
+    RING_CONTEXT.strokeStyle = `hsl(${ring.hue}, 50%, 50%)`
+    RING_CONTEXT.save()
+    RING_CONTEXT.translate(ORIGIN.x, ORIGIN.y)
+    RING_CONTEXT.rotate((ring.angle * Math.PI) / 180)
+    RING_CONTEXT.translate(ORIGIN.x * -1, ORIGIN.y * -1)
+    RING_CONTEXT.beginPath()
+    RING_CONTEXT.arc(
+      ORIGIN.x,
+      ORIGIN.y,
+      ring.id * (4 * DPI),
+      0,
+      (ring.spread * Math.PI) / 180
+    )
+    RING_CONTEXT.stroke()
+    RING_CONTEXT.restore()
+  }
+  // Draw out the rings
+  CONTEXT.drawImage(RING_CANVAS, 0, 0)
+}
+
+for (const ring of RINGS) {
+  gsap.to(ring, {
+    angle: 360,
+    repeat: -1,
+    ease: 'none',
+    duration: () => gsap.utils.random(5, 20, 0.2),
+    delay: () => gsap.utils.random(-5, -1, 0.1),
+  })
+}
+gsap.ticker.fps(24)
+gsap.ticker.add(DRAW)
+DRAW()
+
+document.querySelector('.text-block').style.color = 'transparent'
   });
 </script>
 
 <svelte:head>
-	<title>{data?.story?.name || 'Thinkflo'}</title>
+	<title>Thinkflo{data?.story?.name ? ` - ${data?.story?.name}` : ''}</title>
 </svelte:head>
 
-<main>
-	{#if data.story}
-		{#key data.story.content._uid}
-			<StoryblokComponent blok={data.story.content} />
-		{/key}
-	{/if}
-	<Cookies_Monster />
+<main class="grid place-content-center h-screen p-6 space-y-2">
+	
+	<h1 class="text-[#ccc] ml-1"><svg class="h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.58805 47.86691"><defs><style>.a{fill:currentColor;}.b{fill:#f36f5e;}.c{fill:#fbb040;}</style></defs><title>Thinkflo</title><rect class="a" x="118.14648" y="19.06389" width="10.16199" height="28.80301"/><polygon class="a" points="71.716 14.822 71.716 47.835 60.711 47.835 60.711 14.822 51.672 14.822 51.672 5.503 80.755 5.503 80.755 14.822 71.716 14.822"/><path class="a" d="M84.2348,5.15308h10.162v17.529a11.12022,11.12022,0,0,1,4.211-3.396,13.15236,13.15236,0,0,1,4.997-.871q5.445,0,8.225,3.004a11.47686,11.47686,0,0,1,2.78,8.113v18.303h-10.164v-14.541a15.04071,15.04071,0,0,0-.336-3.537,4.113,4.113,0,0,0-1.124-2.078,4.76946,4.76946,0,0,0-3.254-1.179,5.02431,5.02431,0,0,0-3.96,1.545,6.40755,6.40755,0,0,0-1.375,4.407v15.383h-10.162Z" transform="translate(0 0.00005)"/><path class="a" d="M131.90082,19.032h10.162v3.65a11.11993,11.11993,0,0,1,4.211-3.396,13.15236,13.15236,0,0,1,4.997-.871,12.515,12.515,0,0,1,5.193.982,10.37349,10.37349,0,0,1,3.678,2.78,8.00555,8.00555,0,0,1,1.684,3.256,16.98514,16.98514,0,0,1,.45,4.099V47.835h-10.163v-14.541a15.71038,15.71038,0,0,0-.308-3.453,4.29715,4.29715,0,0,0-1.095-2.106,3.88392,3.88392,0,0,0-1.516-.955,5.68678,5.68678,0,0,0-1.796-.28,5.02207,5.02207,0,0,0-3.959,1.545,6.403,6.403,0,0,0-1.376,4.407V47.835h-10.162Z" transform="translate(0 0.00005)"/><polygon class="a" points="175.973 5.153 175.973 29.42 186.641 19.032 200.564 19.032 186.136 32.339 201.408 47.835 187.146 47.835 175.973 36.1 175.973 47.835 165.811 47.835 165.811 5.153 175.973 5.153"/><path class="a" d="M205.84222,19.032v-5.333a12.16949,12.16949,0,0,1,1.20795-5.362,14.03152,14.03152,0,0,1,3.255-4.351,15.45651,15.45651,0,0,1,4.772-2.92,16.07079,16.07079,0,0,1,11.511,0,15.45579,15.45579,0,0,1,4.772,2.92,14.04889,14.04889,0,0,1,3.256,4.351,12.15552,12.15552,0,0,1,1.208,5.362V47.835h-10.163V13.699a5.24537,5.24537,0,0,0-.365-1.938,5.56213,5.56213,0,0,0-1.01-1.655,5.21338,5.21338,0,0,0-1.516-1.179,4.1688,4.1688,0,0,0-1.937-.45,4.33564,4.33564,0,0,0-1.965.45,4.91778,4.91778,0,0,0-1.51605,1.15,5.60919,5.60919,0,0,0-1.347,3.622v5.333h5.838v8.479h-5.838V47.835H205.842V27.511h-3.649V19.032Z" transform="translate(0 0.00005)"/><path class="a" d="M238.001,32.11527a14.00854,14.00854,0,0,1,1.292-5.981,14.694,14.694,0,0,1,3.593-4.828,17.10465,17.10465,0,0,1,5.474-3.227,19.73465,19.73465,0,0,1,6.934-1.18,20.04955,20.04955,0,0,1,6.878,1.151,17.033,17.033,0,0,1,5.502,3.2,14.40015,14.40015,0,0,1,3.621,4.884,14.95471,14.95471,0,0,1,1.292,6.261,14.66161,14.66161,0,0,1-1.32,6.26,14.8254,14.8254,0,0,1-3.62195,4.885,16.19482,16.19482,0,0,1-5.52905,3.172,21.16359,21.16359,0,0,1-6.99,1.122,20.25582,20.25582,0,0,1-6.851-1.122,15.78593,15.78593,0,0,1-5.41705-3.2,14.83442,14.83442,0,0,1-3.565-4.969,15.57263,15.57263,0,0,1-1.292-6.428m10.724.112a6.49431,6.49431,0,0,0,.534,2.666,7.06176,7.06176,0,0,0,1.403,2.105,6.16725,6.16725,0,0,0,2.078,1.405,6.701,6.701,0,0,0,5.109,0,6.19333,6.19333,0,0,0,2.077-1.405,7.10283,7.10283,0,0,0,1.404-2.105,6.40481,6.40481,0,0,0,.533-2.61,6.27646,6.27646,0,0,0-.533-2.554,7.14509,7.14509,0,0,0-1.404-2.106,6.20548,6.20548,0,0,0-2.077-1.404,6.701,6.701,0,0,0-5.109,0,6.17927,6.17927,0,0,0-2.078,1.404,7.22768,7.22768,0,0,0-1.403,2.077,6.03958,6.03958,0,0,0-.534,2.527" transform="translate(0 0.00005)"/><path class="b" d="M41.28461,45.29276v-10.558a1.49576,1.49576,0,0,0-2.554-1.057l-11.398,11.397a1.49617,1.49617,0,0,0,1.058,2.554h10.558a2.33616,2.33616,0,0,0,2.336-2.336" transform="translate(0 0.00005)"/><path class="c" d="M38.562,6.34445H2.722A2.72267,2.72267,0,0,0,0,9.06745v35.84a2.72217,2.72217,0,0,0,2.722,2.721H15.661a2.71856,2.71856,0,0,0,1.924-.797l22.902-22.902a2.71849,2.71849,0,0,0,.798-1.925V9.06745a2.72349,2.72349,0,0,0-2.723-2.723" transform="translate(0 0.00005)"/></svg></h1>
+	
+	<section class="leading-none">
+		Building&nbsp;the 
+		<span class="text-block">
+			<span>modern web.</span>
+			<canvas aria-hidden="true"></canvas>
+		</span> 	
+	</section>
 </main>
+
+<style global>
+
+</style>
