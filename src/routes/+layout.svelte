@@ -16,6 +16,6 @@
 	{/if}
 </svelte:head>
 
-<!-- <Top_Nav blok={data.topNav.content} /> -->
+<Top_Nav blok={data.topNav.content} />
 <slot />
 <!-- <Footer blok={data.footer.content} type={!($page?.params?.slug)? "home" : "default"} /> -->

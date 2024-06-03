@@ -57,7 +57,7 @@
 }
   
 body {
-  background: hsl(0, 0%, 10%);
+
 }
 
 @font-face {
@@ -72,7 +72,6 @@ body {
 }
 
 body {
-	background: hsl(0 0% 2%);
 	font-family:  "Geist Sans", "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
 	font-weight: 160;
 }
@@ -99,14 +98,12 @@ canvas {
 	height: 100%;
 	pointer-events: none;
 }
-  body {    
-    /* @apply dark:bg-black dark:text-white text-black bg-[url('/earth.png')] bg-no-repeat bg-[center_bottom_-40rem]; */
-    @apply dark:bg-black dark:text-white text-black bg-no-repeat;
-  }
 
-  /* body > div {
-    background: linear-gradient(165deg, #000 0%, #161E28 13.48%, #187EC7 51.04%, #A5D0F5 74.48%, #F7FCFF 88%, transparent 100%); 
-  } */
+body {    
+  /* @apply dark:bg-black dark:text-white text-black bg-[url('/earth.png')] bg-no-repeat bg-[center_bottom_-40rem]; */
+  @apply dark:bg-black dark:text-white text-black bg-no-repeat;
+}
+
 
 }
 

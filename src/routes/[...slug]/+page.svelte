@@ -17,7 +17,7 @@
 	<title>{data?.story?.name || 'Thinkflo'}</title>
 </svelte:head>
 
-<main>
+<main class="dark:bg-black dark:text-white text-black">
 	{#if data.story}
 		{#key data.story.content._uid}
 			<StoryblokComponent blok={data.story.content} />

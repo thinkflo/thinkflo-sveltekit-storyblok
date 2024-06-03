@@ -57,12 +57,8 @@
 	$: if(browser) document.body.classList.toggle('noscroll', isOpen);
 </script>
 
-<header class="sticky inset-0 z-50 w-full h-24 bg-transparent text-black dark:text-white transition-transform duration-500" class:navbar--hidden={!show}>
-	<Constrained_Width className="container h-full mx-auto flex items-center justify-between">
-		<div>
-			<a tabindex="0" href="/"><img src="/logo.svg" alt="Thinkflo Logo" class="h-10 dark:hidden" /></a>
-			<a tabindex="0" href="/"><img src="/logo-white.svg" alt="Thinkflo Logo White" class="h-10 hidden dark:block" /></a>
-		</div>
+<header class="fixed inset-0 z-50 w-full h-24 bg-transparent text-black dark:text-white transition-transform duration-500" class:navbar--hidden={!show}>
+	<Constrained_Width className="container h-full mx-auto flex items-center justify-end">
 		<nav class="flex">
 			<!-- Hamburger Icon -->
 			<button class="hamburger h-5 w-9 ml-6 flex cursor-pointer relative z-30" on:click={() => isOpen = !isOpen} aria-label="Toggle menu" aria-haspopup="true" aria-expanded={isOpen}>
@@ -73,9 +69,9 @@
 
 			<!-- Menu Section -->
 			<div class="dark:bg-black bg-white flex flex-col h-full w-full fixed inset-0 z-20" class:hidden={!isOpen}>
-				<Constrained_Width className="h-full flex flex-col justify-between py-12">
+				<Constrained_Width className="h-full flex flex-col justify-center py-12">
 					<div class="h-10" />
-					<ul class="flex flex-col space-y-8 text-5xl text-center font-medium">
+					<ul class="flex flex-col space-y-8 text-5xl text-center ">
 						{#if blok?.Nav_Menu?.length}
 							{#each blok.Nav_Menu as Menu_Item}
 								<li class="hover:text-carnation-500 text-jaffa-500 transition duration-300">
@@ -86,7 +82,7 @@
 					</ul>
 
 					<!-- Dark / Light Mode Toggle -->
-					<button
+					<!-- <button
 						type="button"
 						class="lightmode relative inline-flex h-8 w-16 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-black transition-colors duration-200 ease-in-out dark:bg-gray-200"
 						role="switch"
@@ -198,7 +194,7 @@
 								: "translate-x-0.5") +
 								" pointer-events-none  inline-block h-6 w-6 translate-y-0.5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"}
 						/>
-					</button>
+					</button> -->
 				</Constrained_Width>
 			</div>
 		</nav>
